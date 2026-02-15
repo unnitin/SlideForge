@@ -14,17 +14,17 @@ A Python-based system that converts natural language → a domain-specific langu
 ```mermaid
 flowchart TD
     nl["Natural Language Input"]
-    agent["NL-to-DSL Agent\n(Claude)"]
-    index["**DESIGN INDEX**\nSlide Chunks | Deck Chunks | Element Chunks\nVector DB + SQLite Metadata"]
-    sdsl["SlideDSL\n(.sdsl file)"]
+    agent["NL-to-DSL Agent<br/>(Claude)"]
+    index["**DESIGN INDEX**<br/>Slide Chunks | Deck Chunks | Element Chunks<br/>Vector DB + SQLite Metadata"]
+    sdsl["SlideDSL<br/>(.sdsl file)"]
     parser["DSL Parser"]
     mapper["Layout Mapper"]
     renderer["PPTX Renderer"]
-    converter["Format Converter\n(.ee4p etc)"]
-    qa["QA Agent\n(visual inspection)"]
+    converter["Format Converter<br/>(.ee4p etc)"]
+    qa["QA Agent<br/>(visual inspection)"]
 
     nl --> agent
-    agent <-->|"retrieval at\ngeneration time"| index
+    agent <-->|"retrieval at<br/>generation time"| index
     agent --> sdsl
     sdsl --> parser
     parser --> mapper
