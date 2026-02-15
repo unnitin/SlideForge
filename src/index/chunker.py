@@ -12,12 +12,11 @@ and semantic metadata (LLM-generated, via the Index Curator agent).
 
 from __future__ import annotations
 
-import hashlib
 import json
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from typing import Any, Optional
+from typing import Optional
 
 from src.dsl.models import (
     PresentationNode,
@@ -35,6 +34,7 @@ from src.dsl.serializer import SlideDSLSerializer
 @dataclass
 class DeckChunk:
     """Deck-level chunk: the presentation as a whole."""
+
     id: str
     source_file: Optional[str]
     title: str
@@ -78,6 +78,7 @@ class DeckChunk:
 @dataclass
 class SlideChunk:
     """Slide-level chunk: an individual slide's full context."""
+
     id: str
     deck_chunk_id: str
     slide_index: int
@@ -176,21 +177,22 @@ class SlideChunk:
 @dataclass
 class ElementChunk:
     """Element-level chunk: a specific visual element within a slide."""
+
     id: str
     slide_chunk_id: str
     deck_chunk_id: str
 
     # Element identity
-    element_type: str       # "stat", "bullet_group", "column", "timeline_step",
-                            # "comparison_row", "heading", "icon_bullet", "image"
+    element_type: str  # "stat", "bullet_group", "column", "timeline_step",
+    # "comparison_row", "heading", "icon_bullet", "image"
     position_in_slide: int  # ordering within the slide
-    sibling_count: int      # how many elements at this level
+    sibling_count: int  # how many elements at this level
 
     # Raw content
-    raw_content: dict       # type-specific content dict
+    raw_content: dict  # type-specific content dict
 
     # Context
-    slide_type: str         # parent slide's type
+    slide_type: str  # parent slide's type
 
     # Semantic (populated by Index Curator)
     semantic_summary: str = ""
@@ -315,9 +317,7 @@ class SlideChunker:
                 has_image=slide.image is not None,
                 has_icons=has_icons,
                 dsl_text=self._serializer.serialize_slide(slide),
-                prev_slide_type=(
-                    presentation.slides[i - 1].slide_type.value if i > 0 else None
-                ),
+                prev_slide_type=(presentation.slides[i - 1].slide_type.value if i > 0 else None),
                 next_slide_type=(
                     presentation.slides[i + 1].slide_type.value
                     if i < len(presentation.slides) - 1
@@ -350,124 +350,139 @@ class SlideChunker:
 
         # Heading as element
         if slide.heading:
-            elements.append(ElementChunk(
-                id=str(uuid.uuid4()),
-                slide_chunk_id=slide_chunk_id,
-                deck_chunk_id=deck_chunk_id,
-                element_type="heading",
-                position_in_slide=position,
-                sibling_count=0,  # updated below
-                raw_content={
-                    "heading": slide.heading,
-                    "subheading": slide.subheading,
-                },
-                slide_type=slide.slide_type.value,
-            ))
+            elements.append(
+                ElementChunk(
+                    id=str(uuid.uuid4()),
+                    slide_chunk_id=slide_chunk_id,
+                    deck_chunk_id=deck_chunk_id,
+                    element_type="heading",
+                    position_in_slide=position,
+                    sibling_count=0,  # updated below
+                    raw_content={
+                        "heading": slide.heading,
+                        "subheading": slide.subheading,
+                    },
+                    slide_type=slide.slide_type.value,
+                )
+            )
             position += 1
 
         # Each stat as a separate element
         for j, stat in enumerate(slide.stats):
-            elements.append(ElementChunk(
-                id=str(uuid.uuid4()),
-                slide_chunk_id=slide_chunk_id,
-                deck_chunk_id=deck_chunk_id,
-                element_type="stat",
-                position_in_slide=position,
-                sibling_count=len(slide.stats),
-                raw_content={
-                    "value": stat.value,
-                    "label": stat.label,
-                    "description": stat.description,
-                    "index_in_group": j,
-                    "group_size": len(slide.stats),
-                },
-                slide_type=slide.slide_type.value,
-            ))
+            elements.append(
+                ElementChunk(
+                    id=str(uuid.uuid4()),
+                    slide_chunk_id=slide_chunk_id,
+                    deck_chunk_id=deck_chunk_id,
+                    element_type="stat",
+                    position_in_slide=position,
+                    sibling_count=len(slide.stats),
+                    raw_content={
+                        "value": stat.value,
+                        "label": stat.label,
+                        "description": stat.description,
+                        "index_in_group": j,
+                        "group_size": len(slide.stats),
+                    },
+                    slide_type=slide.slide_type.value,
+                )
+            )
             position += 1
 
         # Bullets as a group element
         if slide.bullets:
-            elements.append(ElementChunk(
-                id=str(uuid.uuid4()),
-                slide_chunk_id=slide_chunk_id,
-                deck_chunk_id=deck_chunk_id,
-                element_type="icon_bullet_group" if any(b.icon for b in slide.bullets) else "bullet_group",
-                position_in_slide=position,
-                sibling_count=len(slide.bullets),
-                raw_content={
-                    "items": [
-                        {"text": b.text, "level": b.level, "icon": b.icon}
-                        for b in slide.bullets
-                    ],
-                    "has_icons": any(b.icon for b in slide.bullets),
-                    "count": len(slide.bullets),
-                },
-                slide_type=slide.slide_type.value,
-            ))
+            elements.append(
+                ElementChunk(
+                    id=str(uuid.uuid4()),
+                    slide_chunk_id=slide_chunk_id,
+                    deck_chunk_id=deck_chunk_id,
+                    element_type="icon_bullet_group"
+                    if any(b.icon for b in slide.bullets)
+                    else "bullet_group",
+                    position_in_slide=position,
+                    sibling_count=len(slide.bullets),
+                    raw_content={
+                        "items": [
+                            {"text": b.text, "level": b.level, "icon": b.icon}
+                            for b in slide.bullets
+                        ],
+                        "has_icons": any(b.icon for b in slide.bullets),
+                        "count": len(slide.bullets),
+                    },
+                    slide_type=slide.slide_type.value,
+                )
+            )
             position += 1
 
         # Each column as a separate element
         for j, col in enumerate(slide.columns):
-            elements.append(ElementChunk(
-                id=str(uuid.uuid4()),
-                slide_chunk_id=slide_chunk_id,
-                deck_chunk_id=deck_chunk_id,
-                element_type="column",
-                position_in_slide=position,
-                sibling_count=len(slide.columns),
-                raw_content={
-                    "title": col.title,
-                    "bullets": [
-                        {"text": b.text, "level": b.level}
-                        for b in col.bullets
-                    ],
-                    "bullet_count": len(col.bullets),
-                    "index_in_group": j,
-                    "group_size": len(slide.columns),
-                },
-                slide_type=slide.slide_type.value,
-            ))
+            elements.append(
+                ElementChunk(
+                    id=str(uuid.uuid4()),
+                    slide_chunk_id=slide_chunk_id,
+                    deck_chunk_id=deck_chunk_id,
+                    element_type="column",
+                    position_in_slide=position,
+                    sibling_count=len(slide.columns),
+                    raw_content={
+                        "title": col.title,
+                        "bullets": [{"text": b.text, "level": b.level} for b in col.bullets],
+                        "bullet_count": len(col.bullets),
+                        "index_in_group": j,
+                        "group_size": len(slide.columns),
+                    },
+                    slide_type=slide.slide_type.value,
+                )
+            )
             position += 1
 
         # Each timeline step as a separate element
         for j, step in enumerate(slide.timeline):
-            elements.append(ElementChunk(
-                id=str(uuid.uuid4()),
-                slide_chunk_id=slide_chunk_id,
-                deck_chunk_id=deck_chunk_id,
-                element_type="timeline_step",
-                position_in_slide=position,
-                sibling_count=len(slide.timeline),
-                raw_content={
-                    "time": step.time,
-                    "title": step.title,
-                    "description": step.description,
-                    "index_in_group": j,
-                    "group_size": len(slide.timeline),
-                },
-                slide_type=slide.slide_type.value,
-            ))
+            elements.append(
+                ElementChunk(
+                    id=str(uuid.uuid4()),
+                    slide_chunk_id=slide_chunk_id,
+                    deck_chunk_id=deck_chunk_id,
+                    element_type="timeline_step",
+                    position_in_slide=position,
+                    sibling_count=len(slide.timeline),
+                    raw_content={
+                        "time": step.time,
+                        "title": step.title,
+                        "description": step.description,
+                        "index_in_group": j,
+                        "group_size": len(slide.timeline),
+                    },
+                    slide_type=slide.slide_type.value,
+                )
+            )
             position += 1
 
         # Comparison table rows as elements
         if slide.compare:
             for j, row in enumerate(slide.compare.rows):
-                cells = dict(zip(slide.compare.headers, row)) if slide.compare.headers else {"cells": row}
-                elements.append(ElementChunk(
-                    id=str(uuid.uuid4()),
-                    slide_chunk_id=slide_chunk_id,
-                    deck_chunk_id=deck_chunk_id,
-                    element_type="comparison_row",
-                    position_in_slide=position,
-                    sibling_count=len(slide.compare.rows),
-                    raw_content={
-                        "headers": slide.compare.headers,
-                        "row_data": cells,
-                        "index_in_group": j,
-                        "group_size": len(slide.compare.rows),
-                    },
-                    slide_type=slide.slide_type.value,
-                ))
+                cells = (
+                    dict(zip(slide.compare.headers, row))
+                    if slide.compare.headers
+                    else {"cells": row}
+                )
+                elements.append(
+                    ElementChunk(
+                        id=str(uuid.uuid4()),
+                        slide_chunk_id=slide_chunk_id,
+                        deck_chunk_id=deck_chunk_id,
+                        element_type="comparison_row",
+                        position_in_slide=position,
+                        sibling_count=len(slide.compare.rows),
+                        raw_content={
+                            "headers": slide.compare.headers,
+                            "row_data": cells,
+                            "index_in_group": j,
+                            "group_size": len(slide.compare.rows),
+                        },
+                        slide_type=slide.slide_type.value,
+                    )
+                )
                 position += 1
 
         # Update sibling counts now that we know total

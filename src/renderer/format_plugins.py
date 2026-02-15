@@ -31,8 +31,15 @@ class PDFConverter:
         import subprocess
 
         subprocess.run(
-            ["soffice", "--headless", "--convert-to", "pdf",
-             "--outdir", str(output_path.parent), str(pptx_path)],
+            [
+                "soffice",
+                "--headless",
+                "--convert-to",
+                "pdf",
+                "--outdir",
+                str(output_path.parent),
+                str(pptx_path),
+            ],
             check=True,
         )
         return output_path

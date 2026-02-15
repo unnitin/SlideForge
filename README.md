@@ -12,13 +12,13 @@ A Python-based system that converts natural language → a domain-specific langu
          ▼
   ┌──────────────┐     ┌──────────────────────────────────────┐
   │  NL-to-DSL   │◄───▶│         DESIGN INDEX                 │
-  │  Agent        │     │                                      │
-  │  (Claude)     │     │  ┌──────────┐ ┌──────┐ ┌─────────┐  │
-  └──────┬───────┘     │  │ Slide    │ │ Deck │ │ Element │  │
-         │             │  │ Chunks   │ │Chunks│ │ Chunks  │  │
-         ▼             │  └──────────┘ └──────┘ └─────────┘  │
+  │  Agent       │     │                                      │
+  │  (Claude)    │     │  ┌──────────┐ ┌──────┐ ┌─────────┐   │
+  └──────┬───────┘     │  │ Slide    │ │ Deck │ │ Element │   │
+         │             │  │ Chunks   │ │Chunks│ │ Chunks  │   │
+         ▼             │  └──────────┘ └──────┘ └─────────┘   │
   ┌──────────────┐     │                                      │
-  │  SlideDSL    │     │  Vector DB + SQLite Metadata          │
+  │  SlideDSL    │     │  Vector DB + SQLite Metadata         │
   │  (.sdsl file)│     └──────────────────────────────────────┘
   │              │              │
   └──────┬───────┘              │ retrieval at

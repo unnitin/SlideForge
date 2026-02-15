@@ -7,7 +7,7 @@ Wraps src.index.chunker.SlideChunker.
 from typing import Optional
 
 from src.dsl.models import PresentationNode
-from src.index.chunker import DeckChunk, ElementChunk, SlideChunk, SlideChunker
+from src.index.chunker import SlideChunker
 
 _chunker = SlideChunker()
 

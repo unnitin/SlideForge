@@ -27,12 +27,14 @@ class FeedbackProcessor:
     def record_edit(self, slide_chunk_id: str, edited_dsl: str):
         """User modified the slide then kept it."""
         self.store.record_feedback(
-            slide_chunk_id, "slide", "edit",
+            slide_chunk_id,
+            "slide",
+            "edit",
             context={"edited_dsl": edited_dsl[:500]},
         )
         # Ingest the edited version as a new high-quality entry
         try:
-            wrapper = f"---\npresentation:\n  title: \"edited\"\n---\n\n{edited_dsl}"
+            wrapper = f'---\npresentation:\n  title: "edited"\n---\n\n{edited_dsl}'
             pres = self.parser.parse(wrapper)
             if pres.slides:
                 _, slide_chunks, element_chunks = self.chunker.chunk(pres)

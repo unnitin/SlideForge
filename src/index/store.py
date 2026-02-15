@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import json
 import sqlite3
-from pathlib import Path
 from typing import Optional
 
 import numpy as np
@@ -64,9 +63,16 @@ class DesignIndexStore:
                 brand_colors, embedding)
                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
-                chunk.id, chunk.source_file, chunk.title, chunk.author,
-                chunk.company, chunk.created_at, chunk.narrative_summary,
-                chunk.audience, chunk.purpose, chunk.slide_count,
+                chunk.id,
+                chunk.source_file,
+                chunk.title,
+                chunk.author,
+                chunk.company,
+                chunk.created_at,
+                chunk.narrative_summary,
+                chunk.audience,
+                chunk.purpose,
+                chunk.slide_count,
                 json.dumps(chunk.slide_type_sequence),
                 json.dumps(chunk.topic_tags),
                 chunk.template_used,
@@ -81,8 +87,14 @@ class DesignIndexStore:
                VALUES (
                  (SELECT rowid FROM deck_chunks WHERE id = ?),
                  ?, ?, ?, ?, ?)""",
-            (chunk.id, chunk.title, chunk.narrative_summary,
-             chunk.audience, chunk.purpose, json.dumps(chunk.topic_tags)),
+            (
+                chunk.id,
+                chunk.title,
+                chunk.narrative_summary,
+                chunk.audience,
+                chunk.purpose,
+                json.dumps(chunk.topic_tags),
+            ),
         )
         self.conn.commit()
 
@@ -102,21 +114,38 @@ class DesignIndexStore:
                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
-                chunk.id, chunk.deck_chunk_id, chunk.slide_index,
-                chunk.slide_name, chunk.slide_type, chunk.layout_variant,
-                chunk.background, chunk.semantic_summary,
-                json.dumps(chunk.topic_tags), chunk.content_domain,
-                int(chunk.has_stats), chunk.stat_count,
-                int(chunk.has_bullets), chunk.bullet_count,
-                int(chunk.has_columns), chunk.column_count,
-                int(chunk.has_timeline), chunk.step_count,
-                int(chunk.has_comparison), int(chunk.has_image),
-                int(chunk.has_icons), chunk.dsl_text, chunk.thumbnail_path,
+                chunk.id,
+                chunk.deck_chunk_id,
+                chunk.slide_index,
+                chunk.slide_name,
+                chunk.slide_type,
+                chunk.layout_variant,
+                chunk.background,
+                chunk.semantic_summary,
+                json.dumps(chunk.topic_tags),
+                chunk.content_domain,
+                int(chunk.has_stats),
+                chunk.stat_count,
+                int(chunk.has_bullets),
+                chunk.bullet_count,
+                int(chunk.has_columns),
+                chunk.column_count,
+                int(chunk.has_timeline),
+                chunk.step_count,
+                int(chunk.has_comparison),
+                int(chunk.has_image),
+                int(chunk.has_icons),
+                chunk.dsl_text,
+                chunk.thumbnail_path,
                 json.dumps(chunk.color_palette),
-                chunk.prev_slide_type, chunk.next_slide_type,
-                chunk.section_name, chunk.deck_position,
-                chunk.use_count, chunk.keep_count,
-                chunk.edit_count, chunk.regen_count,
+                chunk.prev_slide_type,
+                chunk.next_slide_type,
+                chunk.section_name,
+                chunk.deck_position,
+                chunk.use_count,
+                chunk.keep_count,
+                chunk.edit_count,
+                chunk.regen_count,
                 embedding_blob,
             ),
         )
@@ -132,13 +161,18 @@ class DesignIndexStore:
                 slide_type, position_in_slide, sibling_count, embedding)
                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
-                chunk.id, chunk.slide_chunk_id, chunk.deck_chunk_id,
-                chunk.element_type, chunk.semantic_summary,
+                chunk.id,
+                chunk.slide_chunk_id,
+                chunk.deck_chunk_id,
+                chunk.element_type,
+                chunk.semantic_summary,
                 json.dumps(chunk.topic_tags),
                 json.dumps(chunk.raw_content, default=str),
                 json.dumps(chunk.visual_treatment),
-                chunk.slide_type, chunk.position_in_slide,
-                chunk.sibling_count, embedding_blob,
+                chunk.slide_type,
+                chunk.position_in_slide,
+                chunk.sibling_count,
+                embedding_blob,
             ),
         )
         self.conn.commit()
@@ -173,8 +207,7 @@ class DesignIndexStore:
                    (id, phrase, normalized_phrase, matched_slide_chunk_id,
                     matched_element_chunk_id, confidence, hit_count, created_at, updated_at)
                    VALUES (?, ?, ?, ?, ?, 0.5, 1, ?, ?)""",
-                (str(uuid.uuid4()), phrase, normalized,
-                 slide_chunk_id, element_chunk_id, now, now),
+                (str(uuid.uuid4()), phrase, normalized, slide_chunk_id, element_chunk_id, now, now),
             )
         self.conn.commit()
 
@@ -193,8 +226,14 @@ class DesignIndexStore:
         self.conn.execute(
             """INSERT INTO feedback_log (id, chunk_id, chunk_type, signal, context, created_at)
                VALUES (?, ?, ?, ?, ?, ?)""",
-            (str(uuid.uuid4()), chunk_id, chunk_type, signal,
-             json.dumps(context) if context else None, now),
+            (
+                str(uuid.uuid4()),
+                chunk_id,
+                chunk_type,
+                signal,
+                json.dumps(context) if context else None,
+                now,
+            ),
         )
 
         # Update aggregate counts on the chunk
@@ -210,15 +249,11 @@ class DesignIndexStore:
     # ── Read Operations ────────────────────────────────────────────
 
     def get_deck(self, deck_id: str) -> Optional[dict]:
-        row = self.conn.execute(
-            "SELECT * FROM deck_chunks WHERE id = ?", (deck_id,)
-        ).fetchone()
+        row = self.conn.execute("SELECT * FROM deck_chunks WHERE id = ?", (deck_id,)).fetchone()
         return dict(row) if row else None
 
     def get_slide(self, slide_id: str) -> Optional[dict]:
-        row = self.conn.execute(
-            "SELECT * FROM slide_chunks WHERE id = ?", (slide_id,)
-        ).fetchone()
+        row = self.conn.execute("SELECT * FROM slide_chunks WHERE id = ?", (slide_id,)).fetchone()
         return dict(row) if row else None
 
     def get_slides_for_deck(self, deck_id: str) -> list[dict]:
@@ -240,10 +275,7 @@ class DesignIndexStore:
         rows = self.conn.execute(
             f"SELECT id, embedding FROM {table} WHERE embedding IS NOT NULL"
         ).fetchall()
-        return [
-            (row["id"], np.frombuffer(row["embedding"], dtype=np.float32))
-            for row in rows
-        ]
+        return [(row["id"], np.frombuffer(row["embedding"], dtype=np.float32)) for row in rows]
 
     def fts_search(
         self,
@@ -283,14 +315,70 @@ def _blob_to_embed(blob: bytes) -> np.ndarray:
 
 def _normalize_phrase(phrase: str) -> str:
     """Lowercase, strip stopwords, normalize whitespace."""
-    stopwords = {"the", "a", "an", "is", "are", "was", "were", "be", "been",
-                 "being", "have", "has", "had", "do", "does", "did", "will",
-                 "would", "could", "should", "may", "might", "can", "shall",
-                 "to", "of", "in", "for", "on", "with", "at", "by", "from",
-                 "as", "into", "about", "like", "through", "after", "over",
-                 "between", "out", "this", "that", "these", "those", "it",
-                 "its", "my", "your", "our", "their", "me", "we", "you",
-                 "show", "make", "create", "build", "give", "how", "what"}
+    stopwords = {
+        "the",
+        "a",
+        "an",
+        "is",
+        "are",
+        "was",
+        "were",
+        "be",
+        "been",
+        "being",
+        "have",
+        "has",
+        "had",
+        "do",
+        "does",
+        "did",
+        "will",
+        "would",
+        "could",
+        "should",
+        "may",
+        "might",
+        "can",
+        "shall",
+        "to",
+        "of",
+        "in",
+        "for",
+        "on",
+        "with",
+        "at",
+        "by",
+        "from",
+        "as",
+        "into",
+        "about",
+        "like",
+        "through",
+        "after",
+        "over",
+        "between",
+        "out",
+        "this",
+        "that",
+        "these",
+        "those",
+        "it",
+        "its",
+        "my",
+        "your",
+        "our",
+        "their",
+        "me",
+        "we",
+        "you",
+        "show",
+        "make",
+        "create",
+        "build",
+        "give",
+        "how",
+        "what",
+    }
     words = phrase.lower().split()
     filtered = [w for w in words if w not in stopwords]
     return " ".join(filtered)

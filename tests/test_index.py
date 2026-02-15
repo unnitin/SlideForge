@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.dsl.parser import SlideDSLParser
 from src.index.chunker import SlideChunker
-from src.index.retriever import DesignIndexRetriever, SearchResult, _cosine_similarity
+from src.index.retriever import DesignIndexRetriever, _cosine_similarity
 from src.index.store import DesignIndexStore
 
 SAMPLE_PATH = Path(__file__).parent.parent / "docs" / "examples" / "sample.sdsl"
@@ -50,9 +50,7 @@ def _ingest_sample(store: DesignIndexStore):
 class TestStoreInit:
     def test_initialize_creates_tables(self):
         store = _make_store()
-        tables = store.conn.execute(
-            "SELECT name FROM sqlite_master WHERE type='table'"
-        ).fetchall()
+        tables = store.conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
         names = {r["name"] for r in tables}
         assert "deck_chunks" in names
         assert "slide_chunks" in names
@@ -196,9 +194,7 @@ class TestStorePhrases:
         _, slides, _ = _ingest_sample(store)
         store.record_phrase_trigger("pipeline metrics", slide_chunk_id=slides[2].id)
         store.record_phrase_trigger("pipeline metrics", slide_chunk_id=slides[2].id)
-        row = store.conn.execute(
-            "SELECT hit_count FROM phrase_triggers"
-        ).fetchone()
+        row = store.conn.execute("SELECT hit_count FROM phrase_triggers").fetchone()
         assert row["hit_count"] == 2
         store.close()
 

@@ -237,7 +237,7 @@ class TestEdgeCases:
 
     def test_frontmatter_only(self):
         parser = SlideDSLParser()
-        pres = parser.parse("---\npresentation:\n  title: \"Test\"\n---\n")
+        pres = parser.parse('---\npresentation:\n  title: "Test"\n---\n')
         assert pres.meta.title == "Test"
         assert len(pres.slides) == 0
 

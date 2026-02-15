@@ -26,6 +26,7 @@ from agents.nl_to_dsl import GenerationContext, GenerationResult, NLToDSLAgent
 @dataclass
 class PipelineConfig:
     """Configuration for the generation pipeline."""
+
     # Index
     index_db_path: str = "design_index.db"
 
@@ -53,6 +54,7 @@ class PipelineConfig:
 @dataclass
 class PipelineResult:
     """Result from the full generation pipeline."""
+
     # Core output
     dsl_text: str
     presentation: Optional[PresentationNode]
@@ -202,9 +204,7 @@ class Orchestrator:
 
             # Record phrase triggers
             for slide_chunk in slide_chunks:
-                self.store.record_phrase_trigger(
-                    user_input, slide_chunk_id=slide_chunk.id
-                )
+                self.store.record_phrase_trigger(user_input, slide_chunk_id=slide_chunk.id)
 
         except Exception as e:
             errors.append(f"Index ingestion error: {e}")
@@ -265,7 +265,7 @@ class Orchestrator:
         if signal == "edit" and edited_dsl:
             try:
                 # Parse just the edited slide in a minimal presentation wrapper
-                wrapper = f"---\npresentation:\n  title: \"edited\"\n---\n\n{edited_dsl}"
+                wrapper = f'---\npresentation:\n  title: "edited"\n---\n\n{edited_dsl}'
                 pres = self.parser.parse(wrapper)
                 if pres.slides:
                     # Re-chunk and store the edited version

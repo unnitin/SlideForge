@@ -37,19 +37,11 @@ class SlideDSLParser:
     RE_HEADING = re.compile(r"^##\s+(.+)$", re.MULTILINE)
     RE_SUBHEADING = re.compile(r"^###\s+(.+)$", re.MULTILINE)
     RE_DIRECTIVE = re.compile(r"^@(\w+):\s*(.+)$", re.MULTILINE)
-    RE_STAT = re.compile(
-        r"^@stat:\s*(.+?)\s*\|\s*(.+?)(?:\s*\|\s*(.+))?\s*$", re.MULTILINE
-    )
-    RE_STEP = re.compile(
-        r"^@step:\s*(.+?)\s*\|\s*(.+?)(?:\s*\|\s*(.+))?\s*$", re.MULTILINE
-    )
+    RE_STAT = re.compile(r"^@stat:\s*(.+?)\s*\|\s*(.+?)(?:\s*\|\s*(.+))?\s*$", re.MULTILINE)
+    RE_STEP = re.compile(r"^@step:\s*(.+?)\s*\|\s*(.+?)(?:\s*\|\s*(.+))?\s*$", re.MULTILINE)
     RE_BULLET = re.compile(r"^(\s*)-\s+(.+)$", re.MULTILINE)
-    RE_ICON_BULLET = re.compile(
-        r"^(\s*)-\s+@icon:\s*(\w+)\s*\|\s*(.+)$", re.MULTILINE
-    )
-    RE_COL_BLOCK = re.compile(
-        r"@col:\s*\n((?:(?!@col:)[\s\S])*?)(?=@col:|\n---|\Z)", re.MULTILINE
-    )
+    RE_ICON_BULLET = re.compile(r"^(\s*)-\s+@icon:\s*(\w+)\s*\|\s*(.+)$", re.MULTILINE)
+    RE_COL_BLOCK = re.compile(r"@col:\s*\n((?:(?!@col:)[\s\S])*?)(?=@col:|\n---|\Z)", re.MULTILINE)
     RE_COMPARE_HEADER = re.compile(r"header:\s*(.+)$", re.MULTILINE)
     RE_COMPARE_ROW = re.compile(r"row:\s*(.+)$", re.MULTILINE)
     RE_NOTES = re.compile(r"@notes:\s*([\s\S]*?)(?=\n@|\n---|\Z)")
@@ -132,10 +124,7 @@ class SlideDSLParser:
         kwargs: dict = {"slide_name": name_match.group(1).strip()}
 
         # Directives
-        directives = {
-            m.group(1): m.group(2).strip()
-            for m in self.RE_DIRECTIVE.finditer(text)
-        }
+        directives = {m.group(1): m.group(2).strip() for m in self.RE_DIRECTIVE.finditer(text)}
 
         if "type" in directives:
             try:
@@ -187,10 +176,7 @@ class SlideDSLParser:
             kwargs["timeline"] = timeline
 
         # Columns
-        columns = [
-            self._parse_column(m.group(1))
-            for m in self.RE_COL_BLOCK.finditer(text)
-        ]
+        columns = [self._parse_column(m.group(1)) for m in self.RE_COL_BLOCK.finditer(text)]
         if columns:
             kwargs["columns"] = columns
 
@@ -249,8 +235,7 @@ class SlideDSLParser:
         if h:
             kwargs["headers"] = [c.strip() for c in h.group(1).split("|")]
         rows = [
-            [c.strip() for c in m.group(1).split("|")]
-            for m in self.RE_COMPARE_ROW.finditer(text)
+            [c.strip() for c in m.group(1).split("|")] for m in self.RE_COMPARE_ROW.finditer(text)
         ]
         if rows:
             kwargs["rows"] = rows

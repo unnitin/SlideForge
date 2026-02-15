@@ -23,9 +23,10 @@ from src.index.store import DesignIndexStore
 @dataclass
 class SearchResult:
     """A single search result from the design index."""
+
     chunk_id: str
-    chunk_type: str                     # "deck", "slide", "element"
-    score: float                        # 0.0 - 1.0 combined relevance
+    chunk_type: str  # "deck", "slide", "element"
+    score: float  # 0.0 - 1.0 combined relevance
     semantic_score: float = 0.0
     structural_score: float = 0.0
     keyword_score: float = 0.0
@@ -54,6 +55,7 @@ class SearchResult:
 @dataclass
 class SlideContext:
     """Full context of where a slide lives in its deck."""
+
     deck_title: str
     deck_summary: str
     slide_index: int
@@ -82,7 +84,7 @@ class DesignIndexRetriever:
     WEIGHT_SEMANTIC = 0.5
     WEIGHT_STRUCTURAL = 0.3
     WEIGHT_KEYWORD = 0.2
-    QUALITY_BOOST = 0.1          # bonus for high-quality designs
+    QUALITY_BOOST = 0.1  # bonus for high-quality designs
 
     def __init__(self, store: DesignIndexStore, embed_fn: Optional[EmbedFn] = None):
         self.store = store
@@ -163,9 +165,7 @@ class DesignIndexRetriever:
                 if row is None:
                     continue
                 row_dict = dict(row)
-                match = all(
-                    str(row_dict.get(k)) == str(v) for k, v in filters.items()
-                )
+                match = all(str(row_dict.get(k)) == str(v) for k, v in filters.items())
                 result.structural_score = 1.0 if match else 0.0
 
         # ── 4. Score and rank ──────────────────────────────────────

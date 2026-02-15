@@ -4,9 +4,9 @@ skills/index_search.py — Semantic and structural search over the design index.
 Wraps src.index.store.DesignIndexStore and src.index.retriever.DesignIndexRetriever.
 """
 
-from typing import Any, Callable, Literal, Optional
+from typing import Callable, Literal, Optional
 
-from src.index.retriever import DesignIndexRetriever, SearchResult, SlideContext
+from src.index.retriever import DesignIndexRetriever, SlideContext
 from src.index.store import DesignIndexStore
 
 

@@ -60,7 +60,7 @@ def main():
             if f.suffix == ".sdsl":
                 ingest_sdsl(str(f), store)
             else:
-                print(f"  SKIP: .pptx ingestion not yet implemented")
+                print("  SKIP: .pptx ingestion not yet implemented")
     elif target.suffix == ".sdsl":
         ingest_sdsl(str(target), store)
     elif target.suffix == ".pptx":

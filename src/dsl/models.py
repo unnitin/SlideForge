@@ -43,6 +43,7 @@ class BackgroundType(str, Enum):
 
 class BrandConfig(BaseModel):
     """Company brand settings — colors, fonts, logo."""
+
     primary: str = "1E2761"
     secondary: str = "CADCFC"
     accent: str = "F96167"
@@ -53,6 +54,7 @@ class BrandConfig(BaseModel):
 
 class PresentationMeta(BaseModel):
     """Presentation-level metadata from DSL frontmatter."""
+
     title: str = "Untitled Presentation"
     author: Optional[str] = None
     company: Optional[str] = None
@@ -66,33 +68,38 @@ class PresentationMeta(BaseModel):
 
 class BulletItem(BaseModel):
     """A single bullet point, optionally with an icon."""
+
     text: str
-    level: int = 0          # 0 = top-level, 1 = sub, 2 = sub-sub
+    level: int = 0  # 0 = top-level, 1 = sub, 2 = sub-sub
     icon: Optional[str] = None
 
 
 class StatItem(BaseModel):
     """A big-number stat callout."""
-    value: str              # "94%", "3.2B", "$240K"
-    label: str              # "Pipeline Uptime"
+
+    value: str  # "94%", "3.2B", "$240K"
+    label: str  # "Pipeline Uptime"
     description: Optional[str] = None  # "Up from 87% in Q2"
 
 
 class TimelineStep(BaseModel):
     """A step in a timeline progression."""
-    time: str               # "Jan 2025", "Q2 2025"
-    title: str              # "Joined CMG"
+
+    time: str  # "Jan 2025", "Q2 2025"
+    title: str  # "Joined CMG"
     description: Optional[str] = None
 
 
 class CompareTable(BaseModel):
     """A comparison/matrix table."""
+
     headers: list[str] = Field(default_factory=list)
     rows: list[list[str]] = Field(default_factory=list)
 
 
 class ColumnContent(BaseModel):
     """Content for one column in a two_column slide."""
+
     title: Optional[str] = None
     bullets: list[BulletItem] = Field(default_factory=list)
     body: Optional[str] = None
@@ -103,6 +110,7 @@ class ColumnContent(BaseModel):
 
 class SlideNode(BaseModel):
     """A single slide parsed from DSL."""
+
     slide_name: str
     slide_type: SlideType = SlideType.FREEFORM
     background: BackgroundType = BackgroundType.LIGHT
@@ -128,5 +136,6 @@ class SlideNode(BaseModel):
 
 class PresentationNode(BaseModel):
     """Full parsed presentation = metadata + ordered slides."""
+
     meta: PresentationMeta
     slides: list[SlideNode]

@@ -12,7 +12,6 @@ See agents/prompts/index_curation.txt for system prompt.
 """
 
 from dataclasses import dataclass
-from typing import Optional
 
 from src.dsl.models import PresentationNode, SlideNode
 
@@ -41,14 +40,10 @@ class ElementEnrichment:
 class IndexCuratorAgent:
     """Generates semantic metadata for design index chunks."""
 
-    def enrich_deck(
-        self, presentation: PresentationNode
-    ) -> DeckEnrichment:
+    def enrich_deck(self, presentation: PresentationNode) -> DeckEnrichment:
         raise NotImplementedError("Index Curator not yet implemented.")
 
-    def enrich_slide(
-        self, slide: SlideNode, deck_context: str
-    ) -> SlideEnrichment:
+    def enrich_slide(self, slide: SlideNode, deck_context: str) -> SlideEnrichment:
         raise NotImplementedError("Index Curator not yet implemented.")
 
     def enrich_slides_batch(
@@ -56,7 +51,5 @@ class IndexCuratorAgent:
     ) -> list[SlideEnrichment]:
         raise NotImplementedError("Index Curator not yet implemented.")
 
-    def enrich_element(
-        self, element: dict, slide_context: str
-    ) -> ElementEnrichment:
+    def enrich_element(self, element: dict, slide_context: str) -> ElementEnrichment:
         raise NotImplementedError("Index Curator not yet implemented.")

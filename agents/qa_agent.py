@@ -20,8 +20,8 @@ from src.dsl.models import SlideNode
 @dataclass
 class QAIssue:
     slide_index: int
-    severity: str       # "critical", "warning", "minor"
-    category: str       # "overlap", "overflow", "alignment", "contrast", "spacing", "content_missing"
+    severity: str  # "critical", "warning", "minor"
+    category: str  # "overlap", "overflow", "alignment", "contrast", "spacing", "content_missing"
     description: str
     suggested_fix: Optional[str] = None
 

@@ -21,6 +21,7 @@ from src.index.retriever import SearchResult
 @dataclass
 class GenerationContext:
     """Everything the agent needs to generate a deck."""
+
     user_input: str
     similar_slides: list[SearchResult] = field(default_factory=list)
     similar_decks: list[SearchResult] = field(default_factory=list)
@@ -37,10 +38,11 @@ class GenerationContext:
 @dataclass
 class GenerationResult:
     """Output from the NL-to-DSL agent."""
+
     dsl_text: str
-    presentation: Optional[PresentationNode]    # parsed result (None if parse failed)
+    presentation: Optional[PresentationNode]  # parsed result (None if parse failed)
     confidence: float
-    design_references: list[str]                # chunk_ids that influenced output
+    design_references: list[str]  # chunk_ids that influenced output
     reasoning: str
     parse_errors: list[str] = field(default_factory=list)
 
@@ -78,8 +80,8 @@ class NLToDSLAgent:
         """
         prompt = self._build_prompt(context)
         design_refs = [
-            r.chunk_id for r in
-            context.similar_slides + context.similar_decks + context.relevant_elements
+            r.chunk_id
+            for r in context.similar_slides + context.similar_decks + context.relevant_elements
         ]
 
         dsl_text = ""
@@ -149,7 +151,7 @@ class NLToDSLAgent:
         if ctx.source_documents:
             parts.append("\n## Source Material\n")
             for i, doc in enumerate(ctx.source_documents[:3]):  # limit to 3
-                parts.append(f"### Document {i+1}\n{doc[:5000]}\n")
+                parts.append(f"### Document {i + 1}\n{doc[:5000]}\n")
 
         # Existing DSL (if editing)
         if ctx.existing_dsl:
@@ -181,9 +183,7 @@ class NLToDSLAgent:
             + "\n\nPlease fix these issues and output the complete, corrected .sdsl."
         )
 
-    def _estimate_confidence(
-        self, pres: PresentationNode, ctx: GenerationContext
-    ) -> float:
+    def _estimate_confidence(self, pres: PresentationNode, ctx: GenerationContext) -> float:
         """Rough confidence estimate based on structural quality."""
         score = 0.5
 
