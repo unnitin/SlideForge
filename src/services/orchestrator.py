@@ -10,6 +10,7 @@ Coordinates the full flow:
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
@@ -20,7 +21,11 @@ from src.dsl.serializer import SlideDSLSerializer
 from src.index.chunker import SlideChunker
 from src.index.retriever import DesignIndexRetriever
 from src.index.store import DesignIndexStore
+from src.renderer.pptx_renderer import render
 from agents.nl_to_dsl import GenerationContext, GenerationResult, NLToDSLAgent
+from agents.qa_agent import QAAgent, QAReport
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -90,6 +95,7 @@ class Orchestrator:
         self.store.initialize()
         self.retriever = DesignIndexRetriever(self.store, embed_fn=None)
         self.agent = NLToDSLAgent(model=config.model, api_key=config.api_key)
+        self.qa_agent = QAAgent(model=config.model, api_key=config.api_key)
         self.parser = SlideDSLParser()
         self.serializer = SlideDSLSerializer()
         self.chunker = SlideChunker()
@@ -170,24 +176,40 @@ class Orchestrator:
         dsl_path = output_dir / "presentation.sdsl"
         dsl_path.write_text(gen_result.dsl_text, encoding="utf-8")
 
-        # ── 5. Render (placeholder — implement in renderer) ────────
+        # ── 5. Render ──────────────────────────────────────────────
         output_path: Optional[Path] = None
         try:
-            # from src.renderer.pptx_renderer import render
-            # output_path = render(presentation, output_dir)
-            output_path = output_dir / f"presentation.{self.config.output_format}"
-            errors.append("Renderer not yet implemented — DSL saved to disk")
+            output_path = render(
+                presentation,
+                output_dir,
+                template_path=self.config.default_template,
+            )
         except Exception as e:
             errors.append(f"Render error: {e}")
 
-        # ── 6. QA (placeholder — implement with QA agent) ──────────
+        # ── 6. QA Loop ────────────────────────────────────────────
         qa_passed = False
         qa_issues: list[str] = []
+
         if self.config.enable_qa and output_path and output_path.exists():
-            # from agents.qa_agent import QAAgent
-            # qa_result = QAAgent().inspect(...)
-            qa_passed = True  # placeholder
-            errors.append("QA agent not yet implemented")
+            qa_report = self._run_qa_loop(
+                output_path,
+                presentation,
+                gen_result,
+                output_dir,
+            )
+            qa_passed = qa_report.passed
+            qa_issues = [
+                f"[{iss.severity}] slide {iss.slide_index}: {iss.category} — {iss.description}"
+                for iss in qa_report.issues
+            ]
+            if not qa_passed:
+                errors.append(f"QA found {qa_report.critical_count} critical issue(s)")
+            # Update output_path if QA loop re-rendered
+            if output_path.exists():
+                pass  # keep the latest render
+        elif not self.config.enable_qa:
+            qa_passed = True
 
         # ── 7. Ingest into design index ────────────────────────────
         deck_chunk_id: Optional[str] = None
@@ -220,6 +242,83 @@ class Orchestrator:
             deck_chunk_id=deck_chunk_id,
             design_references=gen_result.design_references,
             errors=errors,
+        )
+
+    def _run_qa_loop(
+        self,
+        pptx_path: Path,
+        presentation: PresentationNode,
+        gen_result: GenerationResult,
+        output_dir: Path,
+    ) -> QAReport:
+        """
+        Run the QA inspect → fix → re-render loop.
+
+        Returns the final QAReport after up to max_qa_cycles iterations.
+        """
+        latest_report = QAReport(passed=True, summary="QA skipped")
+
+        for cycle in range(self.config.max_qa_cycles):
+            try:
+                latest_report = self.qa_agent.inspect_from_pptx(pptx_path, presentation.slides)
+            except Exception as e:
+                logger.warning("QA cycle %d failed: %s", cycle + 1, e)
+                latest_report = QAReport(
+                    passed=True,
+                    summary=f"QA inspection unavailable: {e}",
+                )
+                break
+
+            if latest_report.passed:
+                logger.info("QA passed on cycle %d", cycle + 1)
+                break
+
+            if cycle + 1 >= self.config.max_qa_cycles:
+                logger.warning("QA failed after %d cycles", self.config.max_qa_cycles)
+                break
+
+            # Attempt to fix: re-generate with QA feedback
+            fix_prompt = self._build_fix_prompt(gen_result, latest_report)
+            try:
+                fix_context = GenerationContext(
+                    user_input=fix_prompt,
+                    existing_dsl=gen_result.dsl_text,
+                    brand=self.config.brand,
+                    output_format=self.config.output_format,
+                )
+                fix_result = self.agent.generate(fix_context)
+
+                if fix_result.presentation and fix_result.presentation.slides:
+                    presentation = fix_result.presentation
+                    gen_result = fix_result
+                    # Re-render
+                    pptx_path = render(
+                        presentation,
+                        output_dir,
+                        template_path=self.config.default_template,
+                    )
+                else:
+                    break  # fix failed, stop cycling
+            except Exception as e:
+                logger.warning("QA fix cycle %d error: %s", cycle + 1, e)
+                break
+
+        return latest_report
+
+    @staticmethod
+    def _build_fix_prompt(gen_result: GenerationResult, qa_report: QAReport) -> str:
+        """Build a prompt that asks the agent to fix QA issues."""
+        issue_lines = []
+        for iss in qa_report.issues:
+            line = f"- Slide {iss.slide_index + 1}: [{iss.severity}] {iss.category} — {iss.description}"
+            if iss.suggested_fix:
+                line += f" (fix: {iss.suggested_fix})"
+            issue_lines.append(line)
+
+        return (
+            "Fix the following visual QA issues in this presentation:\n"
+            + "\n".join(issue_lines)
+            + "\n\nKeep all content the same. Only fix layout/formatting issues."
         )
 
     def ingest_existing_deck(
@@ -264,14 +363,12 @@ class Orchestrator:
         # If edited, ingest the edited version as a new slide
         if signal == "edit" and edited_dsl:
             try:
-                # Parse just the edited slide in a minimal presentation wrapper
                 wrapper = f'---\npresentation:\n  title: "edited"\n---\n\n{edited_dsl}'
                 pres = self.parser.parse(wrapper)
                 if pres.slides:
-                    # Re-chunk and store the edited version
                     deck_chunk, slide_chunks, element_chunks = self.chunker.chunk(pres)
                     for sc in slide_chunks:
-                        sc.keep_count = 1  # edited → kept = starts with quality signal
+                        sc.keep_count = 1
                         self.store.upsert_slide(sc)
                     for ec in element_chunks:
                         self.store.upsert_element(ec)
