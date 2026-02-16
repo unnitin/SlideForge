@@ -49,10 +49,18 @@ class DeckChunk:
     template_used: Optional[str] = None
     brand_colors: list[str] = field(default_factory=list)
 
+    # Presentation metadata
+    date: Optional[str] = None
+    confidentiality: Optional[str] = None
+
     # Semantic (populated by Index Curator agent)
     narrative_summary: str = ""
     audience: str = ""
     purpose: str = ""
+
+    # Consulting quality (populated by Index Curator agent)
+    storyline_quality: str = ""  # "good", "weak", "poor"
+    consulting_style: str = ""  # "consulting", "corporate", "startup", "academic"
 
     # Embedding
     embedding: Optional[list[float]] = None
@@ -72,6 +80,10 @@ class DeckChunk:
         if self.topic_tags:
             parts.append(f"Topics: {', '.join(self.topic_tags)}")
         parts.append(f"Structure: {' → '.join(self.slide_type_sequence)}")
+        if self.consulting_style:
+            parts.append(f"Style: {self.consulting_style}")
+        if self.storyline_quality:
+            parts.append(f"Storyline: {self.storyline_quality}")
         return ". ".join(parts)
 
 
@@ -101,6 +113,10 @@ class SlideChunk:
     has_comparison: bool = False
     has_image: bool = False
     has_icons: bool = False
+    has_source: bool = False
+    has_exhibit: bool = False
+    has_next_steps: bool = False
+    next_step_count: int = 0
 
     # Content (the actual DSL text)
     dsl_text: str = ""
@@ -115,6 +131,9 @@ class SlideChunk:
     semantic_summary: str = ""
     topic_tags: list[str] = field(default_factory=list)
     content_domain: str = ""
+
+    # Consulting quality (populated by Index Curator agent)
+    action_title_quality: str = ""  # "good", "weak", "topic_label"
 
     # Visual metadata (populated after rendering)
     thumbnail_path: Optional[str] = None
@@ -163,6 +182,10 @@ class SlideChunk:
         parts.append(f"Position: {self.deck_position}")
         if self.content_domain:
             parts.append(f"Domain: {self.content_domain}")
+        if self.has_source:
+            parts.append("Has source attribution")
+        if self.has_next_steps:
+            parts.append(f"{self.next_step_count} action items")
         return ". ".join(parts)
 
     @property
@@ -265,6 +288,8 @@ class SlideChunker:
             slide_type_sequence=slide_types,
             template_used=presentation.meta.template,
             brand_colors=brand_colors,
+            date=presentation.meta.date,
+            confidentiality=presentation.meta.confidentiality,
         )
 
         # ── Slide + Element chunks ─────────────────────────────────
@@ -316,6 +341,10 @@ class SlideChunker:
                 has_comparison=slide.compare is not None,
                 has_image=slide.image is not None,
                 has_icons=has_icons,
+                has_source=slide.source is not None,
+                has_exhibit=slide.exhibit_label is not None,
+                has_next_steps=len(slide.next_steps) > 0,
+                next_step_count=len(slide.next_steps),
                 dsl_text=self._serializer.serialize_slide(slide),
                 prev_slide_type=(presentation.slides[i - 1].slide_type.value if i > 0 else None),
                 next_slide_type=(
@@ -452,6 +481,28 @@ class SlideChunker:
                         "description": step.description,
                         "index_in_group": j,
                         "group_size": len(slide.timeline),
+                    },
+                    slide_type=slide.slide_type.value,
+                )
+            )
+            position += 1
+
+        # Next-step action items as elements
+        for j, ns in enumerate(slide.next_steps):
+            elements.append(
+                ElementChunk(
+                    id=str(uuid.uuid4()),
+                    slide_chunk_id=slide_chunk_id,
+                    deck_chunk_id=deck_chunk_id,
+                    element_type="action_item",
+                    position_in_slide=position,
+                    sibling_count=len(slide.next_steps),
+                    raw_content={
+                        "action": ns.action,
+                        "owner": ns.owner,
+                        "timeline": ns.timeline,
+                        "index_in_group": j,
+                        "group_size": len(slide.next_steps),
                     },
                     slide_type=slide.slide_type.value,
                 )

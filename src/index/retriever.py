@@ -46,6 +46,11 @@ class SearchResult:
     keep_count: int = 0
     regen_count: int = 0
 
+    # Consulting quality signals
+    has_source: bool = False
+    action_title_quality: str = ""  # "good", "weak", "topic_label"
+    consulting_style: str = ""  # "consulting", "corporate", "startup", "academic"
+
     @property
     def quality_score(self) -> float:
         total = self.keep_count + self.regen_count
@@ -268,14 +273,17 @@ class DesignIndexRetriever:
                 result.thumbnail_path = row.get("thumbnail_path")
                 result.keep_count = row.get("keep_count", 0)
                 result.regen_count = row.get("regen_count", 0)
+                result.has_source = bool(row.get("has_source", 0))
+                result.action_title_quality = row.get("action_title_quality", "")
                 try:
                     result.topic_tags = json.loads(row.get("topic_tags", "[]"))
                 except (json.JSONDecodeError, TypeError):
                     pass
-                # Get deck title
+                # Get deck title and consulting style
                 deck = self.store.get_deck(row.get("deck_chunk_id", ""))
                 if deck:
                     result.deck_title = deck.get("title")
+                    result.consulting_style = deck.get("consulting_style", "")
 
         elif granularity == "element":
             row = self.store.conn.execute(
@@ -296,6 +304,7 @@ class DesignIndexRetriever:
             if row:
                 result.deck_title = row.get("title")
                 result.semantic_summary = row.get("narrative_summary", "")
+                result.consulting_style = row.get("consulting_style", "")
                 try:
                     result.topic_tags = json.loads(row.get("topic_tags", "[]"))
                 except (json.JSONDecodeError, TypeError):
