@@ -37,13 +37,19 @@ SLIDE_WIDTH = Inches(13.333)
 SLIDE_HEIGHT = Inches(7.5)
 
 MARGIN_TOP = 0.6
-MARGIN_BOTTOM = 0.5
+MARGIN_BOTTOM = 0.6  # Symmetric with top
 MARGIN_LEFT = 0.7
 MARGIN_RIGHT = 0.7
 
 CONTENT_WIDTH = 13.333 - MARGIN_LEFT - MARGIN_RIGHT  # 11.933
-CONTENT_HEIGHT = 7.5 - MARGIN_TOP - MARGIN_BOTTOM  # 6.4
+CONTENT_HEIGHT = 7.5 - MARGIN_TOP - MARGIN_BOTTOM  # 6.3
 CONTENT_TOP = MARGIN_TOP + 0.8  # 1.4
+
+# Source / footnote zone at bottom of slide
+SOURCE_FONT = 9
+SOURCE_TOP = 7.5 - MARGIN_BOTTOM - 0.4  # ~6.5
+SOURCE_HEIGHT = 0.3
+PAGE_NUM_WIDTH = 0.5
 
 TITLE_LEFT = MARGIN_LEFT
 TITLE_TOP = MARGIN_TOP
@@ -879,6 +885,200 @@ def _render_freeform(slide, node: SlideNode, brand: BrandConfig):
         )
 
 
+# ── Consulting Metadata Renderers ─────────────────────────────────
+
+
+def _render_source_line(slide, node: SlideNode, brand: BrandConfig):
+    """Render the source attribution line at the bottom of a slide."""
+    if not node.source:
+        return
+    muted = _muted_color_for_bg(node.background, brand)
+    _add_textbox(
+        slide,
+        MARGIN_LEFT,
+        SOURCE_TOP,
+        CONTENT_WIDTH - PAGE_NUM_WIDTH - 0.2,
+        SOURCE_HEIGHT,
+        node.source,
+        font_size=SOURCE_FONT,
+        color=muted,
+        alignment=PP_ALIGN.LEFT,
+        font_name=brand.body_font,
+    )
+
+
+def _render_exhibit_label(slide, node: SlideNode, brand: BrandConfig):
+    """Render the exhibit label above the body content."""
+    if not node.exhibit_label:
+        return
+    muted = _muted_color_for_bg(node.background, brand)
+    _add_textbox(
+        slide,
+        MARGIN_LEFT,
+        CONTENT_TOP - 0.3,
+        CONTENT_WIDTH,
+        0.25,
+        node.exhibit_label,
+        font_size=FONT_CAPTION,
+        bold=True,
+        color=muted,
+        alignment=PP_ALIGN.LEFT,
+        font_name=brand.body_font,
+    )
+
+
+def _render_footnotes(slide, node: SlideNode, brand: BrandConfig):
+    """Render footnotes between body and source line."""
+    if not node.footnotes:
+        return
+    muted = _muted_color_for_bg(node.background, brand)
+    footnote_text = "  ".join(f"{i + 1}. {fn}" for i, fn in enumerate(node.footnotes))
+    _add_textbox(
+        slide,
+        MARGIN_LEFT,
+        SOURCE_TOP - 0.3,
+        CONTENT_WIDTH,
+        0.25,
+        footnote_text,
+        font_size=SOURCE_FONT,
+        color=muted,
+        alignment=PP_ALIGN.LEFT,
+        font_name=brand.body_font,
+    )
+
+
+def _render_page_number(slide, page_num: int, node: SlideNode, brand: BrandConfig):
+    """Render page number at bottom-right of slide."""
+    muted = _muted_color_for_bg(node.background, brand)
+    _add_textbox(
+        slide,
+        13.333 - MARGIN_RIGHT - PAGE_NUM_WIDTH,
+        SOURCE_TOP,
+        PAGE_NUM_WIDTH,
+        SOURCE_HEIGHT,
+        str(page_num),
+        font_size=SOURCE_FONT,
+        color=muted,
+        alignment=PP_ALIGN.RIGHT,
+        font_name=brand.body_font,
+    )
+
+
+# ── New Slide Type Renderers ─────────────────────────────────────
+
+
+def _render_exec_summary(slide, node: SlideNode, brand: BrandConfig):
+    """Render an executive summary slide with key messages."""
+    text_color = _text_color_for_bg(node.background, brand)
+
+    # Heading
+    if node.heading:
+        _add_textbox(
+            slide,
+            TITLE_LEFT,
+            TITLE_TOP,
+            TITLE_WIDTH,
+            TITLE_HEIGHT,
+            node.heading,
+            font_size=FONT_HEADING,
+            bold=True,
+            color=text_color,
+            font_name=brand.header_font,
+        )
+
+    # Executive summary bullets (key messages)
+    if node.bullets:
+        _add_bullet_list(
+            slide,
+            MARGIN_LEFT,
+            CONTENT_TOP,
+            CONTENT_WIDTH,
+            4.5,
+            node.bullets,
+            font_size=FONT_BODY,
+            color=text_color,
+            font_name=brand.body_font,
+        )
+
+
+def _render_next_steps(slide, node: SlideNode, brand: BrandConfig):
+    """Render a next-steps slide as an action item table."""
+    text_color = _text_color_for_bg(node.background, brand)
+
+    # Heading
+    if node.heading:
+        _add_textbox(
+            slide,
+            TITLE_LEFT,
+            TITLE_TOP,
+            TITLE_WIDTH,
+            TITLE_HEIGHT,
+            node.heading,
+            font_size=FONT_HEADING,
+            bold=True,
+            color=text_color,
+            font_name=brand.header_font,
+        )
+
+    if not node.next_steps:
+        # Fall back to bullets if no @action directives
+        if node.bullets:
+            _add_bullet_list(
+                slide,
+                MARGIN_LEFT,
+                CONTENT_TOP,
+                CONTENT_WIDTH,
+                4.5,
+                node.bullets,
+                font_size=FONT_BODY,
+                color=text_color,
+                font_name=brand.body_font,
+            )
+        return
+
+    # Render as table: Action | Owner | Timeline
+    headers = ["Action", "Owner", "Timeline"]
+    row_count = len(node.next_steps) + 1  # +1 for header
+    col_count = 3
+    table_top = CONTENT_TOP + 0.2
+    table_height = min(row_count * 0.6, 4.5)
+
+    table_shape = slide.shapes.add_table(
+        row_count,
+        col_count,
+        Inches(MARGIN_LEFT),
+        Inches(table_top),
+        Inches(CONTENT_WIDTH),
+        Inches(table_height),
+    )
+    table = table_shape.table
+
+    # Header row
+    for j, hdr in enumerate(headers):
+        cell = table.cell(0, j)
+        cell.text = hdr
+        p = cell.text_frame.paragraphs[0]
+        p.font.bold = True
+        p.font.size = Pt(FONT_BODY)
+        p.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+        p.font.name = brand.header_font
+        cell.fill.solid()
+        cell.fill.fore_color.rgb = resolve_color("primary", brand)
+
+    # Data rows
+    for i, ns in enumerate(node.next_steps):
+        values = [ns.action, ns.owner or "", ns.timeline or ""]
+        for j, val in enumerate(values):
+            cell = table.cell(i + 1, j)
+            cell.text = val
+            p = cell.text_frame.paragraphs[0]
+            p.font.size = Pt(FONT_BODY - 1)
+            p.font.name = brand.body_font
+            if i % 2 == 1:
+                cell.fill.solid()
+                cell.fill.fore_color.rgb = RGBColor(0xF5, 0xF5, 0xF5)
+
+
 # ── Speaker Notes ─────────────────────────────────────────────────
 
 
@@ -901,6 +1101,8 @@ _RENDERERS = {
     SlideType.IMAGE_TEXT: _render_image_text,
     SlideType.QUOTE: _render_quote,
     SlideType.CLOSING: _render_closing,
+    SlideType.EXEC_SUMMARY: _render_exec_summary,
+    SlideType.NEXT_STEPS: _render_next_steps,
     SlideType.FREEFORM: _render_freeform,
 }
 
@@ -933,7 +1135,7 @@ def render(
     brand = presentation.meta.brand
     blank_layout = prs.slide_layouts[6]  # blank layout
 
-    for node in presentation.slides:
+    for page_num, node in enumerate(presentation.slides, start=1):
         slide = prs.slides.add_slide(blank_layout)
 
         # Background
@@ -942,6 +1144,12 @@ def render(
         # Content via dispatch
         renderer_fn = _RENDERERS.get(node.slide_type, _render_freeform)
         renderer_fn(slide, node, brand)
+
+        # Consulting metadata (exhibit label, footnotes, source, page number)
+        _render_exhibit_label(slide, node, brand)
+        _render_footnotes(slide, node, brand)
+        _render_source_line(slide, node, brand)
+        _render_page_number(slide, page_num, node, brand)
 
         # Speaker notes
         if node.speaker_notes:

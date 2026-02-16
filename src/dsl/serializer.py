@@ -37,6 +37,10 @@ class SlideDSLSerializer:
             lines.append(f'  author: "{m.author}"')
         if m.company:
             lines.append(f'  company: "{m.company}"')
+        if m.date:
+            lines.append(f'  date: "{m.date}"')
+        if m.confidentiality:
+            lines.append(f'  confidentiality: "{m.confidentiality}"')
         if m.template:
             lines.append(f'  template: "{m.template}"')
         lines.append(f'  output: "{m.output}"')
@@ -113,6 +117,28 @@ class SlideDSLSerializer:
                 lines.append(f"{indent}- @icon: {b.icon} | {b.text}")
             else:
                 lines.append(f"{indent}- {b.text}")
+
+        # Next-steps / action items
+        for ns in s.next_steps:
+            parts = [f"@action: {ns.action}"]
+            if ns.owner:
+                parts.append(f" | {ns.owner}")
+            if ns.timeline:
+                parts.append(f" | {ns.timeline}")
+            lines.append("".join(parts))
+
+        # Exhibit label
+        if s.exhibit_label:
+            lines.append("")
+            lines.append(f"@exhibit: {s.exhibit_label}")
+
+        # Footnotes
+        for fn in s.footnotes:
+            lines.append(f"@footnote: {fn}")
+
+        # Source line
+        if s.source:
+            lines.append(f"@source: {s.source}")
 
         # Speaker notes
         if s.speaker_notes:

@@ -17,6 +17,7 @@ from .models import (
     BulletItem,
     ColumnContent,
     CompareTable,
+    NextStepItem,
     PresentationMeta,
     PresentationNode,
     SlideNode,
@@ -45,6 +46,10 @@ class SlideDSLParser:
     RE_COMPARE_HEADER = re.compile(r"header:\s*(.+)$", re.MULTILINE)
     RE_COMPARE_ROW = re.compile(r"row:\s*(.+)$", re.MULTILINE)
     RE_NOTES = re.compile(r"@notes:\s*([\s\S]*?)(?=\n@|\n---|\Z)")
+    RE_SOURCE = re.compile(r"^@source:\s*(.+)$", re.MULTILINE)
+    RE_EXHIBIT = re.compile(r"^@exhibit:\s*(.+)$", re.MULTILINE)
+    RE_FOOTNOTE = re.compile(r"^@footnote:\s*(.+)$", re.MULTILINE)
+    RE_ACTION = re.compile(r"^@action:\s*(.+?)\s*\|\s*(.+?)(?:\s*\|\s*(.+))?\s*$", re.MULTILINE)
 
     def parse(self, dsl_text: str) -> PresentationNode:
         """Parse full DSL text into a PresentationNode."""
@@ -76,6 +81,8 @@ class SlideDSLParser:
         "company": ("meta", "company"),
         "template": ("meta", "template"),
         "output": ("meta", "output"),
+        "date": ("meta", "date"),
+        "confidentiality": ("meta", "confidentiality"),
         "primary": ("brand", "primary"),
         "secondary": ("brand", "secondary"),
         "accent": ("brand", "accent"),
@@ -189,6 +196,33 @@ class SlideDSLParser:
             bullets = self._parse_bullets(text)
             if bullets:
                 kwargs["bullets"] = bullets
+
+        # Source line
+        source_match = self.RE_SOURCE.search(text)
+        if source_match:
+            kwargs["source"] = source_match.group(1).strip()
+
+        # Exhibit label
+        exhibit_match = self.RE_EXHIBIT.search(text)
+        if exhibit_match:
+            kwargs["exhibit_label"] = exhibit_match.group(1).strip()
+
+        # Footnotes
+        footnotes = [m.group(1).strip() for m in self.RE_FOOTNOTE.finditer(text)]
+        if footnotes:
+            kwargs["footnotes"] = footnotes
+
+        # Next-steps / action items
+        actions = [
+            NextStepItem(
+                action=m.group(1).strip(),
+                owner=m.group(2).strip() if m.group(2) else None,
+                timeline=m.group(3).strip() if m.group(3) else None,
+            )
+            for m in self.RE_ACTION.finditer(text)
+        ]
+        if actions:
+            kwargs["next_steps"] = actions
 
         # Speaker notes
         notes_match = self.RE_NOTES.search(text)

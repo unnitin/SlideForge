@@ -28,6 +28,8 @@ class SlideType(str, Enum):
     TIMELINE = "timeline"
     QUOTE = "quote"
     CLOSING = "closing"
+    EXEC_SUMMARY = "exec_summary"
+    NEXT_STEPS = "next_steps"
     FREEFORM = "freeform"
 
 
@@ -60,6 +62,8 @@ class PresentationMeta(BaseModel):
     company: Optional[str] = None
     template: Optional[str] = None
     output: str = "pptx"
+    date: Optional[str] = None
+    confidentiality: Optional[str] = None  # "CONFIDENTIAL", "DRAFT", etc.
     brand: BrandConfig = Field(default_factory=BrandConfig)
 
 
@@ -97,6 +101,14 @@ class CompareTable(BaseModel):
     rows: list[list[str]] = Field(default_factory=list)
 
 
+class NextStepItem(BaseModel):
+    """An action item for a next-steps slide."""
+
+    action: str
+    owner: Optional[str] = None
+    timeline: Optional[str] = None
+
+
 class ColumnContent(BaseModel):
     """Content for one column in a two_column slide."""
 
@@ -125,6 +137,14 @@ class SlideNode(BaseModel):
     compare: Optional[CompareTable] = None
     speaker_notes: Optional[str] = None
     image: Optional[str] = None
+
+    # Consulting slide metadata
+    source: Optional[str] = None  # "Source: Company filings; BCG analysis"
+    exhibit_label: Optional[str] = None  # "Exhibit 3: Revenue by segment ($M)"
+    footnotes: list[str] = Field(default_factory=list)  # Numbered caveats
+
+    # Next-steps items (for exec_summary / next_steps slides)
+    next_steps: list[NextStepItem] = Field(default_factory=list)
 
     # Populated by design index at render time
     matched_design_id: Optional[str] = None
