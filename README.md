@@ -1,4 +1,4 @@
-# SlideDSL — Agentic Slide Generation Platform
+# SlideForge — Agentic Slide Generation Platform
 
 [![CI](https://github.com/unnitin/slides/actions/workflows/ci.yml/badge.svg)](https://github.com/unnitin/slides/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
@@ -16,7 +16,7 @@ flowchart TD
     nl["Natural Language Input"]
     agent["NL-to-DSL Agent<br/>(Claude)"]
     index["**DESIGN INDEX**<br/>Slide Chunks | Deck Chunks | Element Chunks<br/>Vector DB + SQLite Metadata"]
-    sdsl["SlideDSL<br/>(.sdsl file)"]
+    sdsl["SlideForge<br/>(.sdsl file)"]
     parser["DSL Parser"]
     mapper["Layout Mapper"]
     renderer["PPTX Renderer"]
@@ -36,7 +36,7 @@ flowchart TD
 ## Project Structure
 
 ```
-slidedsl/
+slideforge/
 ├── CLAUDE.md                   # ◀ Claude Code reads this first
 ├── README.md                   # This file
 ├── pyproject.toml              # Dependencies & project config
@@ -109,14 +109,14 @@ slidedsl/
 pip install -e ".[dev]"
 
 # Parse a DSL file
-python -m slidedsl parse docs/examples/sample.sdsl
+python -m slideforge parse docs/examples/sample.sdsl
 
 # Generate from natural language
-python -m slidedsl generate "Q3 data platform update for leadership"
+python -m slideforge generate "Q3 data platform update for leadership"
 
 # Ingest an existing deck into the index
 python scripts/ingest_deck.py path/to/existing.pptx
 
 # Render DSL to PPTX
-python -m slidedsl render docs/examples/sample.sdsl -o output.pptx
+python -m slideforge render docs/examples/sample.sdsl -o output.pptx
 ```

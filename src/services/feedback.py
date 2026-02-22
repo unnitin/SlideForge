@@ -7,7 +7,7 @@ to improve future generations.
 
 from typing import Optional
 
-from src.dsl.parser import SlideDSLParser
+from src.dsl.parser import SlideForgeParser
 from src.index.chunker import SlideChunker
 from src.index.store import DesignIndexStore
 
@@ -17,7 +17,7 @@ class FeedbackProcessor:
 
     def __init__(self, store: DesignIndexStore):
         self.store = store
-        self.parser = SlideDSLParser()
+        self.parser = SlideForgeParser()
         self.chunker = SlideChunker()
 
     def record_keep(self, slide_chunk_id: str):

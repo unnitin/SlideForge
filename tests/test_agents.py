@@ -11,7 +11,7 @@ from unittest.mock import MagicMock, patch
 
 
 from src.dsl.models import SlideNode, SlideType, BackgroundType
-from src.dsl.parser import SlideDSLParser
+from src.dsl.parser import SlideForgeParser
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -264,7 +264,7 @@ class TestIndexCuratorEnrichDeck:
         )
         curator = self._get_curator_with_mock(response)
 
-        parser = SlideDSLParser()
+        parser = SlideForgeParser()
         sample_path = Path(__file__).parent.parent / "docs" / "examples" / "sample.sdsl"
         presentation = parser.parse_file(str(sample_path))
 

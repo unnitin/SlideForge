@@ -7,14 +7,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.dsl.parser import SlideDSLParser
+from src.dsl.parser import SlideForgeParser
 from src.index.chunker import SlideChunker
 
 SAMPLE_PATH = Path(__file__).parent.parent / "docs" / "examples" / "sample.sdsl"
 
 
 def _chunk_sample():
-    parser = SlideDSLParser()
+    parser = SlideForgeParser()
     pres = parser.parse(SAMPLE_PATH.read_text(encoding="utf-8"))
     chunker = SlideChunker()
     return chunker.chunk(pres, source_file=str(SAMPLE_PATH))

@@ -16,8 +16,8 @@ from pathlib import Path
 from typing import Optional
 
 from src.dsl.models import BrandConfig, PresentationNode
-from src.dsl.parser import SlideDSLParser
-from src.dsl.serializer import SlideDSLSerializer
+from src.dsl.parser import SlideForgeParser
+from src.dsl.serializer import SlideForgeSerializer
 from src.index.chunker import SlideChunker
 from src.index.retriever import DesignIndexRetriever
 from src.index.store import DesignIndexStore
@@ -96,8 +96,8 @@ class Orchestrator:
         self.retriever = DesignIndexRetriever(self.store, embed_fn=None)
         self.agent = NLToDSLAgent(model=config.model, api_key=config.api_key)
         self.qa_agent = QAAgent(model=config.model, api_key=config.api_key)
-        self.parser = SlideDSLParser()
-        self.serializer = SlideDSLSerializer()
+        self.parser = SlideForgeParser()
+        self.serializer = SlideForgeSerializer()
         self.chunker = SlideChunker()
 
     def generate(

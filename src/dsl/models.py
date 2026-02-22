@@ -1,5 +1,5 @@
 """
-src/dsl/models.py — Pydantic data models for SlideDSL
+src/dsl/models.py — Pydantic data models for SlideForge
 
 These are the typed representations of the DSL grammar. Everything
 flows through these models: parser produces them, serializer consumes

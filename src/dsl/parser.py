@@ -1,5 +1,5 @@
 """
-src/dsl/parser.py — SlideDSL Parser
+src/dsl/parser.py — SlideForge Parser
 
 Parses .sdsl text into a PresentationNode. Intentionally lenient:
 unknown directives are ignored, missing fields get defaults. This
@@ -27,8 +27,8 @@ from .models import (
 )
 
 
-class SlideDSLParser:
-    """Parses SlideDSL text → PresentationNode."""
+class SlideForgeParser:
+    """Parses SlideForge text → PresentationNode."""
 
     # ── Compiled patterns ──────────────────────────────────────────
 

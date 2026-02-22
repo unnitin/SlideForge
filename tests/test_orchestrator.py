@@ -18,7 +18,7 @@ from src.dsl.models import (
     SlideNode,
     SlideType,
 )
-from src.dsl.parser import SlideDSLParser
+from src.dsl.parser import SlideForgeParser
 from src.services.feedback import FeedbackProcessor
 from src.index.store import DesignIndexStore
 
@@ -40,7 +40,7 @@ def store(tmp_path):
 @pytest.fixture
 def sample_presentation():
     """Parse the sample .sdsl file."""
-    parser = SlideDSLParser()
+    parser = SlideForgeParser()
     return parser.parse_file(str(SAMPLE_DSL))
 
 
@@ -70,7 +70,7 @@ class TestFeedbackProcessor:
         # Need a slide chunk to record feedback against
         from src.index.chunker import SlideChunker
 
-        parser = SlideDSLParser()
+        parser = SlideForgeParser()
         pres = parser.parse_file(str(SAMPLE_DSL))
         chunker = SlideChunker()
         deck_chunk, slide_chunks, element_chunks = chunker.chunk(pres, source_file="test.sdsl")
@@ -86,7 +86,7 @@ class TestFeedbackProcessor:
         fp = FeedbackProcessor(store)
         from src.index.chunker import SlideChunker
 
-        parser = SlideDSLParser()
+        parser = SlideForgeParser()
         pres = parser.parse_file(str(SAMPLE_DSL))
         chunker = SlideChunker()
         deck_chunk, slide_chunks, _ = chunker.chunk(pres)
@@ -101,7 +101,7 @@ class TestFeedbackProcessor:
         fp = FeedbackProcessor(store)
         from src.index.chunker import SlideChunker
 
-        parser = SlideDSLParser()
+        parser = SlideForgeParser()
         pres = parser.parse_file(str(SAMPLE_DSL))
         chunker = SlideChunker()
         deck_chunk, slide_chunks, _ = chunker.chunk(pres)
@@ -125,7 +125,7 @@ class TestFeedbackProcessor:
         fp = FeedbackProcessor(store)
         from src.index.chunker import SlideChunker
 
-        parser = SlideDSLParser()
+        parser = SlideForgeParser()
         pres = parser.parse_file(str(SAMPLE_DSL))
         chunker = SlideChunker()
         deck_chunk, slide_chunks, _ = chunker.chunk(pres)
@@ -142,7 +142,7 @@ class TestFeedbackProcessor:
         # Need a real slide chunk for FK constraint
         from src.index.chunker import SlideChunker
 
-        parser = SlideDSLParser()
+        parser = SlideForgeParser()
         pres = parser.parse_file(str(SAMPLE_DSL))
         chunker = SlideChunker()
         deck_chunk, slide_chunks, _ = chunker.chunk(pres)
@@ -185,7 +185,7 @@ class TestOrchestratorGenerate:
         from src.services.orchestrator import Orchestrator, PipelineConfig
         from agents.nl_to_dsl import GenerationResult
 
-        parser = SlideDSLParser()
+        parser = SlideForgeParser()
         presentation = parser.parse(dsl_text)
 
         with (

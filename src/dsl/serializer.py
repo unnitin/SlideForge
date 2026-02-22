@@ -1,5 +1,5 @@
 """
-src/dsl/serializer.py — SlideDSL Serializer
+src/dsl/serializer.py — SlideForge Serializer
 
 Converts PresentationNode → DSL text. Enables round-tripping:
   parse(serialize(parse(text))) ≡ parse(text)
@@ -15,7 +15,7 @@ from .models import (
 )
 
 
-class SlideDSLSerializer:
+class SlideForgeSerializer:
     """Converts a PresentationNode back to .sdsl text."""
 
     def serialize(self, pres: PresentationNode) -> str:

@@ -1,5 +1,5 @@
 [project]
-name = "slidedsl"
+name = "slideforge"
 version = "0.1.0"
 description = "Agentic slide generation with a domain-specific language and semantic design index"
 requires-python = ">=3.9"

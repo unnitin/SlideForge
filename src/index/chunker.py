@@ -23,7 +23,7 @@ from src.dsl.models import (
     SlideNode,
     SlideType,
 )
-from src.dsl.serializer import SlideDSLSerializer
+from src.dsl.serializer import SlideForgeSerializer
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -254,7 +254,7 @@ class SlideChunker:
     """
 
     def __init__(self):
-        self._serializer = SlideDSLSerializer()
+        self._serializer = SlideForgeSerializer()
 
     def chunk(
         self,

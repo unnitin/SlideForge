@@ -13,7 +13,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.dsl.parser import SlideDSLParser
+from src.dsl.parser import SlideForgeParser
 from src.index.chunker import SlideChunker
 from src.index.retriever import DesignIndexRetriever, _cosine_similarity
 from src.index.store import DesignIndexStore
@@ -30,7 +30,7 @@ def _make_store() -> DesignIndexStore:
 
 def _ingest_sample(store: DesignIndexStore):
     """Parse sample.sdsl, chunk it, and insert into the store."""
-    parser = SlideDSLParser()
+    parser = SlideForgeParser()
     pres = parser.parse(SAMPLE_PATH.read_text(encoding="utf-8"))
     chunker = SlideChunker()
     deck, slides, elements = chunker.chunk(pres, source_file=str(SAMPLE_PATH))

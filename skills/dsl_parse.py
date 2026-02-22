@@ -1,13 +1,13 @@
 """
 skills/dsl_parse.py — Parse DSL text or files into data models.
 
-Wraps src.dsl.parser.SlideDSLParser.
+Wraps src.dsl.parser.SlideForgeParser.
 """
 
 from src.dsl.models import PresentationNode
-from src.dsl.parser import SlideDSLParser
+from src.dsl.parser import SlideForgeParser
 
-_parser = SlideDSLParser()
+_parser = SlideForgeParser()
 
 
 def parse_text(dsl_text: str) -> PresentationNode:

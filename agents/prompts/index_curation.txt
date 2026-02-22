@@ -5,7 +5,7 @@ be specific and concrete.
 
 ## What You Receive
 
-Slide content in SlideDSL format, plus deck-level context.
+Slide content in SlideForge format, plus deck-level context.
 
 ## What You Produce
 

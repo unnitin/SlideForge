@@ -27,7 +27,7 @@ from typing import Optional
 import anthropic
 
 from src.dsl.models import SlideNode
-from src.dsl.serializer import SlideDSLSerializer
+from src.dsl.serializer import SlideForgeSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -88,7 +88,7 @@ class QAAgent:
     ):
         self.client = anthropic.Anthropic(api_key=api_key)
         self.model = model
-        self.serializer = SlideDSLSerializer()
+        self.serializer = SlideForgeSerializer()
         self._system_prompt = self._load_system_prompt()
 
     def inspect(
@@ -311,7 +311,7 @@ def pptx_to_images(
         List of paths to generated slide images, sorted by slide index.
     """
     if output_dir is None:
-        output_dir = Path(tempfile.mkdtemp(prefix="slidedsl_qa_"))
+        output_dir = Path(tempfile.mkdtemp(prefix="slideforge_qa_"))
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # Step 1: Convert .pptx → .pdf via LibreOffice

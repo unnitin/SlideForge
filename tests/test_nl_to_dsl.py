@@ -31,9 +31,9 @@ def _make_agent(response_text: str) -> NLToDSLAgent:
         agent.model = "test-model"
         agent.MAX_RETRIES = 2
 
-    from src.dsl.parser import SlideDSLParser
+    from src.dsl.parser import SlideForgeParser
 
-    agent.parser = SlideDSLParser()
+    agent.parser = SlideForgeParser()
     agent._system_prompt = "You are a test."
 
     mock_response = MagicMock()

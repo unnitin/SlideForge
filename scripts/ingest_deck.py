@@ -20,14 +20,14 @@ from pathlib import Path
 # Add project root
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.dsl.parser import SlideDSLParser
+from src.dsl.parser import SlideForgeParser
 from src.index.chunker import SlideChunker
 from src.index.store import DesignIndexStore
 
 
 def ingest_sdsl(path: str, store: DesignIndexStore) -> str:
     """Ingest a .sdsl file. Returns deck_chunk_id."""
-    parser = SlideDSLParser()
+    parser = SlideForgeParser()
     pres = parser.parse_file(path)
     chunker = SlideChunker()
     deck, slides, elements = chunker.chunk(pres, source_file=path)

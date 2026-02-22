@@ -1,5 +1,5 @@
 """
-agents/nl_to_dsl.py — Natural Language → SlideDSL Translation Agent
+agents/nl_to_dsl.py — Natural Language → SlideForge Translation Agent
 
 Takes raw user input + retrieved design context and produces valid .sdsl.
 This is the primary user-facing agent.
@@ -14,7 +14,7 @@ from typing import Optional
 import anthropic
 
 from src.dsl.models import BrandConfig, PresentationNode
-from src.dsl.parser import SlideDSLParser
+from src.dsl.parser import SlideForgeParser
 from src.index.retriever import SearchResult
 
 
@@ -49,7 +49,7 @@ class GenerationResult:
 
 class NLToDSLAgent:
     """
-    Translates natural language → SlideDSL using Claude.
+    Translates natural language → SlideForge using Claude.
 
     The agent is retrieval-augmented: it receives proven designs from the
     design index as part of its prompt context.
@@ -64,12 +64,12 @@ class NLToDSLAgent:
     ):
         self.client = anthropic.Anthropic(api_key=api_key)
         self.model = model
-        self.parser = SlideDSLParser()
+        self.parser = SlideForgeParser()
         self._system_prompt = self._load_system_prompt()
 
     def generate(self, context: GenerationContext) -> GenerationResult:
         """
-        Generate SlideDSL from natural language + context.
+        Generate SlideForge from natural language + context.
 
         Flow:
         1. Build prompt with retrieved context

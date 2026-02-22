@@ -1,4 +1,4 @@
-# SlideDSL -- Architecture
+# SlideForge -- Architecture
 
 ## Phase Dependency Graph
 
@@ -184,7 +184,7 @@ block-beta
 ## File Tree by Phase
 
 ```
-slidedsl/
+slideforge/
 │
 ├── PHASE 1 ─────────────────────────────────────
 │   src/dsl/

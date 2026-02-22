@@ -25,7 +25,7 @@ from typing import Optional
 import anthropic
 
 from src.dsl.models import PresentationNode, SlideNode
-from src.dsl.serializer import SlideDSLSerializer
+from src.dsl.serializer import SlideForgeSerializer
 
 logger = logging.getLogger(__name__)
 
@@ -88,7 +88,7 @@ class IndexCuratorAgent:
     ):
         self.client = anthropic.Anthropic(api_key=api_key)
         self.model = model
-        self.serializer = SlideDSLSerializer()
+        self.serializer = SlideForgeSerializer()
         self._system_prompt = self._load_system_prompt()
 
     def enrich_deck(self, presentation: PresentationNode) -> DeckEnrichment:

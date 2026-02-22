@@ -1,13 +1,13 @@
 """
 skills/dsl_serialize.py — Serialize data models back to DSL text.
 
-Wraps src.dsl.serializer.SlideDSLSerializer.
+Wraps src.dsl.serializer.SlideForgeSerializer.
 """
 
 from src.dsl.models import PresentationNode, SlideNode
-from src.dsl.serializer import SlideDSLSerializer
+from src.dsl.serializer import SlideForgeSerializer
 
-_serializer = SlideDSLSerializer()
+_serializer = SlideForgeSerializer()
 
 
 def serialize(presentation: PresentationNode) -> str:

@@ -23,20 +23,20 @@ from src.dsl.models import (
     StatItem,
     TimelineStep,
 )
-from src.dsl.parser import SlideDSLParser
-from src.dsl.serializer import SlideDSLSerializer
+from src.dsl.parser import SlideForgeParser
+from src.dsl.serializer import SlideForgeSerializer
 
 SAMPLE_DSL = Path(__file__).parent.parent / "docs" / "examples" / "sample.sdsl"
 
 
 @pytest.fixture
 def serializer():
-    return SlideDSLSerializer()
+    return SlideForgeSerializer()
 
 
 @pytest.fixture
 def parser():
-    return SlideDSLParser()
+    return SlideForgeParser()
 
 
 # ── Round-trip tests ─────────────────────────────────────────────────
