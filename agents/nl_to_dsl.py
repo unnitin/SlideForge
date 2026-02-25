@@ -16,6 +16,7 @@ import anthropic
 from src.dsl.models import BrandConfig, PresentationNode
 from src.dsl.parser import SlideForgeParser
 from src.index.retriever import SearchResult
+from src.requirements.parser import PresentationRequirements
 
 
 @dataclass
@@ -33,6 +34,7 @@ class GenerationContext:
     audience: str = "general"
     source_documents: Optional[list[str]] = None
     existing_dsl: Optional[str] = None
+    requirements: Optional[PresentationRequirements] = None
 
 
 @dataclass
@@ -59,7 +61,7 @@ class NLToDSLAgent:
 
     def __init__(
         self,
-        model: str = "claude-sonnet-4-5-20250514",
+        model: str = "claude-sonnet-4-6",
         api_key: Optional[str] = None,
     ):
         self.client = anthropic.Anthropic(api_key=api_key)
@@ -146,6 +148,43 @@ class NLToDSLAgent:
 
     def _build_prompt(self, ctx: GenerationContext) -> str:
         parts = [f"Create a presentation for:\n\n{ctx.user_input}"]
+
+        # Requirements section (when structured requirements are available)
+        if ctx.requirements:
+            req = ctx.requirements
+            persona = req.audience_persona
+            parts.append("\n## Requirements\n")
+            parts.append(
+                f"**Audience**: {persona.role} ({persona.seniority}), "
+                f"domain: {persona.domain_expertise}, "
+                f"depth: {persona.expected_depth}"
+            )
+            parts.append(f"**Tone**: {req.tone}")
+            if req.key_messages:
+                parts.append("\n**Key messages that MUST appear:**")
+                for msg in req.key_messages:
+                    parts.append(f"  - {msg}")
+            if req.must_have_sections:
+                parts.append("\n**Required sections:**")
+                for sec in req.must_have_sections:
+                    parts.append(f"  - {sec}")
+            if req.must_have_slide_types:
+                parts.append("\n**Required slide types:**")
+                for st in req.must_have_slide_types:
+                    parts.append(f"  - {st}")
+            if persona.forbidden_elements:
+                parts.append("\n**Forbidden elements (do NOT include):**")
+                for fe in persona.forbidden_elements:
+                    parts.append(f"  - {fe}")
+            if persona.must_have_elements:
+                parts.append("\n**Must-have design elements:**")
+                for mhe in persona.must_have_elements:
+                    parts.append(f"  - {mhe}")
+            if req.consulting_standards:
+                parts.append(f"\n**Consulting standards**: {', '.join(req.consulting_standards)}")
+            if req.constraints:
+                if "slide_count" in req.constraints:
+                    parts.append(f"**Slide count**: {req.constraints['slide_count']}")
 
         # Source documents
         if ctx.source_documents:

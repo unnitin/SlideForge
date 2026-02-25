@@ -1,0 +1,96 @@
+---
+presentation:
+  title: "Technology Due Diligence: CloudOps Platform Investment Assessment"
+  author: "Bain Private Equity Practice"
+  company: "Bain & Company"
+  output: "pptx"
+  brand:
+    primary: "CC0000"
+    secondary: "FFF0F0"
+    accent: "990000"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# CloudOps Is a Differentiated Asset With a Defensible Moat — Recommend Proceed at $420M
+@type: title
+@background: dark
+
+## Technology Due Diligence: CloudOps Platform
+### PE Investment Assessment
+
+@notes: Diligence finding: recommend proceed. The thesis is defensible but the integration roadmap must be front-loaded in the 100-day plan.
+
+---
+
+# Key diligence metrics support the investment thesis at current valuation
+@type: stat_callout
+
+@stat: 118% | Net Revenue Retention | Top-decile for infrastructure software category
+@stat: 4.2× | ARR Growth (3-Year CAGR) | Driven by enterprise land-and-expand motion
+@stat: 71% | Gross Margin | 6ppt expansion YoY; path to 75%+ visible in 18 months
+
+@exhibit: Exhibit 1 — CloudOps Financial Summary
+@source: Company financials, Bain analysis; comparable from Bessemer Cloud Index, 2024
+
+@notes: The 118% NRR is the most important number in the diligence. It means the existing customer base grows itself — reducing dependence on new logo acquisition.
+
+---
+
+# Technology architecture is a strength with one significant risk area
+@type: comparison
+
+@compare:
+  header: Dimension | Assessment | Confidence | Key Finding
+  row: Core product architecture | Best-in-class microservices | High | Scalable to 10× current load
+  row: Security posture | SOC2 Type II, GDPR compliant | High | No material gaps
+  row: Engineering team quality | Top-quartile retention, strong IC culture | High | Retention risk post-close
+  row: Technical debt | 18% of sprint capacity on maintenance | Medium | Elevated but manageable
+  row: Data infrastructure | Legacy ETL, pre-cloud architecture | Low | Requires $3–5M remediation
+
+@exhibit: Exhibit 2 — Technology Assessment Summary
+@source: Bain technical diligence, code review, 14 engineering interviews, 2024
+
+@notes: The data infrastructure issue is the material risk. Budget $4M in the investment thesis and make modernization a Year 1 priority.
+
+---
+
+# Two value creation levers account for 70% of the equity return model
+@type: two_column
+
+@col:
+  ## Lever 1: Enterprise Expansion (60% of value)
+  - Current enterprise segment is underpenetrated: only 340 of 2,000 TAM accounts
+  - Land-and-expand model proven: average account grows 3.2× over 24 months
+  - Enterprise sales capacity is the constraint — need 12 additional AEs in Year 1
+  - Target: Enterprise ARR from 45% → 65% of total by Year 3
+
+@col:
+  ## Lever 2: International Expansion (30% of value)
+  - Product is market-ready for EMEA; no localization required
+  - EMEA TAM estimated at $1.2B, currently 0% penetrated by CloudOps
+  - Partner-led GTM is the fastest path to EMEA scale
+  - Target: EMEA ARR = 20% of total by Year 3
+
+@notes: International expansion is a Year 2 priority — get the domestic enterprise motion right first before adding geographic complexity.
+
+---
+
+# 100-Day Plan prioritizes retention and enterprise sales capacity
+@type: next_steps
+
+@action: Implement retention program for top 50 engineering talent with retention packages | CEO + PE Sponsor | Day 1–30
+@action: Launch enterprise sales hiring: 12 AEs and 2 RVPs for Midwest and Southeast territories | CRO | Day 30–90
+@action: Fund data infrastructure modernization ($4M capex) and assign dedicated team | CTO | Day 30
+@action: Begin EMEA partner diligence: identify 3 anchor system integrators | BD Lead | Day 60–100
+
+@notes: Engineering retention is day-one critical. If the three founding engineers leave in the first 6 months, it materially impairs the investment.
+
+---
+
+# Technology Due Diligence
+@type: closing
+@background: dark
+
+## Proceed at $420M — the moat is real, the risks are manageable with discipline
+### Bain Private Equity Practice | bain.com/consulting-services/private-equity

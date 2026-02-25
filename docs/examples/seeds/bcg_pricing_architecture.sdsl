@@ -1,0 +1,110 @@
+---
+presentation:
+  title: "Pricing Architecture: Building a Value-Based Pricing Engine That Captures $420M in Leakage"
+  author: "BCG Pricing Center of Excellence"
+  company: "Boston Consulting Group"
+  output: "pptx"
+  brand:
+    primary: "006837"
+    secondary: "E8F5E9"
+    accent: "004D26"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Systematic Pricing Leakage Is Destroying 8–12 Points of Margin That Best-in-Class Peers Capture
+@type: title
+@background: dark
+
+## Pricing Architecture
+### Building a Value-Based Pricing Engine That Captures $420M in Leakage
+
+@notes: The key finding: pricing decisions in this organization are decentralized, inconsistent, and disconnected from value delivered. The $420M is not aspirational — it is currently being left on the table.
+
+---
+
+# Current pricing approach creates three compounding sources of margin leakage
+@type: stat_callout
+
+@stat: $420M | Annual Pricing Leakage | Across list price, discount management, and mix
+@stat: 34% | Transactions Below Minimum Acceptable Price | Despite published price floors
+@stat: 8–12ppt | EBITDA Improvement Potential | From pricing alone — no volume assumptions
+
+@exhibit: Exhibit 1 — Pricing Leakage Waterfall Analysis
+@source: BCG Pricing Diagnostic; company transaction data, 2.4M transactions over 18 months, 2024
+
+@notes: The 34% below-MAP stat is the most actionable insight for the sales organization. It means the pricing policy exists but enforcement does not.
+
+---
+
+# Pricing leakage occurs at three distinct points in the transaction waterfall
+@type: comparison
+
+@compare:
+  header: Leakage Point | Annual Value Destroyed | Root Cause | Fix Complexity
+  row: List price below value | $145M | Cost-plus model, not value-based | High — requires segmented pricing model
+  row: Unauthorized discounting | $168M | Sales autonomy without guardrails | Medium — pricing tool + comp design
+  row: Pocket price erosion | $107M | Freight, payment terms, co-op not tracked | Low — invoice compliance
+
+@exhibit: Exhibit 2 — Pricing Leakage Waterfall by Source
+@source: BCG analysis of company transaction data, ERP extracts, 2024
+
+@notes: Start with pocket price erosion — it is fastest to fix and provides quick wins that build organizational confidence for the harder list price and discount changes.
+
+---
+
+# Three-tier pricing architecture aligns price to value delivered across segments
+@type: two_column
+
+@col:
+  ## Value-Based Price Setting
+  - Segment customers by willingness-to-pay and value received
+  - Build economic value models for each segment
+  - Set list prices at 80–90% of full economic value
+  - Annual price review tied to value delivery metrics
+  - Target: 3–5% list price improvement in Year 1
+
+@col:
+  ## Discount Governance
+  - Tiered discount authority: reps, managers, VP, C-suite
+  - Real-time pricing guardrails in CRM/CPQ system
+  - Compensation redesign: punish margin, reward volume + margin
+  - Exception approval with documented value justification
+  - Target: reduce unauthorized discounting by 60% in 12 months
+
+@notes: The compensation redesign is the highest-leverage action. Sales reps optimize for what they are paid on — if discounting is rewarded implicitly through quota attainment, it will continue.
+
+---
+
+# Pricing transformation follows a 24-month path from diagnostic to embedded capability
+@type: timeline
+
+@step: Months 1–3 | Diagnostic and Design | Transaction analysis, segment willingness-to-pay, MAP enforcement
+@step: Months 4–9 | Quick Win Deployment | Pocket price compliance, CRM guardrails, comp redesign
+@step: Months 10–18 | Value-Based Repricing | Segment-by-segment list price rebuilds, price-to-value messaging
+@step: Months 19–24 | Pricing Capability | Dedicated pricing team, analytics platform, continuous optimization
+
+@source: BCG Pricing Transformation Methodology, 2024
+
+@notes: Month 1–3 requires transaction data access and field cooperation. If either is blocked, the diagnostic is compromised. Escalate these as prerequisites to the C-suite immediately.
+
+---
+
+# Four non-negotiable decisions determine pricing transformation success
+@type: next_steps
+
+@action: Extract and clean 18-month transaction dataset for pricing waterfall analysis | Finance + BCG | Week 1–2
+@action: Map customer segments to willingness-to-pay using survey and behavioral data | BCG | Month 1–2
+@action: Redesign sales compensation to incorporate margin metric (alongside volume) | CFO + CRO | Month 2
+@action: Implement MAP compliance monitoring with weekly exception reporting | Sales Ops | Month 2–3
+
+@notes: Compensation redesign in Month 2 is the cultural signal that this program is real. Without it, the field will not change behavior regardless of tool implementation.
+
+---
+
+# Pricing Architecture
+@type: closing
+@background: dark
+
+## Pricing is the highest-leverage value creation lever — it requires the same rigor as a product launch
+### BCG Pricing Center of Excellence | bcg.com/capabilities/marketing-sales/pricing

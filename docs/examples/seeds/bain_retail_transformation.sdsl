@@ -1,0 +1,97 @@
+---
+presentation:
+  title: "Retail Digital Transformation: Closing the $2.1B Omnichannel Value Gap"
+  author: "Bain Retail Practice"
+  company: "Bain & Company"
+  output: "pptx"
+  brand:
+    primary: "CC0000"
+    secondary: "FFF0F0"
+    accent: "990000"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Digital-Native Retailers Are Capturing the Margin Pool That Traditional Retailers Are Leaving Behind
+@type: title
+@background: dark
+
+## Retail Digital Transformation
+### Closing the $2.1B Omnichannel Value Gap
+
+@notes: The competitive threat is structural, not cyclical. Digital-native retailers have a 12–15 point margin advantage that compounds with scale. The only response is transformation.
+
+---
+
+# The gap between digital leaders and laggards is widening across every performance metric
+@type: stat_callout
+
+@stat: 14ppt | Gross Margin Gap | Digital leaders vs. traditional retailers in apparel, 2024
+@stat: 3.6× | Higher Inventory Turns | For retailers with real-time demand sensing vs. forecast-based
+@stat: 41% | Lower Customer Acquisition Cost | For retailers with unified first-party data infrastructure
+
+@exhibit: Exhibit 1 — Retail Performance Benchmark
+@source: Bain Retail Benchmark, N=65 North American retailers, 2024; NRF Digital Transformation Index
+
+@notes: Inventory turns is the most operationally significant metric. A 3.6× advantage means fundamentally different working capital requirements and markdown exposure.
+
+---
+
+# Five transformation imperatives determine retail competitive positioning
+@type: comparison
+
+@compare:
+  header: Imperative | Current Maturity | Target State | Investment Required
+  row: Unified customer data platform | Fragmented (siloed by channel) | Single customer view across all touchpoints | $18M
+  row: Real-time inventory visibility | Store-level batch (daily) | SKU-level real-time across all nodes | $12M
+  row: Personalization at scale | Rule-based segmentation | ML-driven individual personalization | $8M
+  row: Digital marketing efficiency | Cookie-dependent attribution | First-party data + incrementality testing | $5M
+  row: Store-digital integration | Separate P&Ls and teams | Unified omnichannel operations | Organizational
+
+@exhibit: Exhibit 2 — Transformation Roadmap Investment Summary
+@source: Bain analysis; vendor RFP benchmarks, 2024
+
+@notes: The customer data platform is the foundation for every other initiative. Sequence it first — nothing else delivers full value without unified data.
+
+---
+
+# Three transformation phases unlock value progressively over 30 months
+@type: timeline
+
+@step: Phase 1 (0–9 months) | Data Foundation | CDP implementation, inventory integration, digital marketing cleanup
+@step: Phase 2 (9–20 months) | Personalization | ML-driven recommendations, targeted promotions, loyalty overhaul
+@step: Phase 3 (20–30 months) | Operations Integration | Store-digital unified P&L, real-time replenishment, endless aisle
+
+@source: Bain Retail Digital Transformation Methodology, 2024
+
+@notes: Phase 1 generates $180M in value through markdown reduction and media efficiency before personalization is even live. This funds Phase 2.
+
+---
+
+# Transformation delivers $2.1B in cumulative value over five years
+@type: two_column
+
+@col:
+  ## Revenue Uplift ($1.2B)
+  - Personalization drives 8% lift in digital conversion
+  - Loyalty redesign adds $280M in incremental spend
+  - Omnichannel customers spend 2.3× more than single-channel
+  - Reduced stockouts add $190M in recovered revenue
+
+@col:
+  ## Cost Reduction ($0.9B)
+  - Inventory optimization reduces working capital by $320M
+  - Marketing efficiency gains: $240M in reallocated spend
+  - Store labor optimization via traffic forecasting: $180M
+  - Returns reduction through better sizing/fit: $160M
+
+@notes: Investors typically anchor on revenue uplift. The cost savings are equally large and more certain — lead with them in CFO conversations.
+
+---
+
+# Retail Digital Transformation
+@type: closing
+@background: dark
+
+## The transformation is complex — but the cost of inaction is $2.1B over five years
+### Bain Retail Practice | bain.com/consulting-services/retail

@@ -1,0 +1,75 @@
+---
+presentation:
+  title: "Revenue Yield Optimization: Capturing $310M Through Dynamic Pricing and Mix Management"
+  author: "McKinsey Revenue Management"
+  company: "McKinsey & Company"
+  output: "pptx"
+  brand:
+    primary: "003366"
+    secondary: "E3EAF4"
+    accent: "0050A0"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Dynamic Pricing and Portfolio Mix Management Unlock $310M in Revenue With Existing Capacity
+@type: title
+@background: dark
+
+## Revenue Yield Optimization
+### Capturing $310M Through Dynamic Pricing and Mix Management
+
+@notes: The central insight: the company has already paid for the capacity that generates this revenue. The $310M is pure yield improvement — no capital investment in new capacity required.
+
+---
+
+# Revenue yield is significantly below theoretical maximum across all product tiers
+@type: stat_callout
+
+@stat: 62% | Revenue Yield vs. Theoretical Maximum | Best-in-class peers achieve 78–82%
+@stat: $310M | Yield Gap vs. Peer Benchmark | Achievable without volume or capacity increase
+@stat: 23% | Revenue in Lowest-Margin SKU Bucket | Despite availability of higher-margin alternatives
+
+@exhibit: Exhibit 1 — Revenue Yield Diagnostic
+@source: McKinsey Pricing and Revenue Management, proprietary benchmarking database, 2024
+
+@notes: The 23% in lowest-margin SKUs is the mix opportunity. These customers are not price-sensitive — they are in the low-margin bucket because of sales motion defaults, not customer requirements.
+
+---
+
+# Three yield optimization levers address different value pools
+@type: comparison
+
+@compare:
+  header: Lever | Value Pool | Time to Impact | Complexity
+  row: Dynamic pricing on discretionary purchases | $120M | 6–9 months | High — requires pricing engine
+  row: Product mix upgrade (upsell motion) | $110M | 3–6 months | Medium — sales training + incentive
+  row: Promotional efficiency (reduce margin-dilutive promo) | $80M | 1–3 months | Low — policy change
+
+@exhibit: Exhibit 2 — Revenue Yield Levers and Value Sizing
+@source: McKinsey analysis; company transaction data, 3.1M transactions, 2024
+
+@notes: Promotional efficiency is the fastest win. Policy changes that reduce low-ROI promotions generate $80M in 90 days with minimal organizational lift.
+
+---
+
+# Dynamic pricing engine requires four technical components
+@type: bullet_points
+@layout: icon_rows
+
+- @icon: brain    | Demand sensing model: real-time price elasticity by segment and context
+- @icon: database | Transaction data lake: unified view of all purchase signals
+- @icon: rocket   | Pricing API: real-time price delivery to all commercial channels within 200ms
+- @icon: chart    | Uplift measurement: holdout testing to isolate pricing impact from volume effects
+- @icon: shield   | Override workflow: human-in-the-loop for strategic account exceptions
+
+@notes: The pricing API latency requirement (200ms) is the most commonly underestimated technical constraint. Build this to spec from day one — retrofitting is expensive.
+
+---
+
+# Revenue Yield Optimization
+@type: closing
+@background: dark
+
+## The $310M is already there — it is captured by organizations that price with data, not intuition
+### McKinsey Revenue Management | mckinsey.com/capabilities/growth-marketing-and-sales/pricing

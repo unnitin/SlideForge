@@ -1,0 +1,99 @@
+---
+presentation:
+  title: "Consumer Segmentation: Unlocking $340M in Untapped Revenue Through Precision Targeting"
+  author: "McKinsey Consumer Practice"
+  company: "McKinsey & Company"
+  output: "pptx"
+  brand:
+    primary: "003366"
+    secondary: "E3EAF4"
+    accent: "0050A0"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Four Distinct Consumer Segments Account for 90% of Value — Only Two Are Served Today
+@type: title
+@background: dark
+
+## Consumer Segmentation
+### Unlocking $340M in Untapped Revenue Through Precision Targeting
+
+@notes: The central finding: the brand is deeply over-indexed to one segment while two high-value adjacent segments are structurally underserved.
+
+---
+
+# Current portfolio over-indexes to one segment while high-value adjacencies go untouched
+@type: stat_callout
+
+@stat: 73% | Revenue from Segment A | Despite representing only 31% of addressable market
+@stat: $340M | Untapped Adjacent Revenue | In Segments B and C over 5 years
+@stat: 2.4× | Higher LTV | For Segment C vs. current core segment
+
+@exhibit: Exhibit 1 — Segment Revenue Concentration
+@source: McKinsey proprietary consumer panel, N=12,400; company financials, 2024
+
+@notes: The 73% concentration in one segment is a fragility, not a strength. Any shift in that cohort's behavior creates disproportionate revenue risk.
+
+---
+
+# Four segments emerge from behavioral, attitudinal, and value-potential clustering
+@type: comparison
+
+@compare:
+  header: Segment | Size (M households) | Annual Spend Potential | Current Penetration | Strategic Priority
+  row: Core Loyalists (A) | 18M | $420/yr | 68% | Retain and deepen
+  row: Value Seekers (B) | 24M | $280/yr | 12% | Activate with precision offers
+  row: Premium Aspirants (C) | 9M | $890/yr | 4% | Invest and acquire
+  row: Occasional Browsers (D) | 31M | $95/yr | 8% | Automate and harvest
+
+@exhibit: Exhibit 2 — Segment Sizing and Penetration
+@source: McKinsey consumer survey, syndicated panel data, company CRM analysis, 2024
+
+@notes: Segment C (Premium Aspirants) is the most underserved given its LTV profile. They are reachable but require a fundamentally different value proposition and channel mix.
+
+---
+
+# Premium Aspirants and Value Seekers require different acquisition approaches
+@type: two_column
+
+@col:
+  ## Premium Aspirants (Segment C)
+  - Primary channel: premium retail, direct digital, experiential
+  - Message: quality, provenance, exclusivity, status signal
+  - Price tolerance: 40–60% premium vs. core portfolio
+  - Win condition: category education + community membership
+  - Acquisition cost: $85–120 per new customer (justified by LTV)
+
+@col:
+  ## Value Seekers (Segment B)
+  - Primary channel: mass retail, performance digital, promotions
+  - Message: quality-to-price leadership, trusted ingredient story
+  - Price tolerance: parity to slight premium vs. private label
+  - Win condition: trial removal through targeted sampling
+  - Acquisition cost: $18–25 per new customer
+
+@notes: Do not serve both segments from the same brand. Segment C requires a distinct brand expression or sub-brand to avoid diluting the premium signal.
+
+---
+
+# A precision targeting infrastructure enables segment-level activation at scale
+@type: bullet_points
+@layout: icon_rows
+
+- @icon: brain    | Build ML-based segment classifier on first-party transaction and behavioral data
+- @icon: chart    | Deploy segment-specific media mix: premium channels for C, performance for B
+- @icon: rocket   | Launch sub-brand for Premium Aspirants with distinct pricing and packaging
+- @icon: shield   | Implement real-time personalization engine for digital touchpoints
+- @icon: database | Create unified customer data platform linking CRM, loyalty, and POS signals
+
+@notes: The customer data platform is the foundational enabling investment — everything else in this list depends on unified first-party data.
+
+---
+
+# Consumer Segmentation
+@type: closing
+@background: dark
+
+## The $340M opportunity requires segment discipline — serving everyone equally serves no one
+### McKinsey Consumer & Retail | mckinsey.com/industries/consumer-packaged-goods

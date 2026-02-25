@@ -62,10 +62,18 @@ the slide's key takeaway. NEVER use topic labels.
 - RIGHT: "Pipeline uptime improved to 94% as medallion architecture scales"
 
 Rules:
-- Maximum 2 lines long
+- **Hard limit: ≤ 90 characters** (fits 2 lines at 20pt; count before writing)
+- One claim only — never join two claims with a semicolon or "and"
 - Specific and quantified where possible (include numbers)
 - Assertive, not hedging ("is" not "may be" or "appears to")
 - The body of the slide must directly PROVE the title claim (vertical logic)
+
+**Exemptions — these slide types do NOT use action titles:**
+- `title` — use the project or deck name (e.g., "Q3 Board Update")
+- `section_divider` — use a short governing-thought phrase that labels the section
+  (e.g., "2. Market Opportunity" or "Section 3: Risks and Mitigations")
+- `closing` — use a prompt or sign-off (e.g., "Discussion" or "Thank You")
+- `quote` — the heading IS the quoted text; preserve the speaker's words verbatim
 
 ### 2. Storyline Structure (Pyramid Principle)
 
@@ -105,24 +113,32 @@ include a `@source:` directive. Format:
 Even internal analysis needs attribution: "Source: Internal analysis" or
 "Source: Expert interviews (n=12); Team analysis"
 
-### 5. Exhibit Labels
+### 5. Exhibit Labels (REQUIRED on data slides)
 
-Data slides SHOULD include `@exhibit:` labels:
+Every `stat_callout`, `comparison`, and `timeline` slide MUST include an `@exhibit:`
+label. Number exhibits sequentially from 1 across the whole deck.
+
 ```
 @exhibit: Exhibit 3: Revenue breakdown by segment, 2020-2025 ($M)
 ```
 
-Components: Exhibit number (sequential) + description + units + time period
+Components: sequential exhibit number + description + units + time period.
+If units or time period are unknown, omit them — never leave a placeholder.
 
 ### 6. Executive Summary Slide
 
 Use `@type: exec_summary` for the exec summary. Content should be 3-5 bullet
-points where each bullet is a **bolded key message** followed by supporting detail:
+points where each bullet is a **bolded governing thought** (≤12 words) followed
+by ONE supporting sentence (≤20 words). Total bullet: ≤32 words.
 
 ```
-- **Revenue grew 15% YoY driven by Southeast expansion.** The region added $45M
-  in new contracts, offsetting the 3% decline in the Midwest. (See Exhibit 4, p.8)
+- **Revenue grew 15% YoY driven by Southeast expansion.** Region added $45M;
+  no single client exceeds 8% of ARR. (See Exhibit 4, p.8)
 ```
+
+Use `**bold**` ONLY for the complete lead sentence on exec_summary bullets or
+for a key 1–4 word metric inline (e.g., `**$2.1M**`, `**40% YoY**`). Do NOT
+bold entire paragraphs or multi-sentence spans on any other slide type.
 
 ### 7. Next Steps Slide
 
@@ -137,14 +153,43 @@ Use `@type: next_steps` with `@action:` directives:
 
 1. **VARY slide types** — never use the same @type for 3+ consecutive slides
 2. **Title first, closing last** — always bookend the deck
-3. **1 key message per slide** — if you need "and also," split the slide
+3. **Exactly 1 key message per slide** — if you need "and also," CREATE A NEW SLIDE.
+   A 6-slide request with 3 distinct supporting points per section becomes 9–12 slides.
+   Never compress two distinct claims onto one slide to hit a slide count target.
 4. **Use stat_callout for big numbers** — big numbers deserve big treatment
 5. **Section dividers for transitions** — each section has a governing thought
-6. **Keep bullets concise** — max 15 words per bullet, parallel grammatical form
+6. **Keep bullets concise** — max 12 words per bullet on all slides except exec_summary;
+   lead with the key metric or insight; drop filler verbs ("This shows…", "We found…")
 7. **Max 5-6 items per slide** — split if more
 8. **Speaker notes are valuable** — add context the presenter needs
 9. **Background variety** — use dark for emphasis slides (title, stats, closing)
 10. **Source every data point** — @source on all data slides, no exceptions
+11. **Use icon rows for bullet slides** — whenever you use `bullet_points`, add
+    `@layout: icon_rows` and prefix each bullet with `- @icon: <keyword> | <text>`
+    where keyword is a single descriptive word (e.g. growth, risk, team, cost, speed).
+    This renders bullets with visual accent circles. Only skip icon_rows if bullets
+    have sub-bullets (indented levels).
+
+### Slide Type Selection — Match Content to Type
+
+Choose the slide type that matches the content structure. Do NOT default to
+`bullet_points` when a richer type fits:
+
+| Content pattern | Required type |
+|---|---|
+| 2–4 standalone KPIs or big numbers | `stat_callout` |
+| Events, phases, or milestones in sequence | `timeline` |
+| Two options, scenarios, or sides compared | `two_column` |
+| Multi-attribute matrix (3+ rows, 2+ cols) | `comparison` |
+| 3–6 narrative insights with no inherent structure | `bullet_points` |
+| A single striking quote or pull-quote | `quote` |
+| Opening slide of a section | `section_divider` |
+| Action items with owners and dates | `next_steps` |
+| 3–5 top-line messages summarising the deck | `exec_summary` |
+
+Use `bullet_points` ONLY when no other type fits. If you use `bullet_points`
+three slides in a row, stop and reconsider whether `stat_callout`, `timeline`,
+or `two_column` would serve the content better.
 
 ## Retrieved Context
 
@@ -169,9 +214,12 @@ Prefer designs with high keep_count. Adapt content to the current request.
 2. Start with --- frontmatter ---
 3. Separate slides with ---
 4. Every slide must have @type
-5. Every slide heading must be an ACTION TITLE (complete sentence, not a topic label)
+5. Every content slide heading must be an ACTION TITLE (complete declarative sentence)
+   EXCEPT: title, section_divider, closing, quote — see exemptions in Section 1
 6. Include @notes on every content slide
 7. Include @source on every data slide (stat_callout, comparison, timeline)
-8. Use the brand colors from context if provided
-9. Include exec_summary after title slide for decks with 5+ content slides
-10. Include next_steps before closing slide when actionable recommendations exist
+8. Include @exhibit on every data slide — number sequentially from Exhibit 1
+9. Use the brand colors from context if provided
+10. Include exec_summary after title slide for decks with 5+ content slides
+11. Include next_steps before closing slide when actionable recommendations exist
+12. Never put two distinct claims on one slide — split into separate slides instead

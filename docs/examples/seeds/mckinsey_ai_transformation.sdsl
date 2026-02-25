@@ -1,0 +1,111 @@
+---
+presentation:
+  title: "AI Transformation at Scale: From 40 Pilots to Enterprise-Wide Value Capture"
+  author: "McKinsey QuantumBlack AI"
+  company: "McKinsey & Company"
+  output: "pptx"
+  brand:
+    primary: "003366"
+    secondary: "E3EAF4"
+    accent: "0050A0"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Most Companies Are Stuck in Pilot Purgatory — The Ones That Break Through Scale Value 4× Faster
+@type: title
+@background: dark
+
+## AI Transformation at Scale
+### From 40 Pilots to Enterprise-Wide Value Capture
+
+@notes: This company has 40 active AI pilots but captured <$8M in value last year. This is the "pilot purgatory" pattern — a diffusion problem, not a technology problem.
+
+---
+
+# AI pilot proliferation without scaling infrastructure produces cost, not value
+@type: stat_callout
+
+@stat: 40 | Active AI Pilots Currently Running | Spread across 12 business units
+@stat: $8M | Value Captured from AI in Past 12 Months | vs. $340M identified potential
+@stat: 4% | Pilot-to-Production Rate | Industry leading organizations achieve 40–60%
+
+@exhibit: Exhibit 1 — AI Program Maturity Diagnostic
+@source: McKinsey QuantumBlack AI State of AI Survey, N=1,200 companies, 2024
+
+@notes: The 4% pilot-to-production rate is the diagnostic headline. It reveals that the problem is not ideation or technical capability — it is the organizational infrastructure for scaling.
+
+---
+
+# Four root causes explain the pilot-to-production failure rate
+@type: comparison
+
+@compare:
+  header: Root Cause | Prevalence | Impact | Fix
+  row: No AI platform (each team builds own infrastructure) | 78% of orgs | High — duplication, no reuse | Build shared MLOps platform
+  row: Change management absent (business won't adopt) | 65% | High — models built but not used | Embed change in every use case
+  row: Data access barriers (months to get training data) | 71% | High — slows all development | Data governance reform
+  row: No value measurement framework (unknown ROI) | 83% | Medium — no prioritization signal | Standardize value tracking
+
+@exhibit: Exhibit 2 — AI Scaling Barrier Analysis
+@source: McKinsey QuantumBlack AI Scaling Research, 2024
+
+@notes: Data access barriers are the most common and the most fixable. A data access SLA (target: 5 business days for approved use cases) removes the single biggest development bottleneck.
+
+---
+
+# Enterprise AI scaling requires a centralized AI factory model
+@type: two_column
+
+@col:
+  ## AI Factory Infrastructure
+  - Shared MLOps platform: training, deployment, monitoring
+  - Feature store: reusable feature engineering across models
+  - Model registry: governance, versioning, and audit trail
+  - Compute governance: GPU/TPU allocation and chargebacks
+  - AI security: adversarial testing, bias monitoring, explainability
+
+@col:
+  ## AI Factory Operating Model
+  - Central AI team of 40–60 experts embedded across BUs
+  - Center-of-Excellence model: standards + embedded resources
+  - Portfolio management: prioritize top 10 use cases quarterly
+  - Value tracking: standardized P&L impact measurement
+  - Talent pipeline: AI fluency training for all knowledge workers
+
+@notes: The AI factory is not just a technology concept — it is an operating model. The technology without the operating model produces the same pilot diffusion problem in a more expensive wrapper.
+
+---
+
+# Value capture accelerates dramatically in Year 2 when the platform is operational
+@type: timeline
+
+@step: Year 1 | Foundation | Shut down 30 low-value pilots; build MLOps platform; establish AI factory
+@step: Year 2 | Acceleration | Scale 10 proven use cases to production; $85M value captured
+@step: Year 3 | Enterprise-Wide | 25 production models; AI-augmented workflows in all major functions
+@step: Year 4–5 | Compounding | New use cases self-fund; $340M annual run-rate value captured
+
+@source: McKinsey QuantumBlack AI Transformation Roadmap, 2024
+
+@notes: Year 1 feels like regression — shutting pilots down, building infrastructure, capturing less value than before. This is necessary and correct. The board must be aligned before this plan is approved.
+
+---
+
+# Three decisions in the next 30 days determine whether scaling is achievable
+@type: next_steps
+
+@action: Appoint Chief AI Officer with P&L accountability and direct CEO reporting line | CEO | Week 1
+@action: Select and fund MLOps platform (recommend Databricks + MLflow stack at $8M) | CDO + CFO | Week 2–3
+@action: Identify top 10 use cases using standardized value + feasibility scoring matrix | CAO + McKinsey | Month 1
+@action: Shut down 30 pilots below value threshold and redeploy 60% of that team capacity | CAO | Month 1–2
+
+@notes: The CAO appointment is the signal that this is a CEO-level priority. Without it, the AI factory remains a technology initiative and never achieves enterprise adoption.
+
+---
+
+# AI Transformation at Scale
+@type: closing
+@background: dark
+
+## Pilot purgatory is a choice — scaling AI is an operating model decision, not a technology decision
+### McKinsey QuantumBlack AI | mckinsey.com/quantumblack

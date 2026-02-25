@@ -1,0 +1,84 @@
+---
+presentation:
+  title: "Financial Due Diligence: Meridian Healthcare — Quality of Earnings and Cash Flow Assessment"
+  author: "BCG Transaction Services"
+  company: "Boston Consulting Group"
+  output: "pptx"
+  brand:
+    primary: "006837"
+    secondary: "E8F5E9"
+    accent: "004D26"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Meridian's Reported EBITDA of $148M Overstates Normalized Earnings by $31M — Adjusted Basis Is $117M
+@type: title
+@background: dark
+
+## Financial Due Diligence: Meridian Healthcare
+### Quality of Earnings and Cash Flow Assessment
+
+@notes: Key QoE finding: $31M in addbacks are either one-time in name only or non-recurring costs that reflect real operating requirements. The adjusted EBITDA of $117M is the correct acquisition basis.
+
+---
+
+# Three categories of adjustments reduce reported EBITDA by $31M
+@type: stat_callout
+
+@stat: $148M | Management Reported EBITDA | As presented in the CIM, LTM basis
+@stat: ($31M) | Total QoE Adjustments | Normalization removes non-recurring and aggressive addbacks
+@stat: $117M | Adjusted EBITDA (BCG Basis) | Correct basis for valuation and debt sizing
+
+@exhibit: Exhibit 1 — EBITDA Bridge: Reported to Adjusted
+@source: BCG QoE analysis; Meridian audited financials FY2022–FY2024; management accounts LTM Q3 2024
+
+@notes: At 9× implied purchase multiple, the $31M QoE adjustment changes deal value by $279M. This is material and must be reflected in the purchase price or reps & warranties.
+
+---
+
+# QoE adjustment detail reveals pattern of aggressive addback characterization
+@type: comparison
+
+@compare:
+  header: Addback Item | Management Claim | BCG Assessment | Adjustment
+  row: Executive severance ($8M) | One-time | Recurring pattern: 3rd executive departure in 4 years | Remove $8M
+  row: IT transformation costs ($12M) | Project-related, non-recurring | Recurring capex-like investment in aged systems | Remove $8M (partial)
+  row: Litigation settlement ($6M) | Non-recurring | Industry-wide regulatory pressure; likely recurring | Remove $6M
+  row: COVID recovery costs ($5M) | One-time | No longer applicable as of 2023 | Remove $5M
+  row: Management consulting ($4M) | Special project | Annual run-rate; reflected in normalized overhead | Remove $4M
+
+@exhibit: Exhibit 2 — QoE Adjustment Detail
+@source: BCG analysis; review of management accounts, board minutes, and G&A sub-ledger, 2024
+
+@notes: The IT transformation costs addback is the most significant structural issue. It reveals that capex is being expensed to mask the true capex intensity of the business.
+
+---
+
+# Working capital and capex normalization further impair the cash flow picture
+@type: two_column
+
+@col:
+  ## Working Capital Analysis
+  - Normalized working capital requirement: $42M
+  - Management's peg: $28M (14M understated)
+  - Root cause: seasonal build in receivables excluded from peg period
+  - Impact: $14M incremental cash required at close for working capital
+
+@col:
+  ## Maintenance Capex Assessment
+  - Reported capex: $18M annually
+  - Normalized maintenance capex: $31M (13M understated)
+  - Root cause: deferred maintenance and IT spend expensed vs. capitalized
+  - Impact: free cash flow 22% lower than management model implies
+
+@notes: The combined working capital and capex normalization reduces the attractiveness of this deal significantly. Both findings should be reflected in a price chip or escrow arrangement.
+
+---
+
+# Financial Due Diligence
+@type: closing
+@background: dark
+
+## At $117M adjusted EBITDA, the deal works — at $148M reported, it does not
+### BCG Transaction Services | bcg.com/capabilities/mergers-acquisitions-transactions-pmi

@@ -1,0 +1,80 @@
+---
+presentation:
+  title: "B2B Pricing Transformation: From Gut-Feel to Algorithmic Precision"
+  author: "Bain Pricing Practice"
+  company: "Bain & Company"
+  output: "pptx"
+  brand:
+    primary: "CC0000"
+    secondary: "FFF0F0"
+    accent: "990000"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# B2B Companies That Adopt Algorithmic Pricing Capture 200–500 Basis Points More Margin
+@type: title
+@background: dark
+
+## B2B Pricing Transformation
+### From Gut-Feel to Algorithmic Precision
+
+@notes: The consulting diagnosis: pricing in this organization is effectively a tribal knowledge system. Senior reps carry the intelligence in their heads. This creates fragility, inconsistency, and leakage.
+
+---
+
+# Pricing capability gap is structural — and the financial cost is measurable
+@type: stat_callout
+
+@stat: 3.8ppt | EBITDA Improvement | From algorithmic pricing vs. rep-judgment baseline (Bain benchmark)
+@stat: 47% | Price Variance for Equivalent Transactions | Within the same customer segment
+@stat: $0 | Formal Pricing Team Investment | Currently — no dedicated pricing function exists
+
+@exhibit: Exhibit 1 — Pricing Capability Assessment
+@source: Bain B2B Pricing Benchmark, N=180 industrial and software B2B companies, 2024
+
+@notes: The 47% within-segment variance is the most powerful diagnostic. It proves definitively that pricing is not intentional — it is noise. Algorithmic pricing eliminates noise.
+
+---
+
+# Algorithmic pricing works through three interconnected capabilities
+@type: two_column
+
+@col:
+  ## Data Foundation
+  - Transaction-level margin data linked to customer attributes
+  - Competitive price index built from win/loss data
+  - Product cost model at SKU or service level
+  - Customer profitability scoring across full relationship
+
+@col:
+  ## Pricing Intelligence Engine
+  - ML model predicting deal-level willingness-to-pay
+  - Real-time guidance in CRM: floor, target, and ceiling prices
+  - Automated approval routing for exception requests
+  - Pricing outcome tracking: did the recommendation win?
+
+@notes: The data foundation is the hardest part. Most B2B companies have the data but it is fragmented across ERP, CRM, and spreadsheets. Data unification is a 3–6 month effort before the ML model can be built.
+
+---
+
+# Phased rollout minimizes disruption while building organizational pricing muscle
+@type: timeline
+
+@step: Months 1–4 | Data Foundation | Unify transaction, cost, and CRM data; build win/loss database
+@step: Months 5–9 | Model Development | Train WTP model, test in pilot segment (20% of revenue)
+@step: Months 10–15 | Guided Selling | Deploy real-time pricing guidance in CRM for all reps
+@step: Months 16–24 | Full Automation | Automated quote-to-price for standard configurations; escalation-only for exceptions
+
+@source: Bain B2B Pricing Transformation Methodology, 2024
+
+@notes: The pilot in Months 5–9 is critical for organizational buy-in. Rep skepticism is real — the pilot produces data that wins the field's confidence before full rollout.
+
+---
+
+# B2B Pricing Transformation
+@type: closing
+@background: dark
+
+## Gut-feel pricing is a choice — so is leaving 4 points of EBITDA on the table every year
+### Bain Pricing Practice | bain.com/consulting-services/strategy

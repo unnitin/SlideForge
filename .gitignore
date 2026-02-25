@@ -6,3 +6,9 @@ __pycache__/
 *.db
 dist/
 build/
+.env
+
+# Benchmark data (large binaries — keep directory skeletons via .gitkeep)
+data/consulting_pdfs/**/*.pdf
+data/consulting_pdfs/**/*.jpg
+results/qa_benchmark.json

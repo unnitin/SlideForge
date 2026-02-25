@@ -1,0 +1,98 @@
+---
+presentation:
+  title: "Content and Channel Strategy: Driving 40% Efficiency Gains in a Fragmented Media Landscape"
+  author: "McKinsey Marketing & Sales"
+  company: "McKinsey & Company"
+  output: "pptx"
+  brand:
+    primary: "003366"
+    secondary: "E3EAF4"
+    accent: "0050A0"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Content Proliferation Without Strategic Architecture Is Creating Cost Without Proportional Impact
+@type: title
+@background: dark
+
+## Content and Channel Strategy
+### Driving 40% Efficiency Gains in a Fragmented Media Landscape
+
+@notes: The diagnosis: the content supply chain is broken. The company produces 2,400 pieces of content annually but only 14% are re-used across channels. This is a $38M annual waste problem.
+
+---
+
+# Content production has scaled while effectiveness has declined
+@type: stat_callout
+
+@stat: 2,400 | Pieces of Content Produced Annually | Up from 800 three years ago (+200%)
+@stat: 14% | Content Re-Use Rate Across Channels | Best-in-class benchmark is 60–70%
+@stat: $38M | Estimated Annual Content Waste | From one-and-done production and poor asset management
+
+@exhibit: Exhibit 1 — Content Production and Effectiveness Audit
+@source: McKinsey content audit, 14-month analysis of company content library; industry benchmarks, 2024
+
+@notes: The 14% re-use rate is the diagnostic headline. It reveals a production process optimized for volume, not versatility. Each piece should be designed for 5–7 format variants.
+
+---
+
+# A modular content architecture eliminates waste and accelerates channel coverage
+@type: two_column
+
+@col:
+  ## Current State (Linear Production)
+  - Brief → agency → one execution → one channel
+  - Each piece created for a single format and audience
+  - Asset library disorganized; teams re-create vs. re-use
+  - Average production cycle: 6–8 weeks per campaign
+  - Estimated waste: $38M in underutilized assets
+
+@col:
+  ## Future State (Modular Architecture)
+  - Brief → core asset → automated variant generation
+  - One content "molecule" produces 12–15 channel variants
+  - Centralized DAM with taxonomy and search capability
+  - Average production cycle: 2–3 weeks with 3× more outputs
+  - Estimated saving: $22M redirectable to paid media
+
+@notes: The investment in a digital asset management system is typically the bottleneck. Budget $3–5M for implementation plus integration with the existing marketing stack.
+
+---
+
+# Channel prioritization should follow audience attention, not historical budget allocation
+@type: comparison
+
+@compare:
+  header: Channel | Audience Time Share | Current Spend Allocation | Rebalance Direction
+  row: Short-form video (TikTok, Reels, YouTube Shorts) | 34% of digital time | 8% of content budget | Significant increase
+  row: Long-form video (YouTube, streaming) | 22% of digital time | 14% of content budget | Moderate increase
+  row: Social (static + carousel) | 19% of digital time | 31% of content budget | Reduce
+  row: Display and banner | 11% of digital time | 28% of content budget | Reduce materially
+  row: Search and intent-based | 14% of digital time | 19% of content budget | Hold
+
+@exhibit: Exhibit 2 — Audience Attention vs. Budget Allocation
+@source: McKinsey media consumption research; company budget data, 2024
+
+@notes: The short-form video gap is the most glaring misalignment. 34% of audience attention is receiving 8% of content investment. This is a structural misallocation.
+
+---
+
+# Four actions in the next 90 days unlock the $22M content efficiency opportunity
+@type: next_steps
+
+@action: Implement modular content briefing template across all campaign work | CMO + Agency | Month 1
+@action: Evaluate and select digital asset management platform (3 vendors shortlisted) | Marketing Ops | Month 1–2
+@action: Shift $8M from display to short-form video for Q3 campaigns | CMO + CFO | Month 2
+@action: Train in-house content team on AI-assisted variant generation tools | Creative Director | Month 2–3
+
+@notes: The DAM selection is the highest-impact structural investment. Without centralized asset management, the modular architecture cannot function — teams will keep recreating.
+
+---
+
+# Content and Channel Strategy
+@type: closing
+@background: dark
+
+## The best content strategy is not producing more — it is producing once and distributing everywhere
+### McKinsey Marketing & Sales | mckinsey.com/capabilities/growth-marketing-and-sales

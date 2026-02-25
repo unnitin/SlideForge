@@ -1,0 +1,108 @@
+---
+presentation:
+  title: "AI at Scale: Enterprise Adoption Strategy"
+  author: "BCG Technology Advantage"
+  company: "Boston Consulting Group"
+  output: "pptx"
+  brand:
+    primary: "006837"
+    secondary: "E8F5E9"
+    accent: "004D26"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# AI Adoption Creates Asymmetric Competitive Advantage in Every Sector
+@type: title
+@background: dark
+
+## AI at Scale: Enterprise Adoption Strategy
+### Building durable competitive advantage through artificial intelligence
+
+@notes: Opening framing for a board-level AI strategy presentation. Emphasize urgency — the window for first-mover advantage is 18–24 months.
+
+---
+
+# AI leaders already outperform peers on every value metric that matters
+@type: stat_callout
+
+@stat: 3–5× | Revenue Growth Premium | AI pioneers vs. laggards over 5 years
+@stat: 40% | Cost Reduction Potential | In repetitive knowledge work via automation
+@stat: $4.4T | Annual Value at Stake | Global productivity upside from generative AI
+
+@exhibit: Exhibit 1 — AI Value Creation Metrics
+@source: BCG Henderson Institute AI Value Creation Study, 2024; McKinsey Global Institute, 2024
+
+@notes: The $4.4T figure is the single most compelling number for CFO audiences. Ground all subsequent discussion in value, not technology.
+
+---
+
+# Three adoption archetypes define the competitive landscape today
+@type: comparison
+
+@compare:
+  header: Archetype | Share of Market | Key Capability | Margin Impact
+  row: AI Pioneers | 12% | Custom model development + full ops embed | +23% margin lift
+  row: Fast Followers | 31% | API integration and selective fine-tuning | +9% efficiency gain
+  row: Observers | 57% | Experimentation only, off-the-shelf tools | Flat to negative
+
+@exhibit: Exhibit 2 — AI Adoption Archetypes
+@source: BCG AI Readiness Index, N=1,800 global executives, 2024
+
+@notes: Most clients sit in Fast Follower. The goal is Pioneer trajectory within 18 months. Observers risk structural disadvantage by 2026.
+
+---
+
+# Value capture requires parallel progress on technology and organization
+@type: two_column
+
+@col:
+  ## Technology Foundation
+  - Unified data layer with governed model access
+  - Model selection framework (build vs. buy vs. fine-tune)
+  - MLOps platform for deployment and monitoring
+  - API gateway for enterprise-wide model serving
+
+@col:
+  ## Organizational Enablement
+  - AI fluency training for 100% of knowledge workers
+  - Dedicated AI product management function
+  - Talent pipeline: ML engineers, data scientists, AI PMs
+  - Change management and adoption playbooks
+
+@notes: Technology without org enablement consistently fails. Org readiness without technology investment is wasted preparation. Both must advance in lockstep.
+
+---
+
+# Eighteen-month path from isolated pilots to enterprise deployment
+@type: timeline
+
+@step: Months 1–3 | Foundation | Data audit, use case prioritization, talent assessment, governance
+@step: Months 4–6 | Pilot | 3–5 high-value use cases, model deployment, KPI baseline
+@step: Months 7–12 | Scale | Expand proven use cases, AI platform build, Center of Excellence
+@step: Months 13–18 | Embed | Enterprise-wide rollout, self-serve AI tooling, value tracking
+
+@source: BCG AI Transformation Methodology, 2024
+
+@notes: Clients reliably want to skip foundation. Hold the line — bad data and unclear use cases kill every scaling effort.
+
+---
+
+# Immediate actions in the next 90 days set the trajectory for the full program
+@type: next_steps
+
+@action: Conduct AI readiness diagnostic across all business units | CDO Office | Weeks 1–4
+@action: Identify and fund top 5 value-creating use cases with ROI model | C-Suite + BCG | Month 2
+@action: Establish AI governance committee and data access policy | Legal + CDO | Month 1
+@action: Launch AI fluency program for senior leadership (100 leaders) | CHRO | Months 2–3
+
+@notes: The readiness diagnostic is the non-negotiable first step. It determines use case sequencing, build-vs-buy decisions, and talent gaps.
+
+---
+
+# AI at Scale
+@type: closing
+@background: dark
+
+## The window for competitive differentiation is open — but not indefinitely
+### BCG Technology Advantage | ai.bcg.com

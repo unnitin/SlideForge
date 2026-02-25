@@ -1,0 +1,96 @@
+---
+presentation:
+  title: "Platform Business Model Strategy: Winning in Multi-Sided Markets"
+  author: "BCG Digital Ventures"
+  company: "Boston Consulting Group"
+  output: "pptx"
+  brand:
+    primary: "006837"
+    secondary: "E8F5E9"
+    accent: "004D26"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Platform Economics Compound Faster Than Linear Business Models — The Window Is Now
+@type: title
+@background: dark
+
+## Platform Business Model Strategy
+### Winning in Multi-Sided Markets
+
+@notes: The core thesis: platform businesses achieve 2–3× higher valuations than equivalent-revenue linear businesses because of network effects and winner-take-most dynamics.
+
+---
+
+# Platform businesses create structural economic advantages over linear peers
+@type: stat_callout
+
+@stat: 2.8× | Revenue Multiple Premium | Platform vs. linear business EV/Revenue at comparable scale
+@stat: 32% | Average Gross Margin | Linear businesses vs. 68% for mature platform models
+@stat: $7T | Global Platform Economy | Market cap of top 20 platform businesses, 2024
+
+@exhibit: Exhibit 1 — Platform vs. Linear Business Economics
+@source: BCG Platform Value Creation Study, 2024; S&P Capital IQ, 2024
+
+@notes: The margin comparison is the most powerful board-level argument for platform investment. 68% vs. 32% gross margin at scale is structural, not cyclical.
+
+---
+
+# Four platform archetypes require fundamentally different strategies
+@type: comparison
+
+@compare:
+  header: Archetype | Core Asset | Key Metric | Winner-Takes-Most?
+  row: Transaction Platforms | Matching efficiency (buyers/sellers) | GMV, take rate | Yes — strong network effects
+  row: Content Platforms | Creator ecosystem + catalog | MAU, engagement time | Moderate — taste matters
+  row: Data Platforms | Proprietary signal aggregation | Data richness, query latency | Yes — data moats compound
+  row: Infrastructure Platforms | Developer tools + APIs | Developer count, API calls | Yes — switching costs high
+
+@exhibit: Exhibit 2 — Platform Archetypes
+@source: BCG Platform Strategy Framework, 2024
+
+@notes: Most clients underestimate the winner-takes-most dynamics. The first platform to hit critical mass in a given vertical typically captures 60–80% of the market.
+
+---
+
+# Reaching critical mass requires solving both sides of the market simultaneously
+@type: two_column
+
+@col:
+  ## Supply Side (Producers / Sellers)
+  - Subsidy early adopters to seed supply liquidity
+  - Provide tools that make suppliers more productive
+  - Build reputation and trust signals for new entrants
+  - Graduated economics: reward volume with better terms
+
+@col:
+  ## Demand Side (Consumers / Buyers)
+  - Curate quality signal to reduce search friction
+  - Network effect triggers: social proof, peer recommendations
+  - Personalization that improves with each interaction
+  - Lock-in through history, preferences, switching costs
+
+@notes: The sequencing matters enormously. Most successful platforms seeded supply first, then drove demand. Never launch with empty shelves.
+
+---
+
+# The three-phase playbook for platform launch and scale
+@type: timeline
+
+@step: Phase 1 (0–12 months) | Seed the Core | Recruit anchor suppliers, subsidize early demand, achieve liquidity in 1 geography
+@step: Phase 2 (12–30 months) | Expand the Network | Geographic rollout, adjacent supply categories, demand-side growth loops
+@step: Phase 3 (30–60 months) | Monetize and Defend | Raise take rate, launch data monetization, build switching cost moat
+
+@source: BCG Platform Launch Playbook, based on 40+ platform launches, 2024
+
+@notes: Phase 1 is almost always loss-making. Investors and boards need to understand that liquidity is the asset being built, not profit.
+
+---
+
+# Platform Business Model Strategy
+@type: closing
+@background: dark
+
+## In platform markets, second place is often worth nothing — move with urgency
+### BCG Digital Ventures | bcg.com/capabilities/digital-technology-data/digital-ventures

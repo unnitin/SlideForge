@@ -1,0 +1,96 @@
+---
+presentation:
+  title: "Cloud Migration Business Case: From Cost Center to Competitive Platform"
+  author: "McKinsey Technology"
+  company: "McKinsey & Company"
+  output: "pptx"
+  brand:
+    primary: "003366"
+    secondary: "E3EAF4"
+    accent: "0050A0"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Cloud Migration Unlocks $180M in Value Over Five Years If Executed with Discipline
+@type: title
+@background: dark
+
+## Cloud Migration Business Case
+### From Cost Center to Competitive Platform
+
+@notes: Lead with the $180M value number — it anchors the entire business case and creates urgency for leadership approval.
+
+---
+
+# The business case is stronger than most organizations realize
+@type: stat_callout
+
+@stat: 35% | Average Infrastructure Cost Reduction | Vs. on-premise equivalents at scale
+@stat: 2.4× | Developer Productivity Gain | For teams on modern cloud-native stack
+@stat: 60% | Faster Time-to-Market | For new digital products post-migration
+
+@exhibit: Exhibit 1 — Cloud Value Metrics
+@source: McKinsey Cloud Value Study, N=700 enterprise migrations, 2023; Gartner Infrastructure Benchmark, 2024
+
+@notes: The developer productivity number is often the most surprising to CFOs. Frame it as talent leverage — you get more output from the same headcount.
+
+---
+
+# Three migration pathways offer different risk-return profiles
+@type: comparison
+
+@compare:
+  header: Pathway | Timeline | Cost | Risk | Value Realization
+  row: Lift & Shift | 12–18 months | Low | Low | 25% of potential — cost savings only
+  row: Re-platform | 18–30 months | Medium | Medium | 60% of potential — efficiency + flexibility
+  row: Re-architect | 24–48 months | High | High | 100% of potential — full competitive platform
+
+@exhibit: Exhibit 2 — Migration Strategy Options
+@source: McKinsey Cloud Migration Benchmark, 2024
+
+@notes: Most clients default to lift-and-shift out of risk aversion. Replatforming is typically the correct risk-adjusted choice for the core application portfolio.
+
+---
+
+# A phased wave approach minimizes disruption while capturing value early
+@type: two_column
+
+@col:
+  ## Wave 1: Quick Wins (Months 1–9)
+  - Dev/test environments and non-critical workloads
+  - Collaboration and productivity SaaS migration
+  - Data warehouse modernization (cloud-native DWH)
+  - Estimated savings: $12M annually
+
+@col:
+  ## Wave 2: Core Platform (Months 10–24)
+  - Customer-facing applications and APIs
+  - Core transaction processing systems
+  - Analytics and ML infrastructure
+  - Estimated savings: $45M annually + new capability
+
+@notes: Wave 1 builds organizational capability and confidence. It is not just cost savings — it is learning infrastructure for Wave 2.
+
+---
+
+# Cloud migration delivers value across five dimensions simultaneously
+@type: bullet_points
+@layout: icon_rows
+
+- @icon: database | Infrastructure cost reduction of 30–40% through elasticity and right-sizing
+- @icon: rocket   | 60% faster release cycles enabling competitive product velocity
+- @icon: shield   | Enhanced security posture with automated compliance and threat detection
+- @icon: brain    | Scalable ML and analytics platform enabling data-driven operations
+- @icon: chart    | Real-time visibility into cost allocation and optimization opportunities
+
+@notes: Emphasize that these five are mutually reinforcing — faster releases + better data + lower costs compound over time.
+
+---
+
+# Cloud Migration Business Case
+@type: closing
+@background: dark
+
+## Migration is not an IT project — it is a strategic business transformation
+### McKinsey Technology | mckinsey.com/capabilities/mckinsey-digital

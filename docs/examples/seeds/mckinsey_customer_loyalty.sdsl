@@ -1,0 +1,83 @@
+---
+presentation:
+  title: "Loyalty Redesign: From Points Program to Relationship Asset"
+  author: "McKinsey Marketing & Sales"
+  company: "McKinsey & Company"
+  output: "pptx"
+  brand:
+    primary: "003366"
+    secondary: "E3EAF4"
+    accent: "0050A0"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# The Existing Loyalty Program Is Generating Cost, Not Commitment — A Complete Redesign Is Required
+@type: title
+@background: dark
+
+## Loyalty Redesign
+### From Points Program to Relationship Asset
+
+@notes: The existing program has a 94% dormancy rate above the bronze tier. It is a liability masquerading as an asset. The redesign thesis is emotional engagement, not transactional points.
+
+---
+
+# Current program metrics reveal a structurally broken loyalty economics model
+@type: stat_callout
+
+@stat: 94% | Member Dormancy Above Bronze Tier | Members enrolled but never advancing
+@stat: $47 | Cost Per Active Loyalty Member | 3× the industry benchmark of $16
+@stat: 1.1× | Incremental Spend Multiplier | Near zero lift vs. non-members (benchmark: 1.6–2.0×)
+
+@exhibit: Exhibit 1 — Loyalty Program Performance Diagnostics
+@source: McKinsey Loyalty Benchmark, N=280 programs across retail, financial services, travel; 2024
+
+@notes: The $47 cost per active member is the defining problem. Until this drops below $20, the program is a structural margin drain.
+
+---
+
+# Leading loyalty programs share three design principles that the current program lacks
+@type: comparison
+
+@compare:
+  header: Design Principle | Current Program | Leading Practice | Gap
+  row: Value proposition | Transactional (points = discounts) | Emotional + experiential rewards | Fundamental redesign needed
+  row: Tiering logic | Spend-only thresholds | Behavioral + spend signals | Rebuild required
+  row: Personalization | Static email campaigns | Real-time, individual-level offers | Technology investment
+  row: Partner ecosystem | None | 3–5 strategic partners adding value | New capability
+
+@exhibit: Exhibit 2 — Loyalty Program Design Assessment
+@source: McKinsey Loyalty Design Framework, 2024
+
+@notes: The shift from transactional to experiential loyalty is not cosmetic. It requires rearchitecting the rewards catalog, the tier mechanics, and the technology stack.
+
+---
+
+# Redesigned program architecture creates value for the business and the member
+@type: two_column
+
+@col:
+  ## What Members Get (New Model)
+  - Personalized offers based on individual purchase history
+  - Experiential rewards: early access, events, exclusive products
+  - Partner benefits: travel, dining, entertainment integrations
+  - Status that reflects total relationship value, not just spend
+
+@col:
+  ## What the Business Gets (New Model)
+  - Behavioral data across all channels in a unified profile
+  - Predictive churn signals enabling proactive retention
+  - High-margin experiential rewards replacing low-margin discounts
+  - Net Promoter Score lift from advocates, not just buyers
+
+@notes: The key insight is that experiential rewards have a perceived value 2–3× higher than their cost to the business — dramatically improving loyalty economics.
+
+---
+
+# Loyalty Redesign
+@type: closing
+@background: dark
+
+## Loyalty programs that earn genuine commitment create assets; all others create liabilities
+### McKinsey Marketing & Sales | mckinsey.com/capabilities/growth-marketing-and-sales

@@ -1,0 +1,110 @@
+---
+presentation:
+  title: "PIPE Investment Thesis: $150M Structured Equity in DataStream Inc."
+  author: "Bain Capital Special Situations"
+  company: "Bain & Company"
+  output: "pptx"
+  brand:
+    primary: "CC0000"
+    secondary: "FFF0F0"
+    accent: "990000"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# DataStream PIPE Offers 2.8× MOIC at Base Case With Downside Protection From Structured Terms
+@type: title
+@background: dark
+
+## PIPE Investment Thesis
+### $150M Structured Equity in DataStream Inc.
+
+@notes: PIPE structure: $150M convertible preferred at $18.50/share (22% discount to current trading), 8% PIK dividend, 18-month lockup, anti-dilution ratchet. Recommend invest.
+
+---
+
+# Investment merits are compelling at current valuation and structure
+@type: stat_callout
+
+@stat: 2.8× | Base Case MOIC | On 5-year hold; 3.6× in upside scenario
+@stat: 22% | Discount to Market | Entry price vs. 30-day VWAP of $23.70
+@stat: 8% | PIK Dividend | Accruing from close; adds 40c/share per annum
+
+@exhibit: Exhibit 1 — PIPE Investment Summary
+@source: Bain Capital analysis; Bloomberg market data; DataStream IR materials, 2024
+
+@notes: The 22% discount is the single most important term. It provides substantial margin of safety and ensures strong returns even if the stock underperforms relative to thesis.
+
+---
+
+# DataStream's fundamentals support the investment thesis across all scenarios
+@type: comparison
+
+@compare:
+  header: Scenario | Assumed ARR CAGR | Exit Multiple | Gross MOIC | IRR
+  row: Base Case | 28% ARR CAGR | 12× NTM Revenue | 2.8× | 23%
+  row: Bull Case | 42% ARR CAGR | 16× NTM Revenue | 4.1× | 32%
+  row: Bear Case | 15% ARR CAGR | 8× NTM Revenue | 1.6× | 10%
+  row: Stress (impairment) | <10% ARR CAGR + equity dilution | 5× | 1.1× (PIK only) | 2%
+
+@exhibit: Exhibit 2 — Scenario Analysis
+@source: Bain Capital financial model; comparable company trading data, 2024
+
+@notes: Even in the stress scenario, PIK dividends provide a floor return. The anti-dilution ratchet provides additional protection if the company raises at a lower valuation.
+
+---
+
+# Three structural catalysts drive value realization over the investment horizon
+@type: two_column
+
+@col:
+  ## Near-Term Catalysts (12–24 months)
+  - Q3 2025 enterprise product launch: 40+ pipeline logos
+  - International expansion (EMEA): $200M greenfield TAM
+  - Strategic partnership with Microsoft: distribution multiplier
+  - Path to GAAP profitability by Q4 2025
+
+@col:
+  ## Medium-Term Value Drivers (24–60 months)
+  - NRR inflection: 104% → 125% as enterprise mix increases
+  - Data network effect: proprietary dataset increasingly defensible
+  - M&A optionality: 3 strategic acquirers with $500M+ capacity
+  - Public market re-rating as growth + profitability story matures
+
+@notes: The Microsoft partnership is the highest-conviction catalyst. It provides distribution to 340K+ commercial customers without incremental CAC investment.
+
+---
+
+# Key risks are manageable with structural protections embedded in the term sheet
+@type: bullet_points
+
+- Execution risk on enterprise launch mitigated by 12-month product development track record and beta customer commitments
+- Competitive pressure from Palantir and Databricks addressed by DataStream's vertical focus in healthcare and FSI
+- Capital structure risk: anti-dilution ratchet protects against down-rounds in any subsequent financing
+- Lockup overhang: 18-month lockup ensures alignment; registration rights at month 19 provide exit liquidity
+- Management risk: key-man provision on CEO and CTO; retention packages funded from PIPE proceeds
+
+@source: Bain Capital risk assessment; DataStream board materials, 2024
+
+@notes: The key-man provision is the non-negotiable term. DataStream's two founders represent 80% of the technical vision and customer relationships.
+
+---
+
+# Investment Committee Recommendation: Invest $150M at Proposed Terms
+@type: next_steps
+
+@action: Execute LOI and initiate legal review of term sheet | General Counsel | Week 1
+@action: Complete financial model audit and management reference calls | Deal Team | Week 1–2
+@action: Technical diligence on data infrastructure and proprietary dataset defensibility | Tech Advisor | Week 2–3
+@action: IC approval and wire $150M at close | Investment Committee | Week 4
+
+@notes: The LOI deadline is November 15. If we miss it, the lead investor slot shifts to a competing fund. This timeline is real and binding.
+
+---
+
+# PIPE Investment Thesis
+@type: closing
+@background: dark
+
+## Structured downside protection at a 22% discount to market creates asymmetric return profile
+### Bain Capital Special Situations | baincapital.com

@@ -1,0 +1,83 @@
+---
+presentation:
+  title: "Digital Product Monetization: Building a $200M Recurring Revenue Stream From Free Users"
+  author: "BCG Digital & Platforms"
+  company: "Boston Consulting Group"
+  output: "pptx"
+  brand:
+    primary: "006837"
+    secondary: "E8F5E9"
+    accent: "004D26"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# The Free User Base Is a $200M Asset — Unlocked Only With the Right Monetization Architecture
+@type: title
+@background: dark
+
+## Digital Product Monetization
+### Building a $200M Recurring Revenue Stream From Free Users
+
+@notes: 4.2M monthly active users generating $0 in direct revenue. This is not a failure — it is a staged monetization opportunity. The question is which architecture captures value without destroying the user base.
+
+---
+
+# Four monetization models work for large free user bases — each with different risk-return profiles
+@type: comparison
+
+@compare:
+  header: Model | Conversion Rate Benchmark | ARPU | Risk | Best Fit
+  row: Freemium (feature-gating) | 2–5% | $120–280/yr | Medium — requires product discipline | When power users are identifiable
+  row: Usage-based / metered | N/A — all users pay | $80–600/yr (varies) | Low — natural alignment with value | When usage correlates with value
+  row: Advertising (ad-supported) | N/A | $8–22/user/yr | Low — no conversion needed | When scale >10M MAU and content is attention-driving
+  row: Marketplace / transactions | 0.5–2% of GMV take rate | Varies | Low — only successful transactions | When users transact with each other
+
+@exhibit: Exhibit 1 — Monetization Model Comparison
+@source: BCG Digital Monetization Benchmark, N=120 consumer platforms, 2024
+
+@notes: The recommendation for this specific product is freemium + usage-based hybrid. Power users show clear willingness-to-pay signals; usage data supports value-based pricing.
+
+---
+
+# Freemium architecture requires precise feature wall placement to maximize conversion
+@type: two_column
+
+@col:
+  ## What Stays Free (Keeps Users)
+  - Core value proposition that drove user acquisition
+  - Social and community features creating network effects
+  - Basic functionality covering 80% of casual use cases
+  - Read-only or limited versions of power features
+
+@col:
+  ## What Gets Gated (Drives Conversion)
+  - Features with proven power-user value (usage data confirms)
+  - Collaboration and multi-user workflows
+  - Export, API access, and integration capabilities
+  - History, analytics, and insight features
+
+@notes: The feature wall must be placed where users feel value, not frustration. Test extensively — a misplaced paywall destroys trust and drives churn, not conversion.
+
+---
+
+# $200M ARR is achievable in 36 months through three conversion phases
+@type: timeline
+
+@step: Months 1–6 | Foundation | Usage analytics, payment infrastructure, feature wall instrumentation
+@step: Months 7–15 | Freemium Launch | Gated premium tier, email conversion campaigns, in-app upsell triggers
+@step: Months 16–24 | Expansion | Usage-based add-ons, team/enterprise plans, annual billing incentives
+@step: Months 25–36 | $200M ARR | 180K paid subscribers × $1,100 avg ARR
+
+@source: BCG analysis based on comparable freemium monetization trajectories, 2024
+
+@notes: The 180K paid subscriber target requires a 4.3% conversion rate on the current MAU base. This is achievable but demands relentless funnel optimization throughout Phase 2.
+
+---
+
+# Digital Product Monetization
+@type: closing
+@background: dark
+
+## Free users are not a cost — they are unmonetized revenue waiting for the right architecture
+### BCG Digital & Platforms | bcg.com/capabilities/digital-technology-data

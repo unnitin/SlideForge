@@ -135,7 +135,7 @@ class TestTextColorForBg:
 
     def test_light_bg_black_text(self, brand):
         c = _text_color_for_bg(BackgroundType.LIGHT, brand)
-        assert c == RGBColor(0x00, 0x00, 0x00)
+        assert c == RGBColor(0x1A, 0x1A, 0x1A)  # near-black per consulting standard
 
 
 class TestMutedColorForBg:
@@ -145,7 +145,7 @@ class TestMutedColorForBg:
 
     def test_light_bg_muted(self, brand):
         c = _muted_color_for_bg(BackgroundType.LIGHT, brand)
-        assert c == RGBColor(0x66, 0x66, 0x66)
+        assert c == RGBColor(0x76, 0x76, 0x76)  # #767676 per consulting standard
 
 
 # ── Background Application ───────────────────────────────────────
@@ -303,8 +303,8 @@ class TestRenderStatCallout:
         )
         initial = len(blank_slide.shapes)
         _render_stat_callout(blank_slide, node, brand)
-        # Only heading textbox added
-        assert len(blank_slide.shapes) == initial + 1
+        # heading textbox + content separator
+        assert len(blank_slide.shapes) == initial + 2
 
 
 class TestRenderBulletPoints:
@@ -429,8 +429,8 @@ class TestRenderTimeline:
             heading="Empty Timeline",
         )
         _render_timeline(blank_slide, node, brand)
-        # Only heading shape
-        assert len(blank_slide.shapes) == 1
+        # heading shape + content separator
+        assert len(blank_slide.shapes) == 2
 
 
 class TestRenderImageText:
@@ -721,6 +721,113 @@ class TestRenderPublicAPI:
         opened = PptxPresentation(str(path))
         bg_fill = opened.slides[0].background.fill
         assert bg_fill.fore_color.rgb == RGBColor(0xFF, 0x00, 0x00)
+
+    def test_logo_renders_when_brand_logo_set(self, output_dir, tmp_path):
+        """Logo picture shape added to title slide when brand.logo is a valid PNG."""
+        import struct
+        import zlib
+
+        # Minimal valid 1x1 white RGB PNG
+        def _png_chunk(ctype, data):
+            raw = ctype + data
+            return (
+                struct.pack(">I", len(data)) + raw + struct.pack(">I", zlib.crc32(raw) & 0xFFFFFFFF)
+            )
+
+        ihdr_data = struct.pack(">IIBBBBB", 1, 1, 8, 2, 0, 0, 0)
+        raw_scanline = b"\x00\xff\xff\xff"  # filter=none, R G B
+        idat_data = zlib.compress(raw_scanline)
+        png_bytes = (
+            b"\x89PNG\r\n\x1a\n"
+            + _png_chunk(b"IHDR", ihdr_data)
+            + _png_chunk(b"IDAT", idat_data)
+            + _png_chunk(b"IEND", b"")
+        )
+        logo_path = tmp_path / "logo.png"
+        logo_path.write_bytes(png_bytes)
+
+        meta = PresentationMeta(
+            title="Logo Test",
+            brand=BrandConfig(logo=str(logo_path)),
+        )
+        pres = PresentationNode(
+            meta=meta,
+            slides=[SlideNode(slide_name="title", slide_type=SlideType.TITLE, heading="Test")],
+        )
+        path_with_logo = render(pres, output_dir)
+
+        # Render again without logo to get baseline shape count
+        meta_no_logo = PresentationMeta(title="No Logo Test")
+        pres_no_logo = PresentationNode(
+            meta=meta_no_logo,
+            slides=[SlideNode(slide_name="title", slide_type=SlideType.TITLE, heading="Test")],
+        )
+        path_no_logo = render(pres_no_logo, output_dir)
+
+        opened_with = PptxPresentation(str(path_with_logo))
+        opened_without = PptxPresentation(str(path_no_logo))
+        assert len(opened_with.slides[0].shapes) > len(opened_without.slides[0].shapes)
+
+    def test_confidentiality_label_rendered(self, output_dir):
+        """CONFIDENTIAL text appears on every slide when meta.confidentiality is set."""
+        pres = _make_presentation(
+            [SlideNode(slide_name="s1", slide_type=SlideType.TITLE, heading="Hi")],
+            title="Confidential Deck",
+            confidentiality="CONFIDENTIAL",
+        )
+        path = render(pres, output_dir)
+        opened = PptxPresentation(str(path))
+        slide = opened.slides[0]
+        texts = []
+        for s in slide.shapes:
+            if s.has_text_frame:
+                for p in s.text_frame.paragraphs:
+                    texts.append(p.text)
+        assert "CONFIDENTIAL" in texts
+
+    def test_content_separator_on_bullet_slide(self, output_dir):
+        """Bullet slide has at least 3 shapes: heading + separator + bullet list."""
+        pres = _make_presentation(
+            [
+                SlideNode(
+                    slide_name="bp",
+                    slide_type=SlideType.BULLET_POINTS,
+                    heading="Key Points",
+                    bullets=[BulletItem(text="Alpha"), BulletItem(text="Beta")],
+                )
+            ],
+            title="Sep Test",
+        )
+        path = render(pres, output_dir)
+        opened = PptxPresentation(str(path))
+        slide = opened.slides[0]
+        # heading textbox + separator rectangle + bullet list textbox (+ page number)
+        assert len(slide.shapes) > 2
+
+    def test_stat_card_backgrounds_added(self, output_dir):
+        """Two stats produce at least 2 card background shapes (auto-shapes, not textboxes)."""
+        pres = _make_presentation(
+            [
+                SlideNode(
+                    slide_name="stats",
+                    slide_type=SlideType.STAT_CALLOUT,
+                    heading="Metrics",
+                    stats=[
+                        StatItem(value="99%", label="Uptime"),
+                        StatItem(value="3.2B", label="Events"),
+                    ],
+                )
+            ],
+            title="Card BG Test",
+        )
+        path = render(pres, output_dir)
+        opened = PptxPresentation(str(path))
+        slide = opened.slides[0]
+        # shape_type 1 = MSO_SHAPE_TYPE.AUTO_SHAPE (rectangles from add_shape())
+        # shape_type 17 = MSO_SHAPE_TYPE.TEXT_BOX (from add_textbox())
+        auto_shapes = [s for s in slide.shapes if s.shape_type == 1]
+        # separator (1) + 2 card backgrounds (2) = at least 3
+        assert len(auto_shapes) >= 3
 
 
 # ── Format Plugins ───────────────────────────────────────────────

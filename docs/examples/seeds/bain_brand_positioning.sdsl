@@ -1,0 +1,83 @@
+---
+presentation:
+  title: "Brand Positioning Strategy: Owning the Premium Space in a Commoditizing Category"
+  author: "Bain Consumer Products Practice"
+  company: "Bain & Company"
+  output: "pptx"
+  brand:
+    primary: "CC0000"
+    secondary: "FFF0F0"
+    accent: "990000"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Category Premiumization Creates a $4.2B Pool — The Brand Must Claim Its Share Now or Lose It
+@type: title
+@background: dark
+
+## Brand Positioning Strategy
+### Owning the Premium Space in a Commoditizing Category
+
+@notes: The category is bifurcating: commoditizing at the bottom (private label threat) and premiumizing at the top (new entrants capturing value). The brand is currently stuck in the middle.
+
+---
+
+# Category bifurcation is accelerating — the middle position is structurally unsustainable
+@type: stat_callout
+
+@stat: 18% | Private Label Share Gain | In core category over past 3 years
+@stat: $4.2B | Premium Segment TAM | Growing at 14% CAGR vs. 2% for the overall category
+@stat: 31 points | Brand NPS Gap vs. Premium Leaders | The brand currently sits at NPS 42 vs. category premium average of 73
+
+@exhibit: Exhibit 1 — Category Bifurcation Analysis
+@source: Bain consumer survey, N=8,200; Nielsen category data; Kantar Brand Equity Study, 2024
+
+@notes: The NPS gap is the most actionable finding. A 31-point gap is not a perception problem — it is a product, packaging, and communication problem simultaneously.
+
+---
+
+# Premium positioning requires winning on four dimensions that currently underperform
+@type: comparison
+
+@compare:
+  header: Dimension | Current Perception Score | Premium Segment Threshold | Gap
+  row: Product quality / ingredients | 62/100 | 80/100 | −18 points
+  row: Packaging and visual identity | 55/100 | 82/100 | −27 points
+  row: Brand story and provenance | 41/100 | 78/100 | −37 points
+  row: Social proof and community | 38/100 | 71/100 | −33 points
+
+@exhibit: Exhibit 2 — Brand Equity Assessment vs. Premium Benchmark
+@source: Bain Brand Equity Assessment, N=3,400 category consumers, 2024
+
+@notes: Packaging is the fastest lever — it is high-visibility, high-impact, and executable in 9 months. Brand story requires content investment over 18–24 months.
+
+---
+
+# A two-tier brand architecture protects the core while capturing premium upside
+@type: two_column
+
+@col:
+  ## Core Brand (Protect)
+  - Reframe as "accessible quality" — not cheap, not premium
+  - Address private label threat with quality story + value messaging
+  - Maintain distribution breadth in mass and value channels
+  - Defend with promotions only on non-core SKUs
+
+@col:
+  ## Premium Sub-Brand (Invest and Grow)
+  - Launch separate visual identity with premium cues
+  - Distribution: specialty, natural, DTC, and select premium retailers only
+  - Price at 60–80% premium to core — premium pricing is a quality signal
+  - Build with community, not advertising: founder story, ingredient transparency
+
+@notes: The sub-brand needs genuine separation from the core — same logo with different packaging is not a brand architecture. Consumers see through it instantly.
+
+---
+
+# Brand Positioning Strategy
+@type: closing
+@background: dark
+
+## Premium positioning is not a marketing tactic — it is a product, distribution, and identity commitment
+### Bain Consumer Products Practice | bain.com/consulting-services/consumer-products

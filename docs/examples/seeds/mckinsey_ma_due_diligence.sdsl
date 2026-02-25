@@ -1,0 +1,83 @@
+---
+presentation:
+  title: "Commercial Due Diligence: NovaTech Acquisition — Market and Competitive Position Assessment"
+  author: "McKinsey M&A and Strategy"
+  company: "McKinsey & Company"
+  output: "pptx"
+  brand:
+    primary: "003366"
+    secondary: "E3EAF4"
+    accent: "0050A0"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# NovaTech Holds a Defensible #2 Position in a $12B Market With a Clear Path to Leadership
+@type: title
+@background: dark
+
+## Commercial Due Diligence: NovaTech Acquisition
+### Market and Competitive Position Assessment
+
+@notes: Overall finding: the business is strategically sound. The revenue quality is high (NRR 112%, 87% recurring), market position is defensible, and the acquisition thesis is credible at the proposed $680M valuation.
+
+---
+
+# Market structure and NovaTech's position support the acquisition thesis
+@type: stat_callout
+
+@stat: $12B | Serviceable Addressable Market | Growing at 18% CAGR; NovaTech has 8% share
+@stat: 112% | Net Revenue Retention | Confirms deep customer value creation and low churn
+@stat: 87% | Revenue Recurring | High-quality revenue base with predictable cash flow
+
+@exhibit: Exhibit 1 — Market and Revenue Quality Summary
+@source: McKinsey market model; NovaTech management data; Gartner market sizing, 2024
+
+@notes: The 8% market share in a fast-growing market is an opportunity, not a limitation. The question is whether the competitive dynamics permit share gain — and diligence finds that they do.
+
+---
+
+# Competitive moat analysis reveals three durable sources of advantage
+@type: comparison
+
+@compare:
+  header: Moat Source | Strength | Evidence | Durability
+  row: Proprietary data asset | Strong | 7-year transaction database with 400M+ data points | High — cannot be replicated quickly
+  row: Integration ecosystem | Strong | 140+ native integrations vs. competitor average of 28 | High — creates switching cost
+  row: Domain expertise in FSI | Moderate | 60% of R&D focused on FSI-specific features | Medium — replicable with investment
+  row: Brand and community | Moderate | NPS 64, active user community of 45K members | Medium — built over time
+
+@exhibit: Exhibit 2 — Competitive Moat Assessment
+@source: McKinsey competitive analysis; customer interviews N=42; competitor product teardowns, 2024
+
+@notes: The integration ecosystem is the most defensible moat. With 140 integrations, switching cost is not just financial — it is operational. Customers embed NovaTech into their workflows.
+
+---
+
+# Three risks require management attention but do not break the deal thesis
+@type: two_column
+
+@col:
+  ## Risk 1: Competitive Intensification (Medium)
+  - Salesforce announced adjacent product in Q2 2024
+  - However: Salesforce historically struggles with vertical depth
+  - Mitigation: accelerate FSI and healthcare vertical investment
+  - Timeline: competitive response needed within 12 months
+
+@col:
+  ## Risk 2: Key Talent Retention (Medium-High)
+  - 4 of 6 founding engineers are not under long-term contracts
+  - Median tenure of engineering team: 2.1 years (low)
+  - Mitigation: retention packages at close ($28M budget)
+  - Timeline: retention agreements before close announcement
+
+@notes: Risk 2 is the most time-sensitive. Engineering departures in the 90 days post-announcement are the single largest destroyer of value in software acquisitions.
+
+---
+
+# Commercial Due Diligence: NovaTech
+@type: closing
+@background: dark
+
+## Proceed at $680M — the market position is real, the moat is defensible, and the risks are manageable
+### McKinsey M&A and Strategy | mckinsey.com/capabilities/strategy-and-corporate-finance

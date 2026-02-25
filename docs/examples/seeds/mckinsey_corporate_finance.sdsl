@@ -1,0 +1,83 @@
+---
+presentation:
+  title: "Capital Allocation Framework: Redeploying $2.4B Toward Highest-Return Opportunities"
+  author: "McKinsey Corporate Finance Practice"
+  company: "McKinsey & Company"
+  output: "pptx"
+  brand:
+    primary: "003366"
+    secondary: "E3EAF4"
+    accent: "0050A0"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Current Capital Allocation Systematically Under-Invests in High-Return Businesses While Funding Laggards
+@type: title
+@background: dark
+
+## Capital Allocation Framework
+### Redeploying $2.4B Toward Highest-Return Opportunities
+
+@notes: The diagnostic finding: this company's capital allocation process is inertia-driven, not return-driven. The largest capital recipients are legacy businesses, not the fastest-growing ones.
+
+---
+
+# Capital allocation inefficiency destroys $380M in shareholder value annually
+@type: stat_callout
+
+@stat: 6.2% | Avg ROIC on Marginal Capital Deployed | vs. 14.8% WACC — destroying value systematically
+@stat: $380M | Annual Value Destruction | From capital deployed below cost of capital
+@stat: 4× | Spread Between Highest and Lowest ROIC Business Units | Dramatic intra-portfolio variation
+
+@exhibit: Exhibit 1 — Capital Allocation Efficiency Diagnostic
+@source: McKinsey Corporate Finance analysis; company segment P&L and capex data, 2024
+
+@notes: The ROIC vs. WACC spread is the headline. When marginal ROIC is below WACC, every incremental dollar invested destroys value. The board must understand this clearly.
+
+---
+
+# Portfolio disaggregation reveals four distinct capital allocation archetypes
+@type: comparison
+
+@compare:
+  header: Business Unit | ROIC | Growth | Capital Currently Allocated | Right Allocation
+  row: Digital platforms (BU A) | 28% ROIC | +34% YoY | 12% of capex | 35% — starved of capital
+  row: Core enterprise (BU B) | 17% ROIC | +8% YoY | 31% of capex | 28% — slight reduction
+  row: Services (BU C) | 11% ROIC | +3% YoY | 24% of capex | 15% — reduce and optimize
+  row: Legacy hardware (BU D) | 4% ROIC | −2% YoY | 33% of capex | 5% — harvest and divest
+
+@exhibit: Exhibit 2 — Portfolio Capital Allocation Optimization
+@source: McKinsey segment analysis; weighted average ROIC calculated on invested capital per BU, 2024
+
+@notes: BU D is the critical conversation. It receives 33% of capex while destroying value at 4% ROIC vs. 14.8% WACC. Harvest and divest is the analytically clear answer — execution requires board alignment.
+
+---
+
+# Reallocation creates $2.4B in deployable capital through three mechanisms
+@type: two_column
+
+@col:
+  ## Capital Liberation Sources
+  - Divest BU D: $1.2B proceeds at 8× EBITDA
+  - BU C capex reduction: $480M freed over 3 years
+  - Working capital optimization across portfolio: $280M
+  - Sale-leaseback of owned real estate: $440M
+
+@col:
+  ## Redeployment Priorities
+  - Organic: BU A digital platform acceleration ($900M over 3 years)
+  - M&A: 2–3 bolt-on acquisitions in adjacent digital markets ($800M)
+  - Buyback: return excess capital if no accretive M&A available ($700M)
+  - Balance sheet: maintain investment-grade credit through transition
+
+@notes: The sequencing matters: liberate capital first, then deploy. Attempting to fund growth before completing the divestiture creates leverage overhang that spooks debt markets.
+
+---
+
+# Capital Allocation Framework
+@type: closing
+@background: dark
+
+## The best capital allocators treat every dollar as if it belongs to a shareholder — because it does
+### McKinsey Corporate Finance | mckinsey.com/capabilities/strategy-and-corporate-finance

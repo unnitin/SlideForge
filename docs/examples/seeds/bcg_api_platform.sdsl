@@ -1,0 +1,75 @@
+---
+presentation:
+  title: "API Platform Strategy: Monetizing Internal Capabilities as External Revenue Streams"
+  author: "BCG Digital & Platforms"
+  company: "Boston Consulting Group"
+  output: "pptx"
+  brand:
+    primary: "006837"
+    secondary: "E8F5E9"
+    accent: "004D26"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Internal APIs Represent a $180M Revenue Opportunity When Productized and Opened to Ecosystem Partners
+@type: title
+@background: dark
+
+## API Platform Strategy
+### Monetizing Internal Capabilities as External Revenue Streams
+
+@notes: The thesis: this company has built sophisticated internal capabilities (payments, logistics, data enrichment) that third parties would pay for as services. The API platform unlocks this latent asset.
+
+---
+
+# Leading companies generate significant revenue from API-based platform businesses
+@type: stat_callout
+
+@stat: $180M | Addressable API Revenue | From 3 identified internal capabilities over 5 years
+@stat: 73% | Gross Margin | Typical API/platform gross margin vs. 45% for services business
+@stat: 340+ | Potential Developer Partners | In identified ecosystem segments willing to pay for access
+
+@exhibit: Exhibit 1 — API Platform Revenue Opportunity
+@source: BCG Platform Economics Study; API business model benchmarks from ProgrammableWeb, 2024
+
+@notes: The 73% gross margin is the key CFO argument. API revenue is structurally high-margin — the infrastructure cost is largely fixed once built, making marginal revenue nearly pure profit.
+
+---
+
+# Three internal capabilities are platform-ready for external monetization
+@type: comparison
+
+@compare:
+  header: Capability | Internal Maturity | External Market | Pricing Model | Year 1 Revenue Potential
+  row: Payment orchestration API | Production-grade, 99.98% uptime | 85K fintechs globally | Per-transaction ($0.008) | $22M
+  row: Address and identity verification | Proprietary dataset, 94% match rate | Insurance, lending, logistics | Per-API call ($0.02–0.15) | $38M
+  row: Real-time inventory signals | 12M SKU coverage, 15-minute latency | Retail, CPG, 3PL | Subscription + usage | $18M
+
+@exhibit: Exhibit 2 — Capability Monetization Assessment
+@source: BCG API platform analysis; comparable API pricing from Stripe, SmartyStreets, Spins, 2024
+
+@notes: Payment orchestration is the highest-value capability but also the most regulated. Start with identity verification — faster to market, lower regulatory burden.
+
+---
+
+# API platform build requires a developer experience investment that most internal teams underestimate
+@type: bullet_points
+@layout: icon_rows
+
+- @icon: rocket   | Developer portal with interactive docs, sandbox environment, and usage dashboard
+- @icon: database | API gateway managing authentication, rate limiting, and usage metering
+- @icon: shield   | Enterprise security: OAuth 2.0, mTLS, SOC2 Type II certification for external use
+- @icon: chart    | Monetization infrastructure: usage billing, tiered pricing, invoicing integration
+- @icon: brain    | Developer success program: onboarding guides, sample code, dedicated support tier
+
+@notes: Developer experience is not a nice-to-have — it determines adoption speed. Stripe's success is 80% product quality and 20% developer documentation quality. Budget accordingly.
+
+---
+
+# API Platform Strategy
+@type: closing
+@background: dark
+
+## The platform premium is real — but only for companies that invest in developer experience as a product
+### BCG Digital & Platforms | bcg.com/capabilities/digital-technology-data

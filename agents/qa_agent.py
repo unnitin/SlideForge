@@ -28,6 +28,7 @@ import anthropic
 
 from src.dsl.models import SlideNode
 from src.dsl.serializer import SlideForgeSerializer
+from src.requirements.parser import PresentationRequirements
 
 logger = logging.getLogger(__name__)
 
@@ -83,7 +84,7 @@ class QAAgent:
 
     def __init__(
         self,
-        model: str = "claude-sonnet-4-5-20250514",
+        model: str = "claude-sonnet-4-6",
         api_key: Optional[str] = None,
     ):
         self.client = anthropic.Anthropic(api_key=api_key)
@@ -95,6 +96,7 @@ class QAAgent:
         self,
         slide_images: list[SlideImage],
         expected_slides: list[SlideNode],
+        requirements: Optional[PresentationRequirements] = None,
     ) -> QAReport:
         """
         Inspect rendered slide images for visual and content issues.
@@ -102,6 +104,7 @@ class QAAgent:
         Args:
             slide_images: Rendered slide images with their DSL source.
             expected_slides: The SlideNode objects that were rendered.
+            requirements: Optional structured requirements for compliance check.
 
         Returns:
             QAReport with any issues found and pass/fail status.
@@ -109,7 +112,7 @@ class QAAgent:
         if not slide_images:
             return QAReport(passed=True, summary="No slides to inspect.")
 
-        content = self._build_message_content(slide_images)
+        content = self._build_message_content(slide_images, requirements)
 
         response = self.client.messages.create(
             model=self.model,
@@ -126,6 +129,7 @@ class QAAgent:
         self,
         pptx_path: str | Path,
         expected_slides: list[SlideNode],
+        requirements: Optional[PresentationRequirements] = None,
     ) -> QAReport:
         """
         Convenience method: convert .pptx to images, then inspect.
@@ -133,6 +137,7 @@ class QAAgent:
         Args:
             pptx_path: Path to the rendered .pptx file.
             expected_slides: SlideNode list that produced the .pptx.
+            requirements: Optional structured requirements for compliance check.
 
         Returns:
             QAReport with any issues found.
@@ -152,7 +157,7 @@ class QAAgent:
                 )
             )
 
-        return self.inspect(slide_images, expected_slides)
+        return self.inspect(slide_images, expected_slides, requirements)
 
     # ── Prompt Building ────────────────────────────────────────────
 
@@ -161,7 +166,11 @@ class QAAgent:
         prompt_path = Path(__file__).parent / "prompts" / "qa_inspection.txt"
         return prompt_path.read_text(encoding="utf-8")
 
-    def _build_message_content(self, slide_images: list[SlideImage]) -> list[dict]:
+    def _build_message_content(
+        self,
+        slide_images: list[SlideImage],
+        requirements: Optional[PresentationRequirements] = None,
+    ) -> list[dict]:
         """Build multi-modal message content with images and DSL context."""
         content: list[dict] = []
 
@@ -175,6 +184,34 @@ class QAAgent:
                 ),
             }
         )
+
+        # Inject requirements compliance context if available
+        if requirements:
+            req = requirements
+            persona = req.audience_persona
+            req_lines = ["\n## Requirements Compliance Check\n"]
+            req_lines.append(
+                f"Audience: {persona.role} ({persona.seniority}), "
+                f"domain: {persona.domain_expertise}, depth: {persona.expected_depth}"
+            )
+            req_lines.append(f"Tone: {req.tone}")
+            if req.key_messages:
+                req_lines.append("\nKey messages that MUST be present and supported:")
+                for msg in req.key_messages:
+                    req_lines.append(f"  - {msg}")
+            if req.must_have_sections:
+                req_lines.append("\nRequired sections (check they are present):")
+                for sec in req.must_have_sections:
+                    req_lines.append(f"  - {sec}")
+            if persona.forbidden_elements:
+                req_lines.append("\nForbidden elements (flag if present):")
+                for fe in persona.forbidden_elements:
+                    req_lines.append(f"  - {fe}")
+            req_lines.append(
+                "\nFor each violation, use issue categories: "
+                "requirement_gap, audience_mismatch, missing_key_message"
+            )
+            content.append({"type": "text", "text": "\n".join(req_lines)})
 
         for si in slide_images:
             # Add slide header
@@ -229,9 +266,10 @@ class QAAgent:
 
         # Pattern: SLIDE {n}: ...
         slide_pattern = re.compile(r"SLIDE\s+(\d+):", re.IGNORECASE)
-        # Pattern: - [CRITICAL/WARNING/MINOR] category: description
+        # Pattern: - [CRITICAL/WARNING/MINOR] category (multi-word ok): description
+        # Captures everything between [SEVERITY] and the first ': ' as the category.
         issue_pattern = re.compile(
-            r"-\s*\[(CRITICAL|WARNING|MINOR)\]\s*(\w+):\s*(.+)",
+            r"-\s*\[(CRITICAL|WARNING|MINOR)\]\s*([^:]+?):\s*(.+)",
             re.IGNORECASE,
         )
         # Pattern: Suggested fix: ...
@@ -251,7 +289,8 @@ class QAAgent:
             issue_match = issue_pattern.match(line)
             if issue_match and current_slide_idx >= 0:
                 severity = issue_match.group(1).lower()
-                category = issue_match.group(2).lower()
+                # Normalise category to snake_case: "Action Title Issues" → "action_title_issues"
+                category = re.sub(r"\s+", "_", issue_match.group(2).strip().lower())
                 description = issue_match.group(3).strip()
 
                 # Check next line for suggested fix

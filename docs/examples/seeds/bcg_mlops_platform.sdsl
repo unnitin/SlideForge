@@ -1,0 +1,78 @@
+---
+presentation:
+  title: "MLOps Platform Build: From Model Experiments to Production-Grade AI Infrastructure"
+  author: "BCG Gamma AI"
+  company: "Boston Consulting Group"
+  output: "pptx"
+  brand:
+    primary: "006837"
+    secondary: "E8F5E9"
+    accent: "004D26"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Without MLOps Infrastructure, 87% of Models Never Reach Production — Here Is the Build Sequence
+@type: title
+@background: dark
+
+## MLOps Platform Build
+### From Model Experiments to Production-Grade AI Infrastructure
+
+@notes: The engineering teams are building models — that is not the problem. The problem is that 87% of models that clear technical review never reach production because there is no deployment infrastructure.
+
+---
+
+# The production gap is costing the organization $140M in unrealized AI value
+@type: stat_callout
+
+@stat: 87% | Models That Never Reach Production | vs. 40% at MLOps-mature organizations
+@stat: 14 weeks | Average Time to Deploy a Production Model | Best practice: 2–3 days with CI/CD
+@stat: $140M | Unrealized AI Value | From models built but not deployed in past 24 months
+
+@exhibit: Exhibit 1 — MLOps Maturity Diagnostic
+@source: BCG Gamma AI Engineering Benchmark; company engineering data, 2024
+
+@notes: The 14-week deployment time is the most powerful engineering argument. It is not a skill gap — it is a process and infrastructure gap. MLOps fixes infrastructure; it does not fix skills.
+
+---
+
+# MLOps platform covers five capability layers from data to serving
+@type: comparison
+
+@compare:
+  header: Layer | Capability | Recommended Tool | Current State
+  row: Data and features | Feature store, data versioning | Feast + Delta Lake | Absent — each team manages own
+  row: Experiment tracking | Model versioning, parameter tracking | MLflow | Ad hoc (notebooks, Google Drive)
+  row: Training orchestration | Distributed training, hyperparameter tuning | Kubeflow Pipelines | Manual scripts
+  row: Model registry and governance | Model catalog, approval workflow, audit | MLflow Registry | Absent
+  row: Serving and monitoring | Real-time serving, drift detection, alerting | Seldon + Evidently | Manual + fragile
+
+@exhibit: Exhibit 2 — MLOps Platform Component Design
+@source: BCG Gamma AI Platform Reference Architecture, 2024
+
+@notes: Do not try to build all five layers simultaneously. Start with experiment tracking (MLflow) — it is the highest-value, lowest-complexity layer and delivers immediate productivity gains.
+
+---
+
+# MLOps build sequence prioritizes developer productivity before deployment scale
+@type: timeline
+
+@step: Month 1–2 | Experiment Tracking | MLflow deployment, team migration, standardized model metadata
+@step: Month 3–5 | Feature Store | Feast implementation, 3 core feature domains, backfill pipeline
+@step: Month 5–8 | Training Pipelines | Kubeflow for model training orchestration, GPU cluster setup
+@step: Month 9–12 | Model Registry | Governance workflow, staging/production promotion, audit trail
+@step: Month 12–18 | Serving and Monitoring | Production serving infrastructure, drift detection, alerting
+
+@source: BCG Gamma AI Platform Build Methodology, 2024
+
+@notes: Month 12 is when the compounding begins. Once the registry and serving infrastructure are in place, every subsequent model deploy is days, not weeks.
+
+---
+
+# MLOps Platform Build
+@type: closing
+@background: dark
+
+## MLOps is not infrastructure overhead — it is the multiplier that makes every AI investment return
+### BCG Gamma AI | bcg.com/capabilities/digital-technology-data/bcg-gamma

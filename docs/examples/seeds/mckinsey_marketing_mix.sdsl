@@ -1,0 +1,84 @@
+---
+presentation:
+  title: "Marketing Mix Optimization: Reallocating $280M Toward Higher-Return Channels"
+  author: "McKinsey Marketing & Sales"
+  company: "McKinsey & Company"
+  output: "pptx"
+  brand:
+    primary: "003366"
+    secondary: "E3EAF4"
+    accent: "0050A0"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Current Marketing Allocation Leaves $95M in Incremental Revenue Unrealized
+@type: title
+@background: dark
+
+## Marketing Mix Optimization
+### Reallocating $280M Toward Higher-Return Channels
+
+@notes: The analysis reveals significant over-investment in TV and under-investment in performance digital and retail media. The reallocation is revenue-positive with no budget increase required.
+
+---
+
+# Marketing ROI varies 8× across the current channel portfolio
+@type: stat_callout
+
+@stat: 8× | ROI Range Across Channels | From 0.4× (linear TV) to 3.2× (paid search)
+@stat: $95M | Incremental Revenue Available | From reallocation alone — no budget increase
+@stat: 34% | Current Spend on Linear TV | Despite 2.1% contribution to digital conversion
+
+@exhibit: Exhibit 1 — Marketing Mix ROI Analysis
+@source: McKinsey proprietary MMM, company media data, GfK Attribution Study, 2024
+
+@notes: The TV number is the most sensitive finding. Frame it carefully — the goal is optimization, not elimination of TV, which still has brand-building value that MMM understates.
+
+---
+
+# Channel-by-channel ROI analysis reveals four distinct performance tiers
+@type: comparison
+
+@compare:
+  header: Channel | Current Spend | ROI | Recommendation | Reallocation
+  row: Paid search (branded) | $28M | 3.2× | Increase | +$15M
+  row: Retail media networks | $18M | 2.8× | Increase significantly | +$32M
+  row: Social (Meta, TikTok) | $34M | 1.9× | Hold — optimize creative | +$5M (creative test)
+  row: Connected TV / streaming | $22M | 1.4× | Hold and measure | Neutral
+  row: Linear TV | $95M | 0.4× | Reduce materially | −$52M
+
+@exhibit: Exhibit 2 — Channel ROI and Reallocation Plan
+@source: McKinsey MMM model, 18-month calibration period; company P&L data, 2024
+
+@notes: Retail media is the most underallocated channel. The 2.8× ROI is partially explained by proximity to purchase intent — it is structurally a high-return channel in CPG.
+
+---
+
+# Retail media deserves the largest reallocation given structural proximity to purchase
+@type: two_column
+
+@col:
+  ## Why Retail Media Outperforms
+  - Reaches customers with high purchase intent at shelf
+  - Closed-loop measurement: exposure → purchase linkage
+  - First-party retailer data for precise audience targeting
+  - Growing as third-party cookies deprecate
+
+@col:
+  ## How to Scale Retail Media Effectively
+  - Prioritize top 3 retail partners by category share
+  - Invest in content: sponsored product + display + video
+  - Build joint business plans with retailer media teams
+  - Measure incrementality, not just ROAS
+
+@notes: The key execution risk is measurement capability. Most CPG companies lack the internal capability to accurately measure retail media incrementality. Build this before scaling.
+
+---
+
+# Marketing Mix Optimization
+@type: closing
+@background: dark
+
+## Optimal marketing spend is not about spending more — it is about spending where returns compound
+### McKinsey Marketing & Sales | mckinsey.com/capabilities/growth-marketing-and-sales

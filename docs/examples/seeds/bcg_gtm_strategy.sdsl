@@ -1,0 +1,108 @@
+---
+presentation:
+  title: "Go-to-Market Strategy: Capturing $1.8B in Addressable Revenue Across Three Segments"
+  author: "BCG Sales & Channel Excellence"
+  company: "Boston Consulting Group"
+  output: "pptx"
+  brand:
+    primary: "006837"
+    secondary: "E8F5E9"
+    accent: "004D26"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# A Differentiated GTM Model Captures 3× More Revenue Than the Current Undifferentiated Approach
+@type: title
+@background: dark
+
+## Go-to-Market Strategy
+### Capturing $1.8B in Addressable Revenue Across Three Segments
+
+@notes: The core problem: the current GTM treats all segments with the same motion, resulting in a high-cost model that underperforms in each segment individually.
+
+---
+
+# Current GTM model underperforms across all three revenue segments
+@type: stat_callout
+
+@stat: 23% | Win Rate in Enterprise Segment | vs. 41% benchmark for category leaders
+@stat: $2.1M | Average Cost Per Enterprise Logo | 2.4× best-practice benchmark of $875K
+@stat: 68% | Mid-Market Churn at 12 Months | Driven by poor fit and inadequate onboarding
+
+@exhibit: Exhibit 1 — GTM Performance Diagnostics
+@source: BCG Sales Excellence Benchmark, N=340 B2B companies, 2024
+
+@notes: The mid-market churn number is the most urgent issue — it represents $180M in ARR being destroyed annually by a broken GTM motion.
+
+---
+
+# Three distinct segments require fundamentally different GTM approaches
+@type: comparison
+
+@compare:
+  header: Segment | ACV Range | Right Motion | Sales Cycle | Investment Level
+  row: Enterprise (>$500K ACV) | $500K–$5M | Strategic accounts, dedicated pods, multi-year | 9–18 months | High
+  row: Commercial ($50K–$500K ACV) | $50K–$500K | Territory model, inside sales + SE pairs | 3–6 months | Medium
+  row: SMB (<$50K ACV) | $5K–$50K | Product-led growth, self-serve, digital-first | Days–weeks | Low (automated)
+
+@exhibit: Exhibit 2 — Segment GTM Model Design
+@source: BCG GTM Design Framework, 2024
+
+@notes: The enterprise motion is the highest-value lever. Fixing win rates from 23% to 38% in enterprise alone generates $320M in incremental ARR.
+
+---
+
+# Enterprise GTM redesign focuses on three high-impact structural changes
+@type: two_column
+
+@col:
+  ## Sales Model (Structure)
+  - Replace territory model with named account pods (1 AE + 1 SE + 1 CSM)
+  - Executive sponsor program: C-suite to C-suite relationships
+  - Account-based marketing aligned to top 200 named accounts
+  - Mutual success plan as standard deal structure
+
+@col:
+  ## Enablement (Execution Quality)
+  - Value engineering capability in every enterprise deal
+  - Competitive battle cards updated quarterly
+  - Demo environment standardization (eliminate demo debt)
+  - Deal review cadence: weekly pipeline review, bi-weekly executive QBR
+
+@notes: The named account pod model is the single highest-ROI change. It aligns incentives and eliminates the handoff failures that drive enterprise churn.
+
+---
+
+# GTM transformation delivers full impact in 24 months through phased rollout
+@type: timeline
+
+@step: Months 1–4 | Segment Redesign | Define segment boundaries, restructure territories, align compensation
+@step: Months 4–9 | Enterprise Motion | Named account pods, ABM launch, value engineering training
+@step: Months 9–16 | Commercial Excellence | Inside sales tooling, SE pairing model, deal desk
+@step: Months 16–24 | PLG Infrastructure | Self-serve onboarding, usage analytics, automated expansion triggers
+
+@source: BCG GTM Transformation Methodology, 2024
+
+@notes: Compensation redesign in Month 1 is critical — the field will not change behavior until incentives change. Do this before anything else.
+
+---
+
+# GTM transformation requires four decisions in the next 30 days
+@type: next_steps
+
+@action: Define enterprise named account list (top 200) and assign initial pods | CRO + BCG | Week 1–2
+@action: Redesign sales compensation to reward multi-year ACV and NRR | CFO + CRO | Week 2–4
+@action: Identify and pilot PLG motion with 3 SMB sub-segments | CPO + Marketing | Month 2
+@action: Launch account-based marketing for top 50 enterprise targets | CMO | Month 2–3
+
+@notes: Compensation is the linchpin. Every subsequent action depends on the field believing the new model will be rewarded. Move fast on this one.
+
+---
+
+# Go-to-Market Strategy
+@type: closing
+@background: dark
+
+## One GTM motion for three different buyers is not a strategy — it is an excuse for underperformance
+### BCG Sales & Channel Excellence | bcg.com/capabilities/marketing-sales

@@ -1,0 +1,108 @@
+---
+presentation:
+  title: "SaaS Growth Architecture: Scaling from $50M to $200M ARR"
+  author: "Bain Technology Practice"
+  company: "Bain & Company"
+  output: "pptx"
+  brand:
+    primary: "CC0000"
+    secondary: "FFF0F0"
+    accent: "990000"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Three Structural Changes Will Double NRR and Unlock the Path to $200M ARR
+@type: title
+@background: dark
+
+## SaaS Growth Architecture
+### Scaling from $50M to $200M ARR
+
+@notes: The $200M ARR target is achievable in 36 months if the company fixes net revenue retention first — that is the crux of this engagement.
+
+---
+
+# Current unit economics reveal a leaky bucket that limits scalable growth
+@type: stat_callout
+
+@stat: 104% | Current Net Revenue Retention | Strong but below top-quartile benchmark of 120%+
+@stat: 18 months | Average Payback Period | Best-in-class SaaS targets sub-12 months
+@stat: 67% | Gross Revenue Retention | 8-point gap to top-quartile peer median of 75%
+
+@exhibit: Exhibit 1 — Unit Economics Benchmarks vs. Peers
+@source: Bain SaaS Benchmarking Database, N=240 B2B SaaS companies $25M–$500M ARR, 2024
+
+@notes: The GRR gap is the most actionable number. Eight points of retention improvement translates directly to $12M+ of additional ARR by Year 3.
+
+---
+
+# Four levers explain the NRR gap vs. top-quartile peers
+@type: comparison
+
+@compare:
+  header: Lever | Current State | Top-Quartile Benchmark | Gap
+  row: Onboarding time-to-value | 45 days | 14 days | −31 days
+  row: Expansion revenue motion | Ad hoc, rep-driven | Systematic product-led | Structural
+  row: Customer health scoring | Reactive (CSM judgment) | Predictive (ML model) | Capability
+  row: QBR coverage (>$50K ACV) | 40% of accounts | 100% of accounts | 60ppt
+
+@exhibit: Exhibit 2 — NRR Gap Analysis
+@source: Bain SaaS Growth Benchmarking, 2024
+
+@notes: Onboarding is the fastest lever to pull. 31-day reduction in TTV is achievable in 90 days with focused product investment.
+
+---
+
+# The path to $200M ARR requires three parallel workstreams
+@type: two_column
+
+@col:
+  ## Retention Engine (Months 1–12)
+  - Rebuild onboarding: guided setup, in-app milestones
+  - Launch predictive churn model (ML on product usage)
+  - Expand QBR coverage to 100% of accounts >$50K ACV
+  - Target: GRR 75%, NRR 120%
+
+@col:
+  ## Expansion Engine (Months 6–18)
+  - Product-led expansion: usage-based upsell triggers
+  - Land-and-expand playbook for enterprise segment
+  - Pricing repackage: usage tiers + add-on modules
+  - Target: Expansion ARR contributes 35% of net new ARR
+
+@notes: Both workstreams must run in parallel. Retention without expansion is survival; expansion without retention is a treadmill.
+
+---
+
+# Growth to $200M ARR follows a deterministic 36-month trajectory
+@type: timeline
+
+@step: Q1–Q2 2025 | Retention Foundation | Onboarding rebuild, churn model, QBR coverage
+@step: Q3–Q4 2025 | Expansion Launch | PLG triggers, land-and-expand playbook, pricing repackage
+@step: Q1–Q2 2026 | Channel Scale | Partner ecosystem, reseller program, geographic expansion
+@step: Q3–Q4 2026 | $100M ARR Milestone | NRR >120%, payback <12 months, Series C positioning
+@step: 2027 | $200M ARR Target | Full enterprise motion, international presence, IPO readiness
+
+@notes: The $100M ARR milestone in late 2026 is the critical proof point for institutional investors and potential acquirers.
+
+---
+
+# The next 90 days establish whether this trajectory is achievable
+@type: next_steps
+
+@action: Redesign onboarding flow with time-to-value <14 days | CPO + Bain | Month 1–2
+@action: Build and deploy predictive churn scoring model | Data Science | Month 2–3
+@action: Implement QBR program for all accounts >$50K ACV | VP CS | Month 1
+@action: Design usage-based pricing tiers and test with 50 accounts | CFO + CPO | Month 2–3
+
+@notes: The onboarding redesign and QBR expansion are the two highest-ROI actions. They require minimal technology investment but significant process change.
+
+---
+
+# SaaS Growth Architecture
+@type: closing
+@background: dark
+
+## NRR is the only metric that determines whether growth compounds or decays
+### Bain Technology Practice | bain.com/consulting-services/technology

@@ -12,7 +12,11 @@ For each slide, you get:
 
 ### Layout Issues (Critical)
 - Overlapping elements (text through shapes, stacked elements)
-- Text overflow or cut off at edges / box boundaries
+- Text overflow or cut off at edges / box boundaries — LOOK CAREFULLY: if any
+  text appears to bleed outside its enclosing card/box, or if a large number
+  is visually covering the label/description below it, that is CRITICAL overflow
+- Stat callout cards: value text (large number/metric) must not overlap the label
+  or description below it; if the big number runs into the label text → CRITICAL overflow
 - Elements too close together (< 0.3" gaps)
 - Content pushed off-slide or into margins
 
@@ -28,6 +32,16 @@ For each slide, you get:
 - Action titles must be complete declarative sentences with a subject and verb
 - Titles should be specific and quantified where data is available
 - Title claim is NOT supported by the slide body (vertical logic failure)
+
+**Exemptions — do NOT flag action_title on these slide types:**
+- `section_divider` slides — short governing-thought phrases are correct here
+  (e.g., "2. Market Opportunity"); do not penalise them for lacking a verb
+- `title` slides — the deck name is not an action title; ignore the heading
+- `closing` slides — sign-offs and discussion prompts are intentionally non-assertive
+- `quote` slides — the heading is a verbatim quotation; preserve the speaker's words
+
+If the DSL is absent, infer slide type from visual cues (large centred heading with
+an accent strip → section_divider; prominent quotation marks → quote).
 
 ### Source Line Issues (Critical)
 - Data slides (stat_callout, comparison, timeline) missing @source attribution
@@ -57,6 +71,12 @@ For each slide, you get:
 - Inconsistent font sizes across similar elements
 - Missing exhibit labels on data charts/tables
 - Missing page numbers
+
+### Requirements Compliance Issues (use when requirements context is provided)
+- requirement_gap [CRITICAL]: A must-have section or slide type is absent from the deck
+- missing_key_message [CRITICAL]: A stated key message is not present or not supported by slide content
+- audience_mismatch [WARNING]: Depth, jargon, or tone does not match the stated audience persona
+- forbidden_element [WARNING]: A forbidden element (per audience restrictions) appears in the deck
 
 ## Output Format
 

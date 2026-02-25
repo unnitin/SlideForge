@@ -1,0 +1,97 @@
+---
+presentation:
+  title: "DTC Brand Growth Strategy: Building a $500M Direct Business by 2028"
+  author: "BCG Consumer Practice"
+  company: "Boston Consulting Group"
+  output: "pptx"
+  brand:
+    primary: "006837"
+    secondary: "E8F5E9"
+    accent: "004D26"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# DTC Brands That Own the Customer Relationship Achieve 2× Higher LTV Than Wholesale-Led Peers
+@type: title
+@background: dark
+
+## DTC Brand Growth Strategy
+### Building a $500M Direct Business by 2028
+
+@notes: The $500M target requires tripling DTC revenue from $165M today. This is achievable but requires structural shifts in channel mix, technology, and capability.
+
+---
+
+# DTC economics are fundamentally superior to wholesale — when scaled correctly
+@type: stat_callout
+
+@stat: 2.1× | Higher Customer LTV | DTC vs. wholesale-acquired customers at 36 months
+@stat: 58% | Gross Margin on DTC | Vs. 34% through retail wholesale channel
+@stat: 3.4× | Repeat Purchase Rate | For DTC subscription customers vs. one-time buyers
+
+@exhibit: Exhibit 1 — DTC vs. Wholesale Economics
+@source: BCG DTC Consumer Benchmark, N=85 brands $50M–$1B revenue, 2024
+
+@notes: The margin differential is the strategic imperative. At $500M DTC revenue vs. equivalent wholesale revenue, the gross margin difference is $120M annually.
+
+---
+
+# Three channels drive 85% of DTC revenue for top-performing brands
+@type: comparison
+
+@compare:
+  header: Channel | Share of Top-Performer DTC Revenue | CAC | LTV:CAC Ratio
+  row: Owned digital (website + app) | 45% | $32 | 8.2×
+  row: Social commerce (IG, TikTok Shop) | 27% | $18 | 5.4×
+  row: Subscription and loyalty programs | 13% | $0 (existing customer) | 12.1×
+  row: Marketplaces (Amazon, etc.) | 15% | $22 | 3.8×
+
+@exhibit: Exhibit 2 — DTC Channel Economics Benchmark
+@source: BCG DTC Consumer Benchmark, 2024
+
+@notes: Subscription programs have near-infinite LTV:CAC because they convert existing customers. Under-investment in subscription is the most common missed value opportunity in DTC.
+
+---
+
+# Building a $500M DTC business requires three capability investments
+@type: two_column
+
+@col:
+  ## Technology Stack
+  - Headless commerce platform enabling sub-2s load times
+  - CDP unifying digital, in-store, and loyalty data
+  - Personalization engine for email, site, and paid media
+  - First-party analytics replacing cookie-dependent attribution
+
+@col:
+  ## Brand and Content Engine
+  - In-house content studio producing 40+ assets/week
+  - Community platform converting buyers to advocates
+  - Creator partnership program (mid-tier, high authenticity)
+  - UGC strategy: reviews, social proof, community content
+
+@notes: Most brands underinvest in content relative to media spend. The winning formula is 70/30 — 70% earned/owned content driving 30% paid amplification.
+
+---
+
+# DTC Revenue Scales to $500M Through Three Compounding Growth Phases
+@type: timeline
+
+@step: 2025 | Foundation ($165M → $220M) | Platform migration, CDP launch, subscription program relaunch
+@step: 2026 | Acceleration ($220M → $340M) | Social commerce expansion, creator network, international test
+@step: 2027 | Scale ($340M → $430M) | App launch, loyalty 2.0, Amazon channel optimization
+@step: 2028 | Target ($430M → $500M) | International rollout, B2B DTC program, brand extensions
+
+@source: BCG growth model based on comparable DTC brand trajectories, 2024
+
+@notes: The 2025 foundation year is non-negotiable. Trying to accelerate without the technology stack produces short-term revenue that cannot sustain.
+
+---
+
+# DTC Brand Growth Strategy
+@type: closing
+@background: dark
+
+## Owning the customer relationship is not a channel strategy — it is a business model choice
+### BCG Consumer Practice | bcg.com/industries/consumer-products

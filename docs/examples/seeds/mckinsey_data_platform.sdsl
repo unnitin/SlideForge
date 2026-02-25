@@ -1,0 +1,82 @@
+---
+presentation:
+  title: "Data Platform Strategy: Building the Foundational Infrastructure for a Data-Driven Enterprise"
+  author: "McKinsey Technology"
+  company: "McKinsey & Company"
+  output: "pptx"
+  brand:
+    primary: "003366"
+    secondary: "E3EAF4"
+    accent: "0050A0"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# A Modern Data Platform Generates 4× the Analytics Value at One-Third the Operational Cost
+@type: title
+@background: dark
+
+## Data Platform Strategy
+### Building the Foundational Infrastructure for a Data-Driven Enterprise
+
+@notes: The current state is 14 disconnected data systems, no unified data layer, and 40% of analyst time spent on data wrangling rather than insight generation. This is a platform architecture problem, not a talent problem.
+
+---
+
+# Current data infrastructure creates three compounding performance penalties
+@type: stat_callout
+
+@stat: 40% | Analyst Time on Data Wrangling | vs. 12% benchmark for mature data organizations
+@stat: 14 | Disconnected Data Systems | Requiring manual reconciliation; no single source of truth
+@stat: 11 days | Average Time From Question to Insight | Best-in-class: under 2 hours for standard queries
+
+@exhibit: Exhibit 1 — Data Infrastructure Maturity Assessment
+@source: McKinsey Data Maturity Benchmark, N=420 enterprises across industries, 2024
+
+@notes: The 11-day time-to-insight is the most compelling number for business stakeholders. Frame the platform investment in terms of decision velocity, not infrastructure cost.
+
+---
+
+# Modern data platform architecture unifies storage, processing, and governance
+@type: two_column
+
+@col:
+  ## Medallion Architecture (Recommended)
+  - Bronze layer: raw ingestion from all source systems
+  - Silver layer: cleaned, validated, conformed data
+  - Gold layer: business-ready datasets and aggregations
+  - Separation of storage (object store) from compute
+  - Enables: streaming and batch on same data infrastructure
+
+@col:
+  ## Governance and Access
+  - Unified data catalog with business-friendly metadata
+  - Column-level access controls with role-based permissions
+  - Data lineage tracking from source to dashboard
+  - Automated data quality monitoring with alerting
+  - Self-serve access for analysts without engineering tickets
+
+@notes: The medallion architecture is the right choice for this organization's scale. It provides the clean separation needed for governance without sacrificing flexibility.
+
+---
+
+# Platform build follows a 24-month sequence from foundation to self-serve
+@type: timeline
+
+@step: Months 1–6 | Foundation | Cloud infrastructure, bronze/silver ingestion, core 5 data domains
+@step: Months 7–12 | Analytics Layer | Gold models, semantic layer, BI tool standardization
+@step: Months 13–18 | Self-Serve | Data catalog, governed self-serve access, analyst workspace
+@step: Months 19–24 | AI-Ready | Feature store, ML infrastructure, real-time streaming layer
+
+@source: McKinsey Data Platform Implementation Methodology, 2024
+
+@notes: Months 1–6 are the critical investment period. The platform will not produce visible business value until Month 8–10. Managing executive patience through this period requires clear milestone communication.
+
+---
+
+# Data Platform Strategy
+@type: closing
+@background: dark
+
+## Data infrastructure is not an IT project — it is the operating system of a modern enterprise
+### McKinsey Technology | mckinsey.com/capabilities/mckinsey-digital/our-insights/data-platforms

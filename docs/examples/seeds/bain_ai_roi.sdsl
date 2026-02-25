@@ -1,0 +1,85 @@
+---
+presentation:
+  title: "AI ROI Framework: Measuring and Maximizing Returns on a $120M AI Investment Portfolio"
+  author: "Bain Technology & Analytics Practice"
+  company: "Bain & Company"
+  output: "pptx"
+  brand:
+    primary: "CC0000"
+    secondary: "FFF0F0"
+    accent: "990000"
+    header_font: "Arial Black"
+    body_font: "Arial"
+---
+
+# Only 23% of AI Investments Deliver Measurable ROI — The Rest Fail on Value Tracking, Not Technology
+@type: title
+@background: dark
+
+## AI ROI Framework
+### Measuring and Maximizing Returns on a $120M AI Investment Portfolio
+
+@notes: The finding: the company has invested $120M in AI over 3 years. Only $28M (23%) can be traced to measurable business outcomes. The remaining $92M has no documented ROI. This is a measurement and governance problem.
+
+---
+
+# AI investment portfolio has significant concentration and accountability gaps
+@type: stat_callout
+
+@stat: $120M | Total AI Investment (3-Year Cumulative) | Across all business units and initiatives
+@stat: 23% | Investment With Documented ROI | $28M of $120M traceable to business outcomes
+@stat: 4.2× | ROI Gap vs. Best Practices | Top-quartile AI programs return 4.2× investment in 3 years
+
+@exhibit: Exhibit 1 — AI Investment Portfolio Audit
+@source: Bain AI investment audit; company IT and business unit financials, 2024
+
+@notes: The 23% documented ROI figure is likely generous — it captures only initiatives that anyone bothered to measure. The true figure may be lower. But it also means there is significant unmeasured value being created.
+
+---
+
+# AI investments fall into four value archetypes requiring different ROI approaches
+@type: comparison
+
+@compare:
+  header: Archetype | Share of Portfolio | Measurement Approach | Current State
+  row: Process automation (RPA, AI-assisted) | 38% | Direct labor hours saved × loaded cost | Measurable but rarely tracked
+  row: Revenue enhancement (personalization, pricing) | 29% | A/B test: treatment vs. control revenue delta | Partially measured (32% of cases)
+  row: Risk reduction (fraud, quality, compliance) | 22% | Incident rate reduction × expected loss | Rarely measured (8% of cases)
+  row: Innovation platform (GenAI, experimentation) | 11% | Option value framework; staged milestones | Not measured (definitionally difficult)
+
+@exhibit: Exhibit 2 — AI Value Archetype Assessment
+@source: Bain AI portfolio analysis, 2024
+
+@notes: Process automation ROI is the easiest to measure and the most consistently under-tracked. Start here — it builds the organizational muscle for measurement before tackling the harder archetypes.
+
+---
+
+# Standardized AI ROI framework creates accountability across all initiatives
+@type: two_column
+
+@col:
+  ## Pre-Launch (Business Case)
+  - Baseline measurement established before any AI investment
+  - Target KPI defined: single primary metric per initiative
+  - Holdout group designed for causal attribution
+  - Break-even analysis: what outcome justifies the investment?
+  - Stage-gate: no production deployment without approved business case
+
+@col:
+  ## Post-Launch (Value Tracking)
+  - Monthly KPI dashboard for all production AI systems
+  - Quarterly value realization review vs. business case
+  - Escalation trigger: underperforming initiatives reviewed at 90 days
+  - Annual portfolio pruning: bottom 20% of ROI investments discontinued
+  - Attribution methodology: causal, not correlation-based
+
+@notes: The holdout group discipline is the most important and most commonly skipped step. Without a control group, AI ROI is correlation, not causation — and correlation is useless for resource allocation.
+
+---
+
+# AI ROI Framework
+@type: closing
+@background: dark
+
+## Unmeasured AI investment is an act of faith — and faith is not a capital allocation strategy
+### Bain Technology & Analytics Practice | bain.com/consulting-services/technology

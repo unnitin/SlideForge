@@ -83,7 +83,7 @@ class IndexCuratorAgent:
 
     def __init__(
         self,
-        model: str = "claude-haiku-4-5-20251001",
+        model: str = "claude-haiku-4-5-20251001",  # cost-optimized for batch enrichment
         api_key: Optional[str] = None,
     ):
         self.client = anthropic.Anthropic(api_key=api_key)
