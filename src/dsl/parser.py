@@ -255,12 +255,24 @@ class SlideForgeParser:
         h = re.search(r"^\s*##\s+(.+)$", text, re.MULTILINE)
         if h:
             col_kwargs["title"] = h.group(1).strip()
-        bullets = [
-            BulletItem(text=m.group(2).strip(), level=len(m.group(1)) // 2)
-            for m in self.RE_BULLET.finditer(text)
+        # Prefer icon bullets (strips the @icon: keyword | prefix); fall back to plain
+        icon_bullets = [
+            BulletItem(
+                text=m.group(3).strip(),
+                level=len(m.group(1)) // 2,
+                icon=m.group(2).strip(),
+            )
+            for m in self.RE_ICON_BULLET.finditer(text)
         ]
-        if bullets:
-            col_kwargs["bullets"] = bullets
+        if icon_bullets:
+            col_kwargs["bullets"] = icon_bullets
+        else:
+            bullets = [
+                BulletItem(text=m.group(2).strip(), level=len(m.group(1)) // 2)
+                for m in self.RE_BULLET.finditer(text)
+            ]
+            if bullets:
+                col_kwargs["bullets"] = bullets
         return ColumnContent(**col_kwargs)
 
     def _parse_compare(self, text: str) -> CompareTable:

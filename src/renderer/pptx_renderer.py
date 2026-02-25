@@ -49,8 +49,10 @@ CONTENT_TOP = MARGIN_TOP + 1.3  # 1.9 — below title (1.6) + separator + exhibi
 
 # Source / footnote zone at bottom of slide
 SOURCE_FONT = 8  # consulting source/footnote lines are 7–8pt
-SOURCE_TOP = 7.5 - MARGIN_BOTTOM - 0.4  # ~6.5
-SOURCE_HEIGHT = 0.3
+SOURCE_TOP = 7.5 - MARGIN_BOTTOM - 0.35  # ~6.55 — source + page number row
+CONF_TOP = SOURCE_TOP - 0.22  # confidentiality row sits above source
+FOOTER_RULE_TOP = CONF_TOP - 0.08  # hairline sits above confidentiality row
+SOURCE_HEIGHT = 0.25
 PAGE_NUM_WIDTH = 0.5
 
 TITLE_LEFT = MARGIN_LEFT
@@ -367,16 +369,15 @@ def _render_logo(
 
 
 def _render_footer_rule(slide, brand: BrandConfig):
-    """Render a hairline rule above the source/footnote zone.
+    """Render a hairline rule above the footer zone.
 
     Both Bain and BCG use a thin gray rule separating the content body from
-    the bottom metadata zone (source, footnotes, page number).  Placed at
-    SOURCE_TOP - 0.1" so it sits just above the source text.
+    the bottom metadata zone (confidentiality, source, footnotes, page number).
     """
     rule = slide.shapes.add_shape(
         1,  # MSO_SHAPE.RECTANGLE
         Inches(MARGIN_LEFT),
-        Inches(SOURCE_TOP - 0.1),
+        Inches(FOOTER_RULE_TOP),
         Inches(CONTENT_WIDTH),
         Inches(0.02),
     )
@@ -388,15 +389,16 @@ def _render_footer_rule(slide, brand: BrandConfig):
 def _render_confidentiality_label(slide, meta: PresentationMeta, brand: BrandConfig):
     """Render confidentiality label centered at the bottom of a slide.
 
-    Placed at SOURCE_TOP row, centered over full content width, at 8pt.
+    Placed on CONF_TOP (above the source/page-number row) so it never
+    overlaps with left-aligned source text or the right-aligned page number.
     """
     muted = _muted_color_for_bg(BackgroundType.LIGHT, brand)
     _add_textbox(
         slide,
         MARGIN_LEFT,
-        SOURCE_TOP,
+        CONF_TOP,
         CONTENT_WIDTH,
-        SOURCE_HEIGHT,
+        0.2,
         meta.confidentiality,
         font_size=8,
         color=muted,
